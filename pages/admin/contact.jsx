@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Adminnav from "../../comps/Adminnav";
+import { motion } from "framer-motion";
 import Quotebody from "../../comps/quotebody";
 import { withSessionSsr, getSessionData } from "../api/withsession";
+import Contactbody from "../../comps/contactbody";
+import Animatez from "@/Animate";
 
 export const getServerSideProps = withSessionSsr(({ req, res }) => {
   const data = getSessionData(req);
@@ -25,6 +28,8 @@ export const getServerSideProps = withSessionSsr(({ req, res }) => {
 });
 
 const quote = () => {
+  const { genchild, gencont } = Animatez();
+
   return (
     <>
       <main className="admin">
@@ -44,12 +49,12 @@ const quote = () => {
               </div>
               <div>
                 <div className="table__head--des">
-                  <h6>Description</h6>
+                  <h6>message</h6>
                 </div>
               </div>
               <div>
                 <div className="table__head--indus">
-                  <h6>industries</h6>
+                  <h6>email</h6>
                 </div>
               </div>
               <div>
@@ -59,9 +64,18 @@ const quote = () => {
               </div>
             </div>
 
-            <Quotebody />
-            <Quotebody />
-            <Quotebody />
+            <motion.div
+              variants={gencont}
+              initial="initial"
+              whileInView="animate"
+            >
+              <motion.div variants={genchild}>
+                <Contactbody variants={genchild} />
+              </motion.div>
+              <motion.div variants={genchild}>
+                <Contactbody variants={genchild} />
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 

@@ -9,17 +9,20 @@ import Animatez from "@/Animate";
 import Editor from "../../comps/Editor";
 import Blognav from "../../comps/blognav";
 import Statichook from "@/hooks/statichook";
+import Footer from "../../comps/footer";
 
 export const getStaticProps = async () => {
   const { displayposts, displayrecent, categoryEach, trending, tag, top } =
     Statichook();
 
-  const post = await displayposts();
+  const post = await displayposts(1);
   const recent = await displayrecent();
   const trendpost = await trending();
   const toppost = await top();
   const tags = await tag();
   const categoryeach = await categoryEach();
+
+  console.log(categoryeach);
 
   return {
     props: { post, recent, trendpost, toppost, tags, categoryeach },
@@ -126,15 +129,15 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                     <motion.div variants={genchild} className="post__post">
                       <div className="post__post--img">
                         <img
-                          src={`http://localhost/sanagosApi${pa.img1}`}
+                          src={`https://jeffmatthewpatten.com/api${pa.img1}`}
                           alt=""
                         />
-                        <a href="#"> {pa.id} </a>
+                        <a href={`/result/1?cat=${pa.id}`}> {pa.id} </a>
                       </div>
-                      <a href="">{pa.title} </a>
+                      <a href={`/single/${pa.uuid}`}>{pa.title} </a>
                       {/* <div dangerouslySetInnerHTML={{ __html: pa.des2 }}></div> */}
                       <span>
-                        {`By ${pa.author}`}
+                        {`By ${pa.author} . ${pa.time}`}
                         {/* By sanagos . <span>12/10/23</span> */}
                       </span>
                       <div
@@ -170,31 +173,29 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       <div>
                         <div className="post__recent--img">
                           <img
-                            src={`http://localhost/sanagosApi${re.img1}`}
+                            src={`https://jeffmatthewpatten.com/api${re.img1}`}
                             alt=""
                           />
                         </div>
                       </div>
                       <div className="post__recent--tag">
-                        {re.tag.map((ta, index) => {
-                          return (
-                            <a
-                              href=""
-                              style={{ background: re.color[index] }}
-                              className="post__recent--cat"
-                            >
-                              {ta}
-                            </a>
-                          );
-                        })}
+                        <Link
+                          href={`/result/1?cat=${re.id}`}
+                          className="post__recent--cat"
+                        >
+                          {re.id}
+                        </Link>
 
                         <br />
-                        <a className="post__recent--link" href="">
+                        <a
+                          className="post__recent--link"
+                          href={`/single/${re.uuid}`}
+                        >
                           {re.title}
                         </a>
                         <br />
                         <span className="post__recent--tagspan">
-                          {`By ${re.author}`}
+                          {`By ${re.author} . ${re.time}`}
                           {/* By Sanagos . <span>03/4/23</span> */}
                         </span>
                       </div>
@@ -231,7 +232,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                   <img src="./asset/img/presentation-8.png" alt="" />
                   {/* <!-- grid one absolite --> */}
                   <div className="top__grid--move1">
-                    <a href="" className="post__recent--cat">
+                    <a
+                      href={`/result/1?cat=${toppost[0].id}`}
+                      className="post__recent--cat"
+                    >
                       {toppost[0].id}
                     </a>
                     <br />
@@ -251,7 +255,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       {toppost[0].title}
                     </motion.a>
                     <span className="post__recent--tagspan">
-                      {`By ${toppost[0].author}`}
+                      {`By ${toppost[0].author} . ${toppost[0].time}`}
                       {/* By Sanagos . <span>03/4/23</span> */}
                     </span>
                   </div>
@@ -271,7 +275,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                   <img src="./asset/img/presentation-8.png" alt="" />
                   {/* <!-- grid one absolite --> */}
                   <div className="top__grid--move2">
-                    <a href="" className="post__recent--cat">
+                    <a
+                      href={`/result/1?cat=${toppost[1].id}`}
+                      className="post__recent--cat"
+                    >
                       {toppost[1].id}
                     </a>
                     <br />
@@ -279,7 +286,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       {toppost[1].title}
                     </a>
                     <span className="post__recent--tagspan">
-                      {`By ${toppost[1].author}`}
+                      {`By ${toppost[1].author} . ${toppost[1].time}`}
                       {/* By Sanagos . <span>03/4/23</span> */}
                     </span>
                   </div>
@@ -292,15 +299,18 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                   <img src="./asset/img/presentation-8.png" alt="" />
                   {/* <!-- grid one absolite --> */}
                   <div className="top__grid--move2">
-                    <a href="" className="post__recent--cat">
+                    <a
+                      href={`/result/1?cat=${toppost[2].id}`}
+                      className="post__recent--cat"
+                    >
                       {toppost[2].id}
                     </a>
                     <br />
                     <a className="post__recent--link top__grid--link2" href="">
-                      {top[2].title}
+                      {toppost[2].title}
                     </a>
                     <span className="post__recent--tagspan">
-                      {`By ${toppost[2].author}`}
+                      {`By ${toppost[2].author} . ${toppost[2].time} `}
                       {/* By Sanagos . <span>03/4/23</span> */}
                     </span>
                   </div>
@@ -340,16 +350,18 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                         </div>
                       </div>
                       <div className="post__recent--tag">
-                        <a href="" className="post__recent--cat">
-                          Extinguisher
+                        <a
+                          href={`/result/1?cat=${trend.id}`}
+                          className="post__recent--cat"
+                        >
+                          {trend.id}
                         </a>
                         <br />
                         <a className="post__recent--link" href="">
-                          How to use fire extinguishers properly to aviod damage
-                          to the cylinder
+                          {trend.title}
                         </a>
                         <span className="post__recent--tagspan">
-                          By Sanagos . <span>03/4/23</span>
+                          {`By ${trend.author} . ${trend.time}`}
                         </span>
                       </div>
                     </motion.div>
@@ -421,7 +433,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       <div>
                         <div className="post__recent--img post__recent--img--modify">
                           <img
-                            src={`http://localhost/sanagosApi${ma.img1}`}
+                            src={`https://jeffmatthewpatten.com/api${ma.img1}`}
                             alt=""
                           />
                         </div>
@@ -447,7 +459,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                           {ma.title}
                         </a>
                         <span className="post__recent--tagspan">
-                          {`By ${ma.author}`}
+                          {`By ${ma.author} . ${ma.time}`}
 
                           {/* By Sanagos . <span>03/4/23</span> */}
                         </span>
@@ -487,13 +499,14 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       categoryeach.map((cat) => {
                         return (
                           <div className="item">
-                            <div
-                              className="advert__cat"
+                            <a
+                              href={`/result/1/?cat=${cat.id}`}
+                              className="advert__cat text-decoration-none"
                               style={{ background: cat.color }}
                             >
                               <h5 className="advert__cat--h5"> {cat.total} </h5>
                               <p className="advert__cat--p"> {cat.id} </p>
-                            </div>
+                            </a>
                           </div>
                         );
                       })
@@ -525,11 +538,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                     <h4>No Post</h4>
                   ) : (
                     tagz.map((ta) => {
-                      return (
-                        <a a href="">
-                          {ta}
-                        </a>
-                      );
+                      return <a href={`/tagsearch/1/?tagz=${ta}`}>{ta}</a>;
                     })
                   )}
                 </div>
@@ -541,58 +550,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
         </section>
 
         {/* <!-- footer --> */}
-        <footer className="blogfooter">
-          <div className="blogfooter__grid border-bottom">
-            <div>
-              <div className="blogfooter__grid--logo">
-                <img src="./asset/icons/logo.svg" alt="" />
-              </div>
-            </div>
-            <div>
-              <div className="blogfooter__grid--link">
-                <h4>Follow us on social media</h4>
-                <div>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-instagram"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-facebook"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-linkedin"></i>{" "}
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div></div>
-          </div>
-          {/* // <!-- this is the link and copyright section --> */}
-          <div className="blogfooter__link">
-            <a href="">Home</a>
-            <a href="">Safety</a>
-            <a href="">Fire</a>
-            <a href="">Fire_extinguisher</a>
-          </div>
-
-          <p className="blogfooter__copy">
-            &copy; 2023 copyright all right reserved
-          </p>
-        </footer>
+        <Footer />
       </main>
     </>
   );

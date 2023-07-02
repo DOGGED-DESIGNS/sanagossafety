@@ -6,6 +6,8 @@ const Makepost = () => {
   const [postmessage, setPostmessage] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const [updatemessage, setUpdatemessage] = useState({});
+
   const makePost = async (form) => {
     setLoading(true);
 
@@ -29,8 +31,39 @@ const Makepost = () => {
       console.log(err);
     }
   };
+  const updatePost = async (form) => {
+    setLoading(true);
 
-  return { makePost, postmessage, setPostmessage, loading };
+    try {
+      const data = await axios.post(
+        "http://localhost/sanagosApi/php/process.php",
+        form,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      setUpdatemessage(data.data);
+      console.log(data.data);
+
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response?.data);
+      console.log(err);
+    }
+  };
+
+  return {
+    makePost,
+    updatemessage,
+    updatePost,
+    postmessage,
+    setPostmessage,
+    setUpdatemessage,
+    loading,
+  };
 };
 
 export default Makepost;

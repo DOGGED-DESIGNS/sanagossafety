@@ -1,9 +1,48 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 import Animatez from "@/Animate";
 import Adminnav from "../../comps/Adminnav";
+import Statichook from "@/hooks/statichook";
+import { withSessionSsr, getSessionData } from "../api/withsession";
 
-const home = () => {
+export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
+  const data = getSessionData(req);
+
+  const { postNum, categoryNum, contactNum, quoteNum } = Statichook();
+
+  if (!data?.status) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  } else {
+    const quotenumber = await quoteNum();
+    const contactnumber = await contactNum();
+    const postnumber = await postNum();
+    const categorynumber = await categoryNum();
+
+    return {
+      props: {
+        quotenumber,
+        contactnumber,
+        postnumber,
+        categorynumber,
+      },
+    };
+  }
+
+  return {
+    props: {
+      data: "data",
+    },
+  };
+});
+
+const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
+  const router = useRouter();
   const { animatenav, supplychild, supplycont, tapanimate } = Animatez();
   return (
     <>
@@ -22,7 +61,7 @@ const home = () => {
               <div className="dash__cat shadow-sm">
                 <div className="dash__display">
                   <p>Categories</p>
-                  <h4>17</h4>
+                  <h4>{categorynumber}</h4>
                 </div>
                 <motion.a
                   whileHover={{
@@ -38,8 +77,8 @@ const home = () => {
             <motion.div variants={supplychild}>
               <div className="dash__cat shadow-sm">
                 <div className="dash__display">
-                  <p>Requeste Quotes</p>
-                  <h4>5</h4>
+                  <p>Request Quotes</p>
+                  <h4> {quotenumber} </h4>
                 </div>
                 <motion.div
                   whileHover={{
@@ -57,7 +96,7 @@ const home = () => {
               <div className="dash__cat shadow-sm">
                 <div className="dash__display">
                   <p>posts</p>
-                  <h4>20</h4>
+                  <h4> {postnumber} </h4>
                 </div>
                 <motion.a
                   whileHover={{
@@ -73,8 +112,8 @@ const home = () => {
             <motion.div variants={supplychild}>
               <div className="dash__cat shadow-sm">
                 <div className="dash__display">
-                  <p>pages</p>
-                  <h4>205</h4>
+                  <p>contacts</p>
+                  <h4> {contactnumber} </h4>
                 </div>
                 <motion.a
                   whileHover={{

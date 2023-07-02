@@ -11,7 +11,7 @@ import axios from "axios";
 const Statichook = () => {
   const displayrecent = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "recent",
       },
@@ -26,11 +26,12 @@ const Statichook = () => {
     return data.data;
   };
 
-  const displayposts = async () => {
+  const displayposts = async (num) => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "drawpost",
+        num: num,
       },
       {
         headers: {
@@ -44,7 +45,7 @@ const Statichook = () => {
   };
   const singlePost = async (id) => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "singlepost",
         id: id,
@@ -61,7 +62,7 @@ const Statichook = () => {
   };
   const top = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "top",
       },
@@ -77,7 +78,7 @@ const Statichook = () => {
   };
   const trending = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "trending",
       },
@@ -93,7 +94,7 @@ const Statichook = () => {
   };
   const tag = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "tag",
       },
@@ -107,11 +108,48 @@ const Statichook = () => {
 
     return data.data;
   };
+
+  //
   const categoryEach = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "categoryeach",
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return data.data;
+  };
+  const paginatez = async (cat, number) => {
+    const data = await axios.post(
+      "https://jeffmatthewpatten.com/api/php/process.php",
+      {
+        message: "paginate",
+        cat: cat,
+        num: number,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return data.data;
+  };
+  const pagenumber = async (cat) => {
+    const data = await axios.post(
+      "https://jeffmatthewpatten.com/api/php/process.php",
+      {
+        message: "pagenumber",
+        cat: cat,
       },
       {
         headers: {
@@ -127,7 +165,7 @@ const Statichook = () => {
   const category = async () => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "drawcategory",
         },
@@ -145,8 +183,280 @@ const Statichook = () => {
     }
     //
   };
+  const search = async (num, cat) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "search",
+          num: num,
+          search: cat,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const pagenumberSearch = async (search) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "pagenumbersearch",
+          search: search,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const tagSearch = async (num, tag) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "tagsearch",
+          num: num,
+          search: tag,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const pagenumberTag = async (cat) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "pagenumbertag",
+          search: cat,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const allpostnumber = async () => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "allpostnumber",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const ultdrawpost = async () => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "ultdrawpost",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const nextTwopost = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "nexttwopost",
+          uuid: uuid,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const contactNum = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "contactnum",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const postNum = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "postnum",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const categoryNum = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "categorynum",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const quoteNum = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "quotenum",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
+  const selectSingle = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api/php/process.php",
+        {
+          message: "selectsingle",
+          uuid: uuid,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
   return {
     category,
+    contactNum,
+    categoryNum,
+    postNum,
+    quoteNum,
+    allpostnumber,
+    pagenumberSearch,
+    tagSearch,
+    ultdrawpost,
+    search,
+    selectSingle,
+    nextTwopost,
+    pagenumberTag,
     displayposts,
     displayrecent,
     categoryEach,
@@ -154,6 +464,8 @@ const Statichook = () => {
     top,
     tag,
     singlePost,
+    pagenumber,
+    paginatez,
   };
 };
 

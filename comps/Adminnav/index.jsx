@@ -1,9 +1,34 @@
 import React from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 import { motion } from "framer-motion";
 import Animatez from "@/Animate";
 
 const Adminnav = () => {
+  const router = useRouter();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(
+        "/api/withsession",
+        { message: "logout" },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("sucess");
+    } catch (err) {
+      console.log(err);
+
+      console.log("there was an error");
+    }
+    router.reload();
+  };
+
   const { animatenav, supplychild, supplycont, tapanimate } = Animatez();
   return (
     <>
@@ -53,6 +78,19 @@ const Adminnav = () => {
               alt=""
             />
             <div className="admin__nav--info2">7</div>
+          </motion.a>
+          <motion.a
+            variants={tapanimate}
+            whileTap="animate"
+            href="#"
+            className="admin__nav--quote"
+          >
+            <form onSubmit={handleLogout}>
+              <button type="submit" className=" btn-sm btn btn-outline-dark">
+                <i className="text-black  fa-1x  fas fa-sign-out-alt "></i>
+              </button>
+            </form>
+            {/* <div className="admin__nav--info2">7</div> */}
           </motion.a>
         </div>
 

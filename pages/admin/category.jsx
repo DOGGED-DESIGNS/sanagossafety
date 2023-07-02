@@ -1,7 +1,33 @@
 import React from "react";
 import Adminnav from "../../comps/Adminnav";
+import { withSessionSsr, getSessionData } from "../api/withsession";
+import Categorybody from "../../comps/categorybody";
+import Animatez from "@/Animate";
+import { motion } from "framer-motion";
+
+export const getServerSideProps = withSessionSsr(({ req, res }) => {
+  const data = getSessionData(req);
+
+  console.log(data);
+
+  if (!data?.status) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      data: "data",
+    },
+  };
+});
 
 const category = () => {
+  const { genchild, gencont } = Animatez();
   return (
     <>
       <main className="main">
@@ -25,50 +51,27 @@ const category = () => {
               </div>
               <div>
                 <div class="table__head--des">
-                  <h6>time</h6>
+                  <h6>color</h6>
+                </div>
+              </div>
+              <div>
+                <div class="table__head--des">
+                  <h6>action</h6>
                 </div>
               </div>
             </div>
-
-            <div class="shadow-sm table__body">
-              <div>
-                <div class="table__head--phone">
-                  <p>09076176485</p>
-                </div>
-              </div>
-
-              <div>
-                <div class="table__head--indus">
-                  <p>food beverages</p>
-                </div>
-              </div>
-            </div>
-            <div class="shadow-sm table__body">
-              <div>
-                <div class="table__head--phone">
-                  <p>09076176485</p>
-                </div>
-              </div>
-
-              <div>
-                <div class="table__head--indus">
-                  <p>food beverages</p>
-                </div>
-              </div>
-            </div>
-            <div class="shadow-sm table__body">
-              <div>
-                <div class="table__head--phone">
-                  <p>09076176485</p>
-                </div>
-              </div>
-
-              <div>
-                <div class="table__head--indus">
-                  <p>food beverages</p>
-                </div>
-              </div>
-            </div>
+            <motion.div
+              variants={gencont}
+              initial="initial"
+              whileInView="animate"
+            >
+              <motion.div variants={genchild}>
+                <Categorybody variants={genchild} />
+              </motion.div>
+              <motion.div variants={genchild}>
+                <Categorybody variants={genchild} />
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 

@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Blognav from "../../comps/blognav";
 import Statichook from "@/hooks/statichook";
+import Footer from "../../comps/footer";
 export const getStaticPaths = async () => {
-  const { displayposts } = Statichook();
+  const { displayposts, ultdrawpost } = Statichook();
 
-  const data = await displayposts();
+  const data = await ultdrawpost();
 
   console.log(data);
 
@@ -21,17 +22,32 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const { singlePost } = Statichook();
+  const { singlePost, categoryEach, nextTwopost, tag } = Statichook();
   const id = context.params.id;
   const single = await singlePost(id);
+  const categoryeach = await categoryEach();
+  const tags = await tag();
+
+  const nexttwopost = await nextTwopost(id);
 
   return {
-    props: { single },
+    props: { nexttwopost, single, tags, categoryeach },
   };
 };
 
-const index = ({ single }) => {
+const index = ({ single, categoryeach, tags, nexttwopost }) => {
+  const [tagz, setTagz] = useState([]);
+
   useEffect(() => {
+    let arr = [];
+
+    tags.map((ta) => {
+      arr = [...ta.tag];
+      // console.log(ta);
+    });
+
+    setTagz(arr);
+
     $(document).ready(function () {
       $(".owl-carousel").owlCarousel({
         items: 3,
@@ -67,15 +83,18 @@ const index = ({ single }) => {
 
         <div className="singlelinks">
           <a href="">sanagos</a>
-          <a href="">posts</a>
-          <a href=""> {single.id} </a>
+          <a href={`/allpost/1`}>posts</a>
+          <a href={`/result/1/?cat=${single.id}`}> {single.id} </a>
           <p> {single.title} </p>
         </div>
         <section className="single">
           <div className="single__grid">
             <div>
               <div className="post__recent--tag">
-                <a href="" className="post__recent--cat">
+                <a
+                  href={`/result/1/?cat=${single.id}`}
+                  className="post__recent--cat"
+                >
                   {single.id}
                 </a>
                 <br />
@@ -90,7 +109,7 @@ const index = ({ single }) => {
             <div>
               <div className="single__img">
                 <img
-                  src={`http://localhost/sanagosApi/${single.img1}`}
+                  src={`https://jeffmatthewpatten.com/api/${single.img1}`}
                   alt=""
                 />
               </div>
@@ -140,7 +159,7 @@ const index = ({ single }) => {
                 {single.img2 && (
                   <div className="imagepreset  ">
                     <img
-                      src={`http://localhost/sanagosApi/${single.img2}`}
+                      src={`https://jeffmatthewpatten.com/api/${single.img2}`}
                       alt=""
                     />
                   </div>
@@ -158,7 +177,7 @@ const index = ({ single }) => {
                   <div className=" imagepreset">
                     <img
                       className=" "
-                      src={`http://localhost/sanagosApi/${single.img3}`}
+                      src={`https://jeffmatthewpatten.com/api/${single.img3}`}
                       alt=""
                     />
                   </div>
@@ -175,7 +194,7 @@ const index = ({ single }) => {
                 {single.img4 && (
                   <div className="imagepreset">
                     <img
-                      src={`http://localhost/sanagosApi/${single.img4}`}
+                      src={`https://jeffmatthewpatten.com/api/${single.img4}`}
                       alt=""
                     />
                   </div>
@@ -193,7 +212,7 @@ const index = ({ single }) => {
                   <div className="imagepreset">
                     <img
                       className=" mt-5 mb-3"
-                      src={`http://localhost/sanagosApi/${single.img4}`}
+                      src={`https://jeffmatthewpatten.com/api/${single.img4}`}
                       alt=""
                     />
                   </div>
@@ -239,6 +258,47 @@ const index = ({ single }) => {
                   <button className="submit">Post Comments</button>
                 </form>
               </div>
+
+              <div className="nextz__grid">
+                <div className="nextz__img1">
+                  {}
+                  <img
+                    src={`https://jeffmatthewpatten.com/api${nexttwopost[0].img1}`}
+                    alt=""
+                  />
+                  <div>
+                    <p className="p">
+                      <span>
+                        {" "}
+                        <i className="fas fa-chevron-left"></i>{" "}
+                      </span>{" "}
+                      Previous Post
+                    </p>
+                    <a href={`/single/${nexttwopost[0].uuid}`}>
+                      {" "}
+                      {`${nexttwopost[0].title.substring(0, 50)}...`}
+                    </a>
+                  </div>
+                </div>
+                <div className="nextz__img2">
+                  <img
+                    src={`https://jeffmatthewpatten.com/api${nexttwopost[1].img1}`}
+                    alt=""
+                  />
+                  <div>
+                    <p className="p text-right">
+                      Next Post
+                      <span>
+                        <i className="fas fa-chevron-right"></i>
+                      </span>
+                    </p>
+
+                    <a href={`/single/${nexttwopost[1].uuid}`}>
+                      {`${nexttwopost[1].title.substring(0, 50)}...`}
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
             <div>
               <div>
@@ -254,24 +314,25 @@ const index = ({ single }) => {
                 </div>
                 <div className="owl-cover">
                   <div className="owl-carousel owl-theme">
-                    <div className="item">
-                      <div className="advert__cat">
-                        <h5 className="advert__cat--h5">27</h5>
-                        <p className="advert__cat--p">fire extinguisher</p>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="advert__cat">
-                        <h5 className="advert__cat--h5">27</h5>
-                        <p className="advert__cat--p">fire extinguisher</p>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="advert__cat">
-                        <h5 className="advert__cat--h5">27</h5>
-                        <p className="advert__cat--p">fire extinguisher</p>
-                      </div>
-                    </div>
+                    {categoryeach.length < 1 ? (
+                      <h4>No Post Availabe</h4>
+                    ) : (
+                      categoryeach.map((cat) => {
+                        return (
+                          <div className="item">
+                            <a
+                              href={`/result/1/?cat=${cat.id}`}
+                              className="advert__cat text-decoration-none"
+                              style={{ background: cat.color }}
+                            >
+                              <h5 className="advert__cat--h5"> {cat.total} </h5>
+                              <p className="advert__cat--p"> {cat.id} </p>
+                            </a>
+                          </div>
+                        );
+                      })
+                    )}
+
                     {/* <!-- Add more items as needed --> */}
                   </div>
 
@@ -294,27 +355,13 @@ const index = ({ single }) => {
                 </div>
 
                 <div className="advert__tags">
-                  <a a href="">
-                    fire extinguishers
-                  </a>
-                  <a a href="">
-                    Safety
-                  </a>
-                  <a a href="">
-                    Helment
-                  </a>
-                  <a a href="">
-                    Safety boots
-                  </a>
-                  <a a href="">
-                    Reflextive Vest
-                  </a>
-                  <a a href="">
-                    News
-                  </a>
-                  <a a href="">
-                    Kitchen Fire
-                  </a>
+                  {tagz.length < 1 ? (
+                    <h4>No Post</h4>
+                  ) : (
+                    tagz.map((ta) => {
+                      return <a href={`/tagsearch/1/?tagz=${ta}`}>{ta}</a>;
+                    })
+                  )}
                 </div>
               </div>
 
@@ -324,58 +371,7 @@ const index = ({ single }) => {
         </section>
 
         {/* <!-- footer --> */}
-        <footer className="blogfooter">
-          <div className="blogfooter__grid border-bottom">
-            <div>
-              <div className="blogfooter__grid--logo">
-                <img src="./asset/icons/logo.svg" alt="" />
-              </div>
-            </div>
-            <div>
-              <div className="blogfooter__grid--link">
-                <h4>Follow us on social media</h4>
-                <div>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-instagram"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-facebook"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-linkedin"></i>{" "}
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div></div>
-          </div>
-          {/* <!-- this is the link and copyright section --> */}
-          <div className="blogfooter__link">
-            <a href="">Home</a>
-            <a href="">Safety</a>
-            <a href="">Fire</a>
-            <a href="">Fire_extinguisher</a>
-          </div>
-
-          <p className="blogfooter__copy">
-            &copy; 2023 copyright all right reserved
-          </p>
-        </footer>
+        <Footer />
       </main>
     </>
   );

@@ -1,9 +1,68 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Blognav from "../../comps/blognav";
+import { useRouter } from "next/router";
+import { useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import Statichook from "@/hooks/statichook";
+import { motion } from "framer-motion";
+import Animatez from "@/Animate";
+import Footer from "../../comps/footer";
 
-const index = () => {
+export const getServerSideProps = async ({ query, params }) => {
+  const { paginatez, pagenumber, categoryEach } = Statichook();
+  const { cat } = query;
+  const { id } = params;
+
+  const number = await pagenumber(cat);
+  const data = await paginatez(cat, id);
+  const categoryeach = await categoryEach();
+
+  if (data.length < 1) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data: data,
+      number: number,
+      categoryeach: categoryeach,
+      fallback: false,
+    },
+  };
+};
+
+const index = ({ data, number, categoryeach }) => {
+  const { genchild, gencont } = Animatez();
+
+  // this is the end of the animation section
+  const [toggle, setToggle] = useState(false);
+  const [force, setForce] = useState(null);
+  const reload = useRouter();
+  const [tagz, setTagz] = useState([]);
+  const router = useRouter();
+  const { query } = router;
+  // handle pae chage
+  const handlePage = (val) => {
+    const val2 = val.selected + 1;
+    router.push(`/result/${val2}?cat=${query.cat}`);
+
+    // setToggle(!toggle);
+  };
+  // end of handling page chage
   useEffect(() => {
+    let arr = [];
+
+    data.map((ta) => {
+      arr = [...ta.tag];
+      // console.log(ta);
+    });
+
+    setTagz(arr);
+
+    setForce(parseInt(query.id));
+
     $(document).ready(function () {
       $(".owl-carousel").owlCarousel({
         items: 3,
@@ -29,7 +88,7 @@ const index = () => {
         $(".owl-carousel").trigger("prev.owl.carousel");
       });
     });
-  }, []);
+  }, [toggle]);
 
   return (
     <>
@@ -38,17 +97,61 @@ const index = () => {
 
         <div className="singlelinks">
           <a href="">sanagos</a>
-          <a href="">posts</a>
-          <a href="">fire_extinguisher</a>
-          <p>how to use fire extingisher properyly to aviod mistakes</p>
+          <a href="/allpost/1">posts</a>
+          <a href={`/result/1/?cat=${data[0].id}`}>{data[0].id}</a>
         </div>
 
         {/* <!-- end of single head --> */}
         <section className="advert">
-          <h6 className="headtext mb-5">search result for : car</h6>
+          {/* <h6 className="headtext mb-5">search result for : car</h6> */}
           <div className="advert__grid advert__grid--modify">
-            <div>
-              <div className="post__recent post__recent--modify">
+            <motion.div variants={gencont} initial="initial" animate="animate">
+              {data.map((da) => {
+                return (
+                  <motion.div
+                    variants={genchild}
+                    className="post__recent post__recent--modify"
+                  >
+                    <div>
+                      <div className="post__recent--img post__recent--img--modify">
+                        <img
+                          src={`https://jeffmatthewpatten.com/api${da.img1}`}
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div className="post__recent--tag">
+                      <a
+                        href={`/result/${query.id}/?cat=${query.cat}`}
+                        className="post__recent--cat"
+                      >
+                        {da.id}
+                      </a>
+                      <br />
+                      <a
+                        className="post__recent--link post__recent--link--modify"
+                        href={`/single/${da.uuid}`}
+                      >
+                        {da.title}
+                      </a>
+                      <span className="post__recent--tagspan">
+                        By Sanagos . <span>03/4/23</span>
+                      </span>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: `${da.des1.substring(0, 300)}`,
+                        }}
+                        className="post__post--p"
+                      ></div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+
+              {/* <motion.div
+                variants={genchild}
+                className="post__recent post__recent--modify"
+              >
                 <div>
                   <div className="post__recent--img post__recent--img--modify">
                     <img src="./asset/img/presentation-8.png" alt="" />
@@ -74,35 +177,11 @@ const index = () => {
                     Corrupti, possimus neque quos ad hic maiores. Ratione porro,
                   </p>
                 </div>
-              </div>
-              <div className="post__recent post__recent--modify">
-                <div>
-                  <div className="post__recent--img post__recent--img--modify">
-                    <img src="./asset/img/presentation-8.png" alt="" />
-                  </div>
-                </div>
-                <div className="post__recent--tag">
-                  <a href="" className="post__recent--cat">
-                    Extinguisher
-                  </a>
-                  <br />
-                  <a
-                    className="post__recent--link post__recent--link--modify"
-                    href=""
-                  >
-                    How to use fire extinguishers properly to aviod damage to
-                    the cylinder
-                  </a>
-                  <span className="post__recent--tagspan">
-                    By Sanagos . <span>03/4/23</span>
-                  </span>
-                  <p className="post__post--p">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Corrupti, possimus neque quos ad hic maiores. Ratione porro,
-                  </p>
-                </div>
-              </div>
-              <div className="post__recent post__recent--modify">
+              </motion.div>
+              <motion.div
+                variants={genchild}
+                className="post__recent post__recent--modify"
+              >
                 <div>
                   <div className="post__recent--img post__recent--img--modify">
                     <img src="./asset/img/presentation-8.png" alt="" />
@@ -128,14 +207,15 @@ const index = () => {
                     Corrupti, possimus neque quos ad hic maiores. Ratione porro,
                   </p>
                 </div>
-              </div>
+              </motion.div> */}
               <div className=" mt-5">
                 <ReactPaginate
                   previousLabel={"previous"}
-                  forcePage={2}
+                  forcePage={force - 1}
+                  onPageChange={handlePage}
                   nextLabel={"next"}
                   breakLabel={"..."}
-                  pageCount={25}
+                  pageCount={number.slice(-1)}
                   marginPagesDisplayed={1}
                   pageRangeDisplayed={1}
                   containerClassName={"pagination justifycontent-start "}
@@ -150,7 +230,7 @@ const index = () => {
                   activeClassName={"active"}
                 />
               </div>
-            </div>
+            </motion.div>
 
             <div>
               <div>
@@ -166,24 +246,25 @@ const index = () => {
                 </div>
                 <div className="owl-cover">
                   <div className="owl-carousel owl-theme">
-                    <div className="item">
-                      <div className="advert__cat">
-                        <h5 className="advert__cat--h5">27</h5>
-                        <p className="advert__cat--p">fire extinguisher</p>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="advert__cat">
-                        <h5 className="advert__cat--h5">27</h5>
-                        <p className="advert__cat--p">fire extinguisher</p>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="advert__cat">
-                        <h5 className="advert__cat--h5">27</h5>
-                        <p className="advert__cat--p">fire extinguisher</p>
-                      </div>
-                    </div>
+                    {categoryeach.length < 1 ? (
+                      <h4>No Post Availabe</h4>
+                    ) : (
+                      categoryeach.map((cat) => {
+                        return (
+                          <div className="item">
+                            <a
+                              href={`/result/1/?cat=${cat.id}`}
+                              className="advert__cat text-decoration-none"
+                              style={{ background: cat.color }}
+                            >
+                              <h5 className="advert__cat--h5"> {cat.total} </h5>
+                              <p className="advert__cat--p"> {cat.id} </p>
+                            </a>
+                          </div>
+                        );
+                      })
+                    )}
+
                     {/* <!-- Add more items as needed --> */}
                   </div>
 
@@ -206,27 +287,13 @@ const index = () => {
                 </div>
 
                 <div className="advert__tags">
-                  <a a href="">
-                    fire extinguishers
-                  </a>
-                  <a a href="">
-                    Safety
-                  </a>
-                  <a a href="">
-                    Helment
-                  </a>
-                  <a a href="">
-                    Safety boots
-                  </a>
-                  <a a href="">
-                    Reflextive Vest
-                  </a>
-                  <a a href="">
-                    News
-                  </a>
-                  <a a href="">
-                    Kitchen Fire
-                  </a>
+                  {tagz.length < 1 ? (
+                    <h4>No Post</h4>
+                  ) : (
+                    tagz.map((ta) => {
+                      return <a href={`/tagsearch/1/?tagz=${ta}`}>{ta}</a>;
+                    })
+                  )}
                 </div>
               </div>
 
@@ -236,58 +303,7 @@ const index = () => {
         </section>
 
         {/* <!-- footer --> */}
-        <footer className="blogfooter">
-          <div className="blogfooter__grid border-bottom">
-            <div>
-              <div className="blogfooter__grid--logo">
-                <img src="./asset/icons/logo.svg" alt="" />
-              </div>
-            </div>
-            <div>
-              <div className="blogfooter__grid--link">
-                <h4>Follow us on social media</h4>
-                <div>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-instagram"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-facebook"></i>{" "}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="">
-                      {" "}
-                      <i className="fab fa-linkedin"></i>{" "}
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div></div>
-          </div>
-          {/* <!-- this is the link and copyright section --> */}
-          <div className="blogfooter__link">
-            <a href="">Home</a>
-            <a href="">Safety</a>
-            <a href="">Fire</a>
-            <a href="">Fire_extinguisher</a>
-          </div>
-
-          <p className="blogfooter__copy">
-            &copy; 2023 copyright all right reserved
-          </p>
-        </footer>
+        <Footer />
       </main>
     </>
   );

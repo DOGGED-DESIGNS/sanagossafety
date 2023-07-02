@@ -8,41 +8,95 @@ import { withSessionSsr, getSessionData } from "../api/withsession";
 
 // beggining of static props
 
-export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
-  const data = getSessionData(req);
-
-  console.log(data);
-
-  if (!data?.status) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  } else {
+export const getServerSideProps = withSessionSsr(
+  async ({ req, res, params, query }) => {
     const { category, categorydata } = Statichook();
-    const data = await category();
+
+    const data = getSessionData(req);
+
     console.log(data);
-    return {
-      props: { categories: data },
-    };
+
+    if (!data?.status) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    } else {
+      const { category, categorydata, selectSingle } = Statichook();
+      const { id } = params;
+
+      const data = await category();
+      const singledata = await selectSingle(id);
+      console.log(singledata);
+
+      if (singledata) {
+        return {
+          props: { categories: data, singledata },
+        };
+      } else {
+        return {
+          notFound: true,
+        };
+      }
+    }
   }
-});
+);
 
 // end of static props
 
-const Addpost = ({ categories }) => {
+const Addedit = ({ categories, singledata }) => {
   //handling submit
 
-  const { makePost, postmessage, setPostmessage, loading } = Makepost();
-
+  const {
+    makePost,
+    updatePost,
+    updatemessage,
+    setUpdatemessage,
+    postmessage,
+    setPostmessage,
+    loading,
+  } = Makepost();
   const [des1, setdes1] = useState("");
   const [title, setTitle] = useState("");
   const [des2, setdes2] = useState("");
   const [des3, setdes3] = useState("");
   const [des4, setdes4] = useState("");
   const [des5, setdes5] = useState("");
+  const [tag, setTag] = useState("");
+  const [category, setCategory] = useState("");
+  const [color, setColor] = useState("");
+  const [author, setAuthor] = useState("");
+  const [authorlink, setAuthorlink] = useState("");
+  const [img1des1, setImg1des1] = useState("");
+  const [img2des2, setImg2des2] = useState("");
+  const [img3des3, setImg3des3] = useState("");
+  const [img4des4, setImg4des4] = useState("");
+  const [img5des5, setImg5des5] = useState("");
+  const [uuid, setUuid] = useState("");
+
+  useEffect(() => {
+    if (singledata) {
+      setdes1(singledata?.des1);
+      setdes2(singledata?.des2);
+      setdes3(singledata?.des3);
+      setdes4(singledata?.des4);
+      setdes5(singledata?.des5);
+      setTitle(singledata?.title);
+      setCategory(singledata?.id);
+      setImg1des1(singledata?.img1);
+      setImg2des2(singledata?.img2);
+      setImg3des3(singledata?.img3);
+      setImg4des4(singledata?.img4);
+      setImg5des5(singledata?.img5);
+      setUuid(singledata?.uuid);
+      setColor(singledata?.color?.toString());
+      setTag(singledata?.tag?.toString());
+      setAuthor(singledata?.author);
+      setAuthorlink(singledata?.authorlink);
+    }
+  }, []);
 
   const handleChange1 = (data, des) => {
     setdes1(data);
@@ -58,7 +112,6 @@ const Addpost = ({ categories }) => {
   };
   const handleChange5 = (data, des) => {
     setdes5(data);
-    console.log(des5);
   };
   const clean = (para) => {
     if (para) {
@@ -73,25 +126,31 @@ const Addpost = ({ categories }) => {
 
     const form = new FormData();
 
-    form.append("id", event.target.elements.category.value);
-    form.append("title", event.target.elements.title.value);
+    form.append("id", category);
+    form.append("uuid", uuid);
+    form.append("title", title);
     form.append("des1", des1);
     form.append("des2", des2);
     form.append("des3", des3);
     form.append("des4", des4);
     form.append("des5", des5);
-    form.append("message", "post");
+    form.append("message", "updatepost");
     form.append("img1", clean(event.target.elements.img1?.files[0]));
     form.append("img2", clean(event.target.elements.img2?.files[0]));
     form.append("img3", clean(event.target.elements.img3?.files[0]));
     form.append("img4", clean(event.target.elements.img4?.files[0]));
     form.append("img5", clean(event.target.elements.img5?.files[0]));
-    form.append("author", clean(event.target.elements.author.value));
-    form.append("authorlink", clean(event.target.elements.authorlink.value));
-    form.append("tag", event.target.elements.tag.value);
-    form.append("color", event.target.elements.color.value);
+    form.append("author", author);
+    form.append("authorlink", authorlink);
+    form.append("tag", tag);
+    form.append("color", color);
+    form.append("img1des1", img1des1);
+    form.append("img2des2", img2des2);
+    form.append("img3des3", img3des3);
+    form.append("img4des4", img4des4);
+    form.append("img5des5", img5des5);
 
-    await makePost(form);
+    await updatePost(form);
   };
 
   return (
@@ -101,7 +160,7 @@ const Addpost = ({ categories }) => {
 
         <section className="addpost">
           <AnimatePresence>
-            {postmessage?.message && (
+            {updatemessage?.message && (
               <motion.div
                 initial={{
                   opacity: 0,
@@ -123,13 +182,13 @@ const Addpost = ({ categories }) => {
                     // stiffness: 500,
                   },
                 }}
-                className={`alert show  alert-dismissible alert-${postmessage.type} fade`}
+                className={`alert show  alert-dismissible alert-${updatemessage.type} fade`}
               >
-                <strong> {postmessage?.message} </strong>
+                <strong> {updatemessage?.message} </strong>
 
                 <button
                   onClick={() => {
-                    setPostmessage({});
+                    setUpdatemessage({});
                   }}
                   className="close"
                 >
@@ -143,27 +202,68 @@ const Addpost = ({ categories }) => {
             <div className="addpost__select">
               <div>
                 <label for="">category</label>
-                <select name="category" id="">
+                <select
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                  }}
+                  name="category"
+                  id=""
+                >
                   {categories.map((ma) => {
-                    return <option value={ma.title}>{ma.title} </option>;
+                    return (
+                      <option
+                        selected={ma.title == category && true}
+                        value={ma.title}
+                      >
+                        {ma.title}{" "}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
               <div>
                 <label for="">tags:</label>
-                <input name="tag" type="text" />
+                <input
+                  value={tag}
+                  onChange={(e) => {
+                    setTag(e.target.value);
+                  }}
+                  name="tag"
+                  type="text"
+                />
               </div>
               <div>
                 <label for="">colors:</label>
-                <input name="color" type="text" />
+                <input
+                  value={color}
+                  onChange={(e) => {
+                    setColor(e.target.value);
+                  }}
+                  name="color"
+                  type="text"
+                />
               </div>
               <div>
                 <label for="">Author:</label>
-                <input name="author" type="text" />
+                <input
+                  value={author}
+                  onChange={(e) => {
+                    setAuthor(e.target.value);
+                  }}
+                  name="author"
+                  type="text"
+                />
               </div>
               <div>
                 <label for="">AuthorLinks:</label>
-                <input name="authorlink" type="text" />
+                <input
+                  value={authorlink}
+                  onChange={(e) => {
+                    setAuthorlink(e.target.value);
+                  }}
+                  name="authorlink"
+                  type="text"
+                />
               </div>
             </div>
             <div className="addpost__title">
@@ -189,7 +289,15 @@ const Addpost = ({ categories }) => {
                   choose file
                 </label>
 
-                <input className="d-none" type="file" name="img1" id="des1" />
+                <input
+                  onChange={() => {
+                    setImg1des1("");
+                  }}
+                  className="d-none"
+                  type="file"
+                  name="img1"
+                  id="des1"
+                />
               </div>
             </div>
             <div className="addpost__text">
@@ -202,7 +310,15 @@ const Addpost = ({ categories }) => {
                   choose file
                 </label>
 
-                <input className="d-none" type="file" name="img2" id="des2" />
+                <input
+                  onChange={() => {
+                    setImg2des2("");
+                  }}
+                  className="d-none"
+                  type="file"
+                  name="img2"
+                  id="des2"
+                />
               </div>
             </div>
             <div className="addpost__text">
@@ -215,7 +331,15 @@ const Addpost = ({ categories }) => {
                   choose file
                 </label>
 
-                <input className="d-none" type="file" name="img3" id="des3" />
+                <input
+                  onChange={() => {
+                    setImg3des3("");
+                  }}
+                  className="d-none"
+                  type="file"
+                  name="img3"
+                  id="des3"
+                />
               </div>
             </div>
             <div className="addpost__text">
@@ -228,7 +352,15 @@ const Addpost = ({ categories }) => {
                   choose file
                 </label>
 
-                <input className="d-none" type="file" name="img4" id="des4" />
+                <input
+                  onChange={() => {
+                    setImg4des4("");
+                  }}
+                  className="d-none"
+                  type="file"
+                  name="img4"
+                  id="des4"
+                />
               </div>
             </div>
             <div className="addpost__text">
@@ -241,11 +373,19 @@ const Addpost = ({ categories }) => {
                   choose file
                 </label>
 
-                <input className="d-none" type="file" name="img5" id="des5" />
+                <input
+                  onChange={(e) => {
+                    setImg5des5("");
+                  }}
+                  className="d-none"
+                  type="file"
+                  name="img5"
+                  id="des5"
+                />
               </div>
             </div>
             <button disabled={title ? false : true} type="submit">
-              {loading ? "loading..." : "submit"}
+              {loading ? "loading..." : "update"}
             </button>
           </form>
         </section>
@@ -254,4 +394,4 @@ const Addpost = ({ categories }) => {
   );
 };
 
-export default Addpost;
+export default Addedit;
