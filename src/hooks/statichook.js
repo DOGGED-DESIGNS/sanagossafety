@@ -11,7 +11,7 @@ import axios from "axios";
 const Statichook = () => {
   const displayrecent = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "recent",
       },
@@ -28,7 +28,7 @@ const Statichook = () => {
 
   const displayposts = async (num) => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "drawpost",
         num: num,
@@ -45,7 +45,7 @@ const Statichook = () => {
   };
   const singlePost = async (id) => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "singlepost",
         id: id,
@@ -62,7 +62,7 @@ const Statichook = () => {
   };
   const top = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "top",
       },
@@ -78,7 +78,7 @@ const Statichook = () => {
   };
   const trending = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "trending",
       },
@@ -94,7 +94,7 @@ const Statichook = () => {
   };
   const tag = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "tag",
       },
@@ -112,7 +112,7 @@ const Statichook = () => {
   //
   const categoryEach = async () => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "categoryeach",
       },
@@ -128,7 +128,7 @@ const Statichook = () => {
   };
   const paginatez = async (cat, number) => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "paginate",
         cat: cat,
@@ -146,7 +146,7 @@ const Statichook = () => {
   };
   const pagenumber = async (cat) => {
     const data = await axios.post(
-      "http://localhost/sanagosApi/php/process.php",
+      "https://jeffmatthewpatten.com/api/php/process.php",
       {
         message: "pagenumber",
         cat: cat,
@@ -165,7 +165,7 @@ const Statichook = () => {
   const category = async () => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "drawcategory",
         },
@@ -186,7 +186,7 @@ const Statichook = () => {
   const search = async (num, cat) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "search",
           num: num,
@@ -209,7 +209,7 @@ const Statichook = () => {
   const pagenumberSearch = async (search) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "pagenumbersearch",
           search: search,
@@ -231,7 +231,7 @@ const Statichook = () => {
   const tagSearch = async (num, tag) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "tagsearch",
           num: num,
@@ -254,7 +254,7 @@ const Statichook = () => {
   const pagenumberTag = async (cat) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "pagenumbertag",
           search: cat,
@@ -276,7 +276,7 @@ const Statichook = () => {
   const allpostnumber = async () => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "allpostnumber",
         },
@@ -297,7 +297,7 @@ const Statichook = () => {
   const ultdrawpost = async () => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "ultdrawpost",
         },
@@ -318,7 +318,7 @@ const Statichook = () => {
   const nextTwopost = async (uuid) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "nexttwopost",
           uuid: uuid,
@@ -340,7 +340,7 @@ const Statichook = () => {
   const contactNum = async (uuid) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "contactnum",
         },
@@ -361,7 +361,7 @@ const Statichook = () => {
   const postNum = async (uuid) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "postnum",
         },
@@ -382,7 +382,7 @@ const Statichook = () => {
   const categoryNum = async (uuid) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "categorynum",
         },
@@ -403,7 +403,7 @@ const Statichook = () => {
   const quoteNum = async (uuid) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "quotenum",
         },
@@ -424,7 +424,7 @@ const Statichook = () => {
   const selectSingle = async (uuid) => {
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         {
           message: "selectsingle",
           uuid: uuid,
