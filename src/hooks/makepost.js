@@ -13,7 +13,7 @@ const Makepost = () => {
 
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         form,
         {
           headers: {
@@ -36,7 +36,7 @@ const Makepost = () => {
 
     try {
       const data = await axios.post(
-        "http://localhost/sanagosApi/php/process.php",
+        "https://jeffmatthewpatten.com/api/php/process.php",
         form,
         {
           headers: {

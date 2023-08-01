@@ -65,9 +65,9 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
                 </div>
                 <motion.a
                   whileHover={{
-                    y: "-50%",
+                    y: "-30%",
                   }}
-                  href="#"
+                  href="/admin/category"
                   className="dash__img"
                 >
                   <img src="/asset/icons/adminicon/categoryicon.svg" alt="" />
@@ -80,15 +80,15 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
                   <p>Request Quotes</p>
                   <h4> {quotenumber} </h4>
                 </div>
-                <motion.div
+                <motion.a
                   whileHover={{
-                    y: "-50%",
+                    y: "-30%",
                   }}
-                  href="#"
+                  href="/admin/quote"
                   className="dash__img"
                 >
                   <img src="/asset/icons/adminicon/quote.svg" alt="" />
-                </motion.div>
+                </motion.a>
               </div>
             </motion.div>
 
@@ -100,9 +100,9 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
                 </div>
                 <motion.a
                   whileHover={{
-                    y: "-50%",
+                    y: "-30%",
                   }}
-                  href=""
+                  href="/admin/post"
                   className="dash__img"
                 >
                   <img src="/asset/icons/adminicon/post.svg" alt="" />
@@ -117,9 +117,9 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
                 </div>
                 <motion.a
                   whileHover={{
-                    y: "-50%",
+                    y: "-30%",
                   }}
-                  href="#"
+                  href="/admin/contact"
                   className="dash__img"
                 >
                   <img src="/asset/icons/adminicon/pages.svg" alt="" />

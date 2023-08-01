@@ -51,19 +51,19 @@ const Navbar = () => {
               whileInView="animate"
               className="  smallnav__link"
             >
-              <motion.a variants={genchild} href="#">
+              <motion.a variants={genchild} href="/">
                 {" "}
                 Home{" "}
               </motion.a>
-              <motion.a variants={genchild} href="#">
+              <motion.a variants={genchild} href="/contact">
                 {" "}
                 Contact{" "}
               </motion.a>
-              <motion.a variants={genchild} href="#">
+              <motion.a variants={genchild} href="/about">
                 {" "}
                 About{" "}
               </motion.a>
-              <motion.a variants={genchild} href="#">
+              <motion.a variants={genchild} href="/blog">
                 {" "}
                 News & Media{" "}
               </motion.a>

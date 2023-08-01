@@ -31,6 +31,14 @@ const post = () => {
         <Adminnav />
 
         <section className="table">
+          <div class="d-flex mb-5 ">
+            <a
+              href="/admin/addpost"
+              class="catbut text-decoration-none text-white"
+            >
+              <img src="/asset/icons/adminicon/add.svg" alt="" /> new post
+            </a>
+          </div>
           <div className="table__cont container-fluid">
             <div className="table__head">
               <div>

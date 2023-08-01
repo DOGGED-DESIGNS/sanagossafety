@@ -13,7 +13,7 @@ export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
   if (da?.error == false && da?.status == true) {
     return {
       redirect: {
-        destination: "/admin/home",
+        destination: "/admin/",
         permanent: false,
       },
     };

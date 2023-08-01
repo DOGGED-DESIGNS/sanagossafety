@@ -210,10 +210,10 @@ const Home = () => {
               }}
               className="supply__sign"
             >
-              <h6>
+              <h3>
                 supply of high performance safety Equipment for industries and
                 small businesses
-              </h6>
+              </h3>
               <h2>
                 Sanagos is a company supplying various safety epuipments and
                 safety wears for in dustries households and small businesses.
@@ -609,42 +609,45 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="request">
-          <div className="container-fluid request__grid">
-            <div>
-              <h6 className="service__h6">
-                Dedicated Customer Team and Agile Service
-              </h6>
-              <h2 className="meeting__sch--h2">
-                Serving impressive list of long term clients
-              </h2>
-              <p className="meeting__sch--p">
-                sanagos has been serving with experience and expertise,
-                retaining relationship as a result of transparent and honesty
-                with all out clients
+        {/* <!-- this is the footer --> */}
+      </main>
+      <section className="request">
+        <div className="container-fluid request__grid">
+          <div>
+            <h6 className="service__h6">
+              Dedicated Customer Team and Agile Service
+            </h6>
+            <h2 className="meeting__sch--h2">
+              Serving impressive list of long term clients
+            </h2>
+            <p className="meeting__sch--p">
+              sanagos has been serving with experience and expertise, retaining
+              relationship as a result of transparent and honesty with all out
+              clients
+            </p>
+          </div>
+          <div>
+            <motion.div
+              initial={{
+                y: "100px",
+              }}
+              whileInView={{
+                y: 0,
+              }}
+              transition={{
+                type: "spring",
+                delay: 0.7,
+                stiffness: 500,
+              }}
+              className="shadow request__form"
+            >
+              <h5 className="service__h2 mb-4">Request quote</h5>
+              <p className="mr-auto service__p mb-5">
+                Our complete control over product allows us to ensure our
+                customer recieves the best quality price and service
               </p>
-            </div>
-            <div>
-              <motion.div
-                initial={{
-                  y: "100px",
-                }}
-                whileInView={{
-                  y: 0,
-                }}
-                transition={{
-                  type: "spring",
-                  delay: 0.7,
-                  stiffness: 500,
-                }}
-                className="shadow request__form"
-              >
-                <h5 className="service__h2 mb-4">Request quote</h5>
-                <p className="mr-auto service__p mb-5">
-                  Our complete control over product allows us to ensure our
-                  customer recieves the best quality price and service
-                </p>
 
+              <form>
                 <div className="row">
                   <div className="col-sm-12 col-md-6 col-lg-6">
                     <input
@@ -691,7 +694,8 @@ const Home = () => {
                   rows="10"
                 ></textarea>
 
-                <motion.a
+                <motion.button
+                  type="submit"
                   variants={tapanimate}
                   whileTap="animate"
                   href=""
@@ -699,120 +703,117 @@ const Home = () => {
                 >
                   <img src="./asset/icons/lightarrow.svg" alt="" />
                   submit request
-                </motion.a>
-              </motion.div>
-            </div>
+                </motion.button>
+              </form>
+            </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
+      <motion.section
+        initial={{
+          opacity: 0,
+        }}
+        whileInView={{
+          opacity: 1,
+        }}
+        transition={{
+          delay: 1,
+          ease: easeInOut,
+        }}
+        className="test"
+      >
+        <div className="container-fluid">
+          <h2 className="test__h2">What Our Client Says !</h2>
+          {/* <!-- this is where the fade swiper starts --> */}
 
-        <motion.section
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          transition={{
-            delay: 1,
-            ease: easeInOut,
-          }}
-          className="test"
-        >
-          <div className="container-fluid">
-            <h2 className="test__h2">What Our Client Says !</h2>
-            {/* <!-- this is where the fade swiper starts --> */}
+          <div className="pt-5 swiper testSwiper">
+            <div className="swiper-wrapper mb-5">
+              <div className="swiper-slide">
+                <div className="test__mover">
+                  <p className="test__p">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Quam quidem libero provident, iusto dicta laboriosam quaerat
+                    sit quia alias. Perferendis.
+                  </p>
 
-            <div className="pt-5 swiper testSwiper">
-              <div className="swiper-wrapper mb-5">
-                <div className="swiper-slide">
-                  <div className="test__mover">
-                    <p className="test__p">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Quam quidem libero provident, iusto dicta laboriosam
-                      quaerat sit quia alias. Perferendis.
-                    </p>
-
-                    <div className="test__people">
-                      <div className="test__img">
-                        <img src="./asset/img/testimg1-8.png" alt="" />
-                      </div>
-                      <div className="test__name">
-                        <h6>uzoechi Naza</h6>
-                        <p>manager</p>
-                      </div>
+                  <div className="test__people">
+                    <div className="test__img">
+                      <img src="./asset/img/testimg1-8.png" alt="" />
                     </div>
-
-                    <img
-                      className="test__quote"
-                      src="./asset/icons/quote.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="swiper-slide">
-                  <div className="test__mover">
-                    <p className="test__p">
-                      aspernatur fugiat voluptatum quisquam enim porro atque
-                      voluptates consectetur. Ab earum est nulla provident!
-                      Atque culpa ab perferendis officiis quo officia magni
-                      molestiae ipsum cumque!
-                    </p>
-
-                    <div className="test__people">
-                      <div className="test__img">
-                        <img src="./asset/img/testimg1-8.png" alt="" />
-                      </div>
-                      <div className="test__name">
-                        <h6>uzoechi Naza</h6>
-                        <p>manager</p>
-                      </div>
+                    <div className="test__name">
+                      <h6>uzoechi Naza</h6>
+                      <p>manager</p>
                     </div>
-
-                    <img
-                      className="test__quote"
-                      src="./asset/icons/quote.svg"
-                      alt=""
-                    />
                   </div>
-                </div>
-                <div className="swiper-slide">
-                  <div className="test__mover">
-                    <p className="test__p">
-                      reiciendis error! Repellat quisquam quis maxime magnam,
-                      doloribus commodi ullam nostrum suscipit inventore animi
-                      dolorum numquam exercitationem modi dolore. Adipisci rem
-                      ut eum? Sapiente, deleniti id. Dolorum distinctio voluptas
-                      unde maxime
-                    </p>
 
-                    <div className="test__people">
-                      <div className="test__img">
-                        <img src="./asset/img/testimg1-8.png" alt="" />
-                      </div>
-                      <div className="test__name">
-                        <h6>uzoechi jeremiah</h6>
-                        <p>manager</p>
-                      </div>
-                    </div>
-
-                    <img
-                      className="test__quote"
-                      src="./asset/icons/quote.svg"
-                      alt=""
-                    />
-                  </div>
+                  <img
+                    className="test__quote"
+                    src="./asset/icons/quote.svg"
+                    alt=""
+                  />
                 </div>
               </div>
-              {/* <!-- <div className="swiper-button-next"></div>
-      <div className="swiper-button-prev"></div> --> */}
-              <div className="swiper-pagination"></div>
-            </div>
-          </div>
-        </motion.section>
+              <div className="swiper-slide">
+                <div className="test__mover">
+                  <p className="test__p">
+                    aspernatur fugiat voluptatum quisquam enim porro atque
+                    voluptates consectetur. Ab earum est nulla provident! Atque
+                    culpa ab perferendis officiis quo officia magni molestiae
+                    ipsum cumque!
+                  </p>
 
-        {/* <!-- this is the footer --> */}
-        <Footermain />
-      </main>
+                  <div className="test__people">
+                    <div className="test__img">
+                      <img src="./asset/img/testimg1-8.png" alt="" />
+                    </div>
+                    <div className="test__name">
+                      <h6>uzoechi Naza</h6>
+                      <p>manager</p>
+                    </div>
+                  </div>
+
+                  <img
+                    className="test__quote"
+                    src="./asset/icons/quote.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="swiper-slide">
+                <div className="test__mover">
+                  <p className="test__p">
+                    reiciendis error! Repellat quisquam quis maxime magnam,
+                    doloribus commodi ullam nostrum suscipit inventore animi
+                    dolorum numquam exercitationem modi dolore. Adipisci rem ut
+                    eum? Sapiente, deleniti id. Dolorum distinctio voluptas unde
+                    maxime
+                  </p>
+
+                  <div className="test__people">
+                    <div className="test__img">
+                      <img src="./asset/img/testimg1-8.png" alt="" />
+                    </div>
+                    <div className="test__name">
+                      <h6>uzoechi jeremiah</h6>
+                      <p>manager</p>
+                    </div>
+                  </div>
+
+                  <img
+                    className="test__quote"
+                    src="./asset/icons/quote.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            {/* <!-- <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev"></div> --> */}
+            <div className="swiper-pagination"></div>
+          </div>
+        </div>
+      </motion.section>
+      <Footermain />
     </>
   );
 };

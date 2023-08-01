@@ -10114,29 +10114,137 @@ a.text-dark:focus {
   margin: 0px;
   font-size: "Raleway", sans-serif;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Roboto", sans-serif;
-  text-transform: capitalize;
+.h1 {
+  font-size: 36px;
   color: #2f4858;
+  font-weight: 700;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 780px) {
+  .h1 {
+    font-size: 25px;
+  }
+}
+.h2 {
+  font-size: 32px;
+  color: #000;
+  font-weight: 700;
+  max-width: 790px;
+  margin: auto;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 780px) {
+  .h2 {
+    font-size: 22px;
+  }
+}
+.h3 {
+  font-size: 22px;
+  color: #2f4858;
+  max-width: 790px;
+  margin: auto;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 780px) {
+  .h3 {
+    font-size: 18px;
+  }
+}
+h1 {
+  font-size: 36px;
+  color: #2f4858;
+  font-weight: 700;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 780px) {
+  h1 {
+    font-size: 25px;
+  }
+}
+ul,
+ol {
+  color: #5e5f5f;
+  padding-left: 30px;
+  margin: auto;
+  margin-bottom: 20px;
+  max-width: 790px;
+  font-size: 18px;
 }
 @media (max-width: 500px) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  ul,
+  ol {
+    font-size: 15px;
+  }
+}
+h2 {
+  font-size: 32px;
+  color: #000;
+  font-weight: 700;
+  max-width: 790px;
+  margin: auto;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 780px) {
+  h2 {
+    font-size: 22px;
+  }
+}
+h3 {
+  font-size: 22px;
+  color: #2f4858;
+  max-width: 790px;
+  margin: auto;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+@media (max-width: 780px) {
+  h3 {
     font-size: 18px;
+  }
+}
+.p,
+.blogsmall__contact > p,
+p {
+  color: #5e5f5f;
+  margin: auto;
+  margin-bottom: 20px;
+  max-width: 790px;
+  font-size: 18px;
+}
+@media (max-width: 500px) {
+  .p,
+  .blogsmall__contact > p,
+  p {
+    font-size: 15px;
+  }
+}
+p {
+  color: #5e5f5f;
+  font-size: 18px;
+  margin: auto;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+  max-width: 790px;
+}
+@media (max-width: 500px) {
+  p {
+    font-size: 15px;
   }
 }
 .main,
 .admin {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
   padding-left: 10px;
   padding-right: 10px;
@@ -10188,21 +10296,6 @@ h6 {
   overflow: hidden;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
-.p,
-.blogsmall__contact > p,
-p {
-  color: #5e5f5f;
-  font-weight: 500;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-@media (max-width: 500px) {
-  .p,
-  .blogsmall__contact > p,
-  p {
-    font-size: 15px;
-  }
 }
 .swiper-pagination-bullet {
   background: red;
@@ -10551,9 +10644,8 @@ html {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.supply__sign > h6 {
+.supply__sign > h3 {
   color: #ee2434;
-  font-size: 22px;
   text-align: center;
   text-transform: capitalize;
   line-height: 25px;
@@ -10561,24 +10653,13 @@ html {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-@media (max-width: 500px) {
-  .supply__sign > h6 {
-    font-size: 18px;
-  }
-}
 .supply__sign > h2 {
-  font-size: 32px;
   color: #2f4858;
   font-weight: 600;
   text-align: left;
   text-transform: capitalize;
   line-height: 36px;
   margin-bottom: 30px;
-}
-@media (max-width: 500px) {
-  .supply__sign > h2 {
-    font-size: 25px;
-  }
 }
 .supply__grid {
   display: grid;
@@ -10596,7 +10677,6 @@ html {
   grid-gap: 10px;
 }
 .supply__grid2--p {
-  font-size: 15px;
   font-weight: 500;
 }
 .supply__grid2--h6 > i {
@@ -10723,13 +10803,10 @@ html {
     font-size: 18px;
   }
 }
-.meeting {
-  padding-bottom: 50px;
-}
 .meeting__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 720px;
+  grid-auto-rows: auto;
 }
 @media (max-width: 780px) {
   .meeting__grid {
@@ -10752,33 +10829,16 @@ html {
   text-transform: capitalize;
   line-height: 36px;
   font-weight: 600;
-  font-size: 32px;
-}
-@media (max-width: 500px) {
-  .meeting__sch--h2 {
-    font-size: 22px;
-  }
-}
-@media (max-width: 780px) {
-  .meeting__sch--h2 {
-    font-size: 22px;
-  }
 }
 .meeting__sch--p {
-  font-size: 18px;
   font-weight: 600;
   color: #f3eed9;
   margin-top: 50px;
   margin-bottom: 50px;
 }
-@media (max-width: 500px) {
-  .meeting__sch--p {
-    font-size: 15px;
-  }
-}
 .meeting__accent {
-  width: 87px;
-  height: 87px;
+  width: 67px;
+  height: 67px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -10788,6 +10848,8 @@ html {
   left: 100%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  -webkit-animation: motion 1s 0.1s infinite ease-in-out;
+  animation: motion 1s 0.1s infinite ease-in-out;
 }
 @media (max-width: 500px) {
   .meeting__accent {
@@ -10805,14 +10867,39 @@ html {
     transform: translate(-50%, -50%);
   }
 }
+@-webkit-keyframes motion {
+  from {
+    -webkit-transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1.4);
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+@keyframes motion {
+  from {
+    -webkit-transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1.4);
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
 .meeting__mark {
   width: 19px;
   height: 19px;
 }
 .meeting__play {
-  width: 67px;
-  height: 67px;
+  width: 47px;
+  height: 47px;
   z-index: 20;
+  cursor: pointer;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -10841,8 +10928,8 @@ html {
   }
 }
 .meeting__play--img {
-  width: 24px;
-  height: 27px;
+  width: 20px;
+  height: 24px;
 }
 .meeting__button {
   border: 2px solid #ee2434;
@@ -10896,7 +10983,12 @@ html {
   color: #f3eed9;
 }
 .meeting__img {
-  height: 100%;
+  height: 720px;
+}
+@media (max-width: 780px) {
+  .meeting__img {
+    height: 400px;
+  }
 }
 .meeting__img > img {
   height: 100%;
@@ -10997,7 +11089,7 @@ html {
   width: 370px;
   margin-top: 80px;
   margin: auto;
-  margin-bottom: 350px;
+  margin-bottom: 250px;
   height: 412px;
 }
 .service__img > img {
@@ -11110,6 +11202,7 @@ html {
 }
 .request {
   position: relative;
+  margin-bottom: 100px;
   height: 580px;
   padding-top: 80px;
   padding-bottom: 30px;
@@ -11283,8 +11376,6 @@ html {
   }
 }
 .request__button {
-  text-decoration: none !important;
-  color: #2f4858;
   background: #2f4858;
   color: #f3eed9;
   font-size: 18px;
@@ -11303,14 +11394,29 @@ html {
   font-weight: 600;
   text-transform: capitalize;
 }
-.request__button:hover {
-  color: unset;
-  text-decoration: none !important;
+.request__button::hover {
+  color: #fff !important;
+}
+@media (max-width: 780px) {
+  .request__button {
+    font-size: 15px;
+  }
+}
+@media (max-width: 780px) {
+  .request__button {
+    padding: 5px;
+  }
 }
 .request__button > img {
   width: 24px;
   height: 18px;
   margin-right: 15px;
+}
+@media (max-width: 780px) {
+  .request__button > img {
+    width: 14px;
+    height: 8px;
+  }
 }
 .request__textarea {
   width: 100%;
@@ -11487,6 +11593,7 @@ html {
   }
 }
 .test {
+  margin-top: 50px;
   padding-bottom: 50px;
   position: relative;
   background: url("/asset/img/accentbg2-8.png") no-repeat;
@@ -11848,13 +11955,23 @@ html {
   display: -ms-flexbox;
   display: flex;
   width: 500px;
-  margin-right: 30px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 0px;
+  padding-right: 15px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+@media (max-width: 500px) {
+  .admin__nav--link {
+    -webkit-box-pack: unset;
+    -ms-flex-pack: unset;
+    justify-content: unset;
+  }
 }
 .admin__nav--info2 {
   padding-right: 5px;
@@ -11966,7 +12083,7 @@ html {
 }
 @media (max-width: 780px) {
   .admin__nav--input > input {
-    width: 130px;
+    width: 100px;
   }
 }
 .admin__nav--search {
@@ -12788,6 +12905,11 @@ html {
 }
 .post__recent--link {
   font-size: 18px;
+}
+@media (max-width: 780px) {
+  .post__recent--link {
+    font-size: 15px;
+  }
 }
 .post__recent--link--modify {
   font-size: 22px;

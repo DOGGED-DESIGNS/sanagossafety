@@ -12,8 +12,8 @@ const Animatez = () => {
       transition: {
         type: "spring",
         when: "beforeChildren",
-        staggerChildren: 0.2,
-        delay: 0.5,
+        staggerChildren: 0.1,
+        delay: 0.1,
         stiffness: 200,
       },
     },

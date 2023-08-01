@@ -132,7 +132,7 @@ const index = ({ data, number, categoryeach }) => {
                     <div>
                       <div className="post__recent--img post__recent--img--modify">
                         <img
-                          src={`http://localhost/sanagosApi${da.img1}`}
+                          src={`https://jeffmatthewpatten.com/api${da.img1}`}
                           alt=""
                         />
                       </div>

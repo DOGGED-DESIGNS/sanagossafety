@@ -38,16 +38,16 @@ const Adminnav = () => {
         whileInView="animate"
         className="admin__nav"
       >
-        <a className="admin__nav--logo" href="#">
+        <a class="admin__nav--logo" href="/admin">
           <img src="/asset/icons/logo.svg" alt="" />
         </a>
 
-        <div className="admin__nav--link">
-          <div className="admin__nav--input">
+        <div class="admin__nav--link">
+          <div class="admin__nav--input">
             <input type="text" placeholder=" find " />
             <motion.a variants={tapanimate} whileTap="animate" href="#">
               <img
-                className="admin__nav--search"
+                class="admin__nav--search"
                 src="/asset/icons/adminicon/search.svg "
                 alt=""
               />
@@ -56,46 +56,48 @@ const Adminnav = () => {
           <motion.a
             variants={tapanimate}
             whileTap="animate"
-            href="#"
-            className="admin__nav--notification"
+            href="/admin/contact"
+            className="mx-3  admin__nav--notification"
           >
             <img
-              className="admin__nav--notificationimg"
+              class="admin__nav--notificationimg"
               src="/asset/icons/adminicon/notification.svg"
               alt=""
             />
-            <div className="admin__nav--info1">29</div>
+            <div class="admin__nav--info1 text-decoration-none">29</div>
           </motion.a>
           <motion.a
             variants={tapanimate}
             whileTap="animate"
-            href="#"
-            className="admin__nav--quote"
+            href="/admin/quote"
+            className=" mx-3  admin__nav--quote"
           >
             <img
-              className="admin__nav--quoteimg"
+              class=" admin__nav--quoteimg"
               src="/asset/icons/adminicon/quotedark.svg"
               alt=""
             />
-            <div className="admin__nav--info2">7</div>
+            <div class="text-decoration-none admin__nav--info2">7</div>
           </motion.a>
           <motion.a
             variants={tapanimate}
             whileTap="animate"
             href="#"
-            className="admin__nav--quote"
+            className="mx-3  admin__nav--quote"
           >
             <form onSubmit={handleLogout}>
               <button type="submit" className=" btn-sm btn btn-outline-dark">
                 <i className="text-black  fa-1x  fas fa-sign-out-alt "></i>
               </button>
             </form>
-            {/* <div className="admin__nav--info2">7</div> */}
           </motion.a>
         </div>
 
         {/* <!-- this is just what i want to do --> */}
       </motion.nav>
+
+      {/* this is the end
+       */}
     </>
   );
 };

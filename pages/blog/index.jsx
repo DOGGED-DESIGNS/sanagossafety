@@ -191,7 +191,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                           className="post__recent--link"
                           href={`/single/${re.uuid}`}
                         >
-                          {re.title}
+                          {`${re.title.substring(0, 50)}...`}
                         </a>
                         <br />
                         <span className="post__recent--tagspan">
