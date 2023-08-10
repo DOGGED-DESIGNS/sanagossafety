@@ -9,7 +9,18 @@ import { withSessionSsr, getSessionData } from "../api/withsession";
 export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
   const data = getSessionData(req);
 
-  const { postNum, categoryNum, contactNum, quoteNum } = Statichook();
+  const {
+    postNum,
+    categoryNum,
+    contactNum,
+    quoteNum,
+    quoteNumview,
+    contactNumview,
+    industryNum,
+    hitNum,
+    serviceNum,
+    commentNum,
+  } = Statichook();
 
   if (!data?.status) {
     return {
@@ -23,31 +34,48 @@ export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
     const contactnumber = await contactNum();
     const postnumber = await postNum();
     const categorynumber = await categoryNum();
+    const quotenumview = await quoteNumview();
+    const contactnumview = await contactNumview();
+    const commentnum = await commentNum();
+    const servicenum = await serviceNum();
+    const hitnum = await hitNum();
+    const industrynum = await industryNum();
 
     return {
       props: {
         quotenumber,
+        commentnum,
+        industrynum,
+        servicenum,
+        hitnum,
+        quotenumview,
+        contactnumview,
         contactnumber,
         postnumber,
         categorynumber,
       },
     };
   }
-
-  return {
-    props: {
-      data: "data",
-    },
-  };
 });
 
-const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
+const home = ({
+  quotenumber,
+  commentnum,
+  industrynum,
+  servicenum,
+  hitnum,
+  quotenumview,
+  contactnumview,
+  contactnumber,
+  postnumber,
+  categorynumber,
+}) => {
   const router = useRouter();
   const { animatenav, supplychild, supplycont, tapanimate } = Animatez();
   return (
     <>
       <main className="admin">
-        <Adminnav />
+        <Adminnav contactnum={contactnumview} quotenum={quotenumview} />
 
         {/* <!-- second nav --> */}
         <section className="dash">
@@ -77,7 +105,24 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
             <motion.div variants={supplychild}>
               <div className="dash__cat shadow-sm">
                 <div className="dash__display">
-                  <p>Request Quotes</p>
+                  <p>comment</p>
+                  <h4> {commentnum} </h4>
+                </div>
+                <motion.a
+                  whileHover={{
+                    y: "-30%",
+                  }}
+                  href="/admin/comment"
+                  className="dash__img"
+                >
+                  <img src="/asset/icons/adminicon/commentwhite.svg" alt="" />
+                </motion.a>
+              </div>
+            </motion.div>
+            <motion.div variants={supplychild}>
+              <div className="dash__cat shadow-sm">
+                <div className="dash__display">
+                  <p>quote</p>
                   <h4> {quotenumber} </h4>
                 </div>
                 <motion.a
@@ -112,6 +157,56 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
             <motion.div variants={supplychild}>
               <div className="dash__cat shadow-sm">
                 <div className="dash__display">
+                  <p>industry</p>
+                  <h4> {industrynum} </h4>
+                </div>
+                <motion.a
+                  whileHover={{
+                    y: "-30%",
+                  }}
+                  href="/admin/industry"
+                  className="dash__img"
+                >
+                  <img src="/asset/icons/adminicon/industry.svg" alt="" />
+                </motion.a>
+              </div>
+            </motion.div>
+            <motion.div variants={supplychild}>
+              <div className="dash__cat shadow-sm">
+                <div className="dash__display">
+                  <p>services</p>
+                  <h4> {servicenum} </h4>
+                </div>
+                <motion.a
+                  whileHover={{
+                    y: "-30%",
+                  }}
+                  href="/admin/services"
+                  className="dash__img"
+                >
+                  <img src="/asset/icons/adminicon/serviceindus.svg" alt="" />
+                </motion.a>
+              </div>
+            </motion.div>
+            <motion.div variants={supplychild}>
+              <div className="dash__cat shadow-sm">
+                <div className="dash__display">
+                  <p>Hits</p>
+                  <h4> {hitnum} </h4>
+                </div>
+                <motion.a
+                  whileHover={{
+                    y: "-30%",
+                  }}
+                  className="dash__img"
+                >
+                  <img src="/asset/icons/adminicon/hits.svg" alt="" />
+                </motion.a>
+              </div>
+            </motion.div>
+            <motion.div variants={supplychild}>
+              <div className="dash__cat shadow-sm">
+                <div className="dash__display">
                   <p>contacts</p>
                   <h4> {contactnumber} </h4>
                 </div>
@@ -119,10 +214,10 @@ const home = ({ postnumber, categorynumber, contactnumber, quotenumber }) => {
                   whileHover={{
                     y: "-30%",
                   }}
-                  href="/admin/contact"
                   className="dash__img"
+                  href="/admin/contact"
                 >
-                  <img src="/asset/icons/adminicon/pages.svg" alt="" />
+                  <img src="/asset/icons/adminicon/contact.svg" alt="" />
                 </motion.a>
               </div>
             </motion.div>

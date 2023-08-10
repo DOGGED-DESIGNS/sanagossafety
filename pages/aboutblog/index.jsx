@@ -91,8 +91,8 @@ const index = () => {
             </div>
           </div>
         </section>
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import Head from "next/head";
 import { useContext, useReducer, useState, useEffect } from "react";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import Animatez from "@/Animate";
 const Navbar = () => {
   const [data, setData] = useState("this is a data from the state");
   const [toggle, setToggle] = useState(false);
+  const [hovv, setHovv] = useState(false);
 
   const {
     supplychild,
@@ -51,7 +51,7 @@ const Navbar = () => {
               whileInView="animate"
               className="  smallnav__link"
             >
-              <motion.a variants={genchild} href="/">
+              <motion.a href="/" variants={genchild}>
                 {" "}
                 Home{" "}
               </motion.a>
@@ -65,23 +65,45 @@ const Navbar = () => {
               </motion.a>
               <motion.a variants={genchild} href="/blog">
                 {" "}
-                News & Media{" "}
+                News & Blog{" "}
               </motion.a>
               <motion.div variants={genchild}>
-                <a className="main__nav--get smallnav__get" href="#">
+                <motion.a
+                  onHoverStart={() => {
+                    setHovv(true);
+                  }}
+                  onHoverEnd={() => {
+                    setHovv(false);
+                  }}
+                  className="main__nav--get smallnav__get"
+                  href="/contact"
+                >
                   Get in touch
-                  <img
+                  <motion.img
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                    }}
+                    animate={
+                      hovv
+                        ? {
+                            x: "3px",
+                          }
+                        : {
+                            x: 0,
+                          }
+                    }
                     className="ml-2"
-                    src="./asset/icons/whitearrow.svg"
+                    src="/asset/icons/whitearrow.svg"
                     alt=""
                   />
-                </a>
+                </motion.a>
               </motion.div>
               <motion.div variants={genchild}>
                 <a className="main__nav--call smallnav__call" href="#">
                   <img
                     className="ml-1"
-                    src="./asset/icons/redphone.svg"
+                    src="/asset/icons/redphone.svg"
                     alt=""
                   />
                   +234 767 6485
@@ -98,36 +120,62 @@ const Navbar = () => {
         whileInView="animate"
         className="main__nav"
       >
-        <a className="main__nav--logo" href="#">
-          <img src="./asset/icons/logo.svg" alt="" />
+        <a className="main__nav--logo" href="/">
+          <img src="/asset/icons/logo.svg" alt="" />
         </a>
 
         <motion.div variants={gencont} className="main__nav--links">
-          <motion.a variants={genchild} href="#">
+          <motion.a variants={genchild} href="/">
             {" "}
             Home{" "}
           </motion.a>
-          <motion.a variants={genchild} href="#">
+          <motion.a variants={genchild} href="/contact">
             {" "}
             Contact{" "}
           </motion.a>
-          <motion.a variants={genchild} href="#">
+          <motion.a variants={genchild} href="/about">
             {" "}
             About{" "}
           </motion.a>
           <motion.a variants={genchild} href="/blog">
             {" "}
-            News & Media{" "}
+            News & Blog{" "}
           </motion.a>
           <motion.div variants={genchild}>
-            <a className="main__nav--get" href="#">
+            <motion.a
+              onHoverStart={() => {
+                setHovv(true);
+              }}
+              onHoverEnd={() => {
+                setHovv(false);
+              }}
+              className="main__nav--get"
+              href="/contact"
+            >
               Get in touch
-              <img className="ml-2" src="./asset/icons/darkarrow.svg" alt="" />
-            </a>
+              <motion.img
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                }}
+                animate={
+                  hovv
+                    ? {
+                        x: "3px",
+                      }
+                    : {
+                        x: 0,
+                      }
+                }
+                className="ml-2"
+                src="/asset/icons/darkarrow.svg"
+                alt=""
+              />
+            </motion.a>
           </motion.div>
           <motion.div variants={genchild}>
             <a className="main__nav--call" href="#">
-              <img className="ml-1" src="./asset/icons/redphone.svg" alt="" />
+              <img className="ml-1" src="/asset/icons/redphone.svg" alt="" />
               +234 767 6485
             </a>
           </motion.div>
@@ -141,8 +189,8 @@ const Navbar = () => {
         whileInView="animate"
         className="main__nav2"
       >
-        <a className="main__nav2--logo" href="#">
-          <img src="./asset/icons/logo.svg" alt="" />
+        <a className="main__nav2--logo" href="/">
+          <img src="/asset/icons/logo.svg" alt="" />
         </a>
 
         <motion.div

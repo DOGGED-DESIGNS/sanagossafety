@@ -1,12 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Statichook from "@/hooks/statichook";
 import axios from "axios";
 
 import { motion } from "framer-motion";
 import Animatez from "@/Animate";
 
-const Adminnav = () => {
+const Adminnav = ({ contactnum, quotenum }) => {
   const router = useRouter();
+
+  const { contactView, quoteView } = Statichook();
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -58,26 +61,43 @@ const Adminnav = () => {
             whileTap="animate"
             href="/admin/contact"
             className="mx-3  admin__nav--notification"
+            onClick={async () => {
+              await contactView();
+            }}
           >
             <img
               class="admin__nav--notificationimg"
               src="/asset/icons/adminicon/notification.svg"
               alt=""
             />
-            <div class="admin__nav--info1 text-decoration-none">29</div>
+            {contactnum > 0 && (
+              <div class="admin__nav--info1 text-decoration-none">
+                {" "}
+                {contactnum}{" "}
+              </div>
+            )}
           </motion.a>
           <motion.a
             variants={tapanimate}
             whileTap="animate"
             href="/admin/quote"
             className=" mx-3  admin__nav--quote"
+            onClick={async () => {
+              await quoteView();
+            }}
           >
             <img
               class=" admin__nav--quoteimg"
               src="/asset/icons/adminicon/quotedark.svg"
               alt=""
             />
-            <div class="text-decoration-none admin__nav--info2">7</div>
+
+            {quotenum > 0 && (
+              <div class="text-decoration-none admin__nav--info2">
+                {" "}
+                {quotenum}{" "}
+              </div>
+            )}
           </motion.a>
           <motion.a
             variants={tapanimate}

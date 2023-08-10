@@ -1,23 +1,30 @@
 import React from "react";
 
 import { useState } from "react";
+import Makepost from "@/hooks/makepost";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-const Categorybody = () => {
+const Categorybody = ({ title, time, color }) => {
   const [toggleaction, setToggleaction] = useState(false);
+  const { singleCategory } = Makepost();
   return (
     <>
       <div className=" mb-5 shadow-sm table__body">
         <div>
           <div className="table__head--phone">
-            <p>09076176485</p>
+            <p> {title} </p>
+          </div>
+        </div>
+        <div>
+          <div className="table__head--phone">
+            <p> {time} </p>
           </div>
         </div>
 
         <div>
-          <div className="table__head--indus">
-            <div className="desimg" style={{ background: "red" }}>
+          <div className="table__head--phone">
+            <div className="desimg" style={{ background: color }}>
               {/* <img src="/asset/img/presentation-8.png" alt="" /> */}
             </div>
           </div>
@@ -54,7 +61,16 @@ const Categorybody = () => {
                     <img src="/asset/icons/adminicon/waste.svg" alt="" />
                   </a>
 
-                  <a href="">
+                  <a
+                    data-toggle="modal"
+                    data-target="#updateModal"
+                    style={{
+                      cursor: "pointer",
+                    }}
+                    onClick={async () => {
+                      await singleCategory(title);
+                    }}
+                  >
                     <img src="/asset/icons/adminicon/update.svg" alt="" />
                   </a>
                 </motion.div>

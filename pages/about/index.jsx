@@ -3,9 +3,24 @@ import Adminnav from "../../comps/Adminnav";
 import Blognav from "../../comps/blognav";
 import Footer from "../../comps/footer";
 import Footermain from "../../comps/Footermain";
+import Statichook from "@/hooks/statichook";
 import Navbar from "../../comps/Navbar";
 
-const index = () => {
+export const getServerSideProps = async () => {
+  const { getIndustry, getService } = Statichook();
+
+  const getindustry = await getIndustry();
+  const getservice = await getService();
+
+  return {
+    props: {
+      getindustry,
+      getservice,
+    },
+  };
+};
+
+const index = ({ getindustry }) => {
   return (
     <>
       <main className=" admin">
@@ -91,8 +106,8 @@ const index = () => {
             </div>
           </div>
         </section>
-        <Footermain />
       </main>
+      <Footermain getindustry={getindustry} />
     </>
   );
 };

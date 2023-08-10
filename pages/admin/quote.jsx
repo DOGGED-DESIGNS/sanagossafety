@@ -2,13 +2,38 @@ import { useState } from "react";
 import Adminnav from "../../comps/Adminnav";
 import Quotebody from "../../comps/quotebody";
 import { withSessionSsr, getSessionData } from "../api/withsession";
+import Statichook from "@/hooks/statichook";
+import { Generalget } from "@/context/General";
 
-export const getServerSideProps = withSessionSsr(({ req, res }) => {
+export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
   const data = getSessionData(req);
 
   console.log(data);
 
-  if (!data?.status) {
+  if (data) {
+    if (!data?.status) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    } else {
+      const { quoteNumview, contactNumview, getQuote } = Statichook();
+
+      const quotenumview = await quoteNumview();
+      const contactnumview = await contactNumview();
+      const getquote = await getQuote();
+
+      return {
+        props: {
+          quotenumview,
+          contactnumview,
+          getquote,
+        },
+      };
+    }
+  } else {
     return {
       redirect: {
         destination: "/login",
@@ -16,52 +41,73 @@ export const getServerSideProps = withSessionSsr(({ req, res }) => {
       },
     };
   }
-
-  return {
-    props: {
-      data: "data",
-    },
-  };
 });
 
-const quote = () => {
+const quote = ({ contactnumview, quotenumview, getquote }) => {
+  const {
+    singlecontact,
+    singlequote,
+    setSinglequote,
+    loading2,
+    setLoading2,
+    setSinglecontact,
+    singlecomment,
+    setSinglecomment,
+    singleservice,
+    setSingleservice,
+    singlepost,
+    setSinglepost,
+    singlecategory,
+    cattest,
+    setCattest,
+    catprev,
+    setCatprev,
+    setSinglecategory,
+    singleindustry,
+    setSingleindustry,
+  } = Generalget();
   return (
     <>
       <main className="admin">
-        <Adminnav />
+        <Adminnav contactnum={contactnumview} quotenum={quotenumview} />
         <section className="table">
           <div className="table__cont container-fluid">
-            <div className="table__head">
+            <div className="table__head mb-5 ">
               <div>
-                <div className="table__head--name">
-                  <h6>name</h6>
+                <div className="table__head--phone">
+                  <h6 className=" font-weight-bolder text-capitalize">
+                    {" "}
+                    industry{" "}
+                  </h6>
                 </div>
               </div>
               <div>
                 <div className="table__head--phone">
-                  <h6>Phone</h6>
+                  <h6 className=" font-weight-bolder text-capitalize">name</h6>
                 </div>
               </div>
               <div>
-                <div className="table__head--des">
-                  <h6>Description</h6>
+                <div className="table__head--phone">
+                  <h6 className=" font-weight-bolder text-capitalize">Email</h6>
                 </div>
               </div>
               <div>
-                <div className="table__head--indus">
-                  <h6>industries</h6>
+                <div className="table__head--phone">
+                  <h6 className=" font-weight-bolder text-capitalize">phone</h6>
                 </div>
               </div>
               <div>
                 <div className="table__head--act">
-                  <h6>action</h6>
+                  <h6 className=" font-weight-bolder text-capitalize">
+                    action
+                  </h6>
                 </div>
               </div>
             </div>
 
-            <Quotebody />
-            <Quotebody />
-            <Quotebody />
+            {getquote.map((get) => {
+              return <Quotebody {...get} />;
+            })}
           </div>
         </section>
 
@@ -87,42 +133,41 @@ const quote = () => {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body">
-                {/* <!-- <div className="spinner-grow m-auto d-block"></div> --> */}
-                <div className="postdisplay">
-                  {/* <!-- <div className="postdisplay__tag">
+
+              {loading2 ? (
+                <h2 className=" text-center">loading..</h2>
+              ) : (
+                <div className="modal-body">
+                  {/* <!-- <div className="spinner-grow m-auto d-block"></div> --> */}
+                  <div className="postdisplay">
+                    {/* <!-- <div className="postdisplay__tag">
                   tag: <span>extinguisher</span><span>fire</span>
                 </div> --> */}
-                  <div className="postdisplay__cat">
-                    Name: <span>fire_extinguisher</span>
-                  </div>
-                  <div className="postdisplay__cat">
-                    phone: <span>09076176485</span>
-                  </div>
-                  <div className="postdisplay__cat">
-                    Industry: <span>Retale</span>
-                  </div>
-                  <div className="postdisplay__cat">
-                    description:
-                    <span className="text-white">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Earum ratione eveniet corporis laudantium delectus
-                      assumenda rem voluptatum reiciendis cum, eius ut aperiam
-                      dignissimos maxime consectetur dolore laboriosam explicabo
-                      incidunt temporibus cupiditate magnam aspernatur repellat
-                      necessitatibus! Voluptas error illo numquam, qui quibusdam
-                      esse quos explicabo quam animi rerum doloribus minus
-                      vitae!
-                    </span>
-                  </div>
-                  <div className="postdisplay__cat">
-                    email: <span>uzoechijerry@gmail.com</span>
-                  </div>
-                  {/* <!-- description display --> */}
+                    <div className="postdisplay__cat">
+                      Name: <span> {singlequote.name} </span>
+                    </div>
+                    <div className="postdisplay__cat">
+                      phone: <span> {singlequote.phone} </span>
+                    </div>
+                    <div className="postdisplay__cat">
+                      Industry: <span> {singlequote.id} </span>
+                    </div>
+                    <div className="postdisplay__cat">
+                      description:
+                      <span className="text-white">
+                        {singlequote.description}
+                      </span>
+                    </div>
+                    <div className="postdisplay__cat">
+                      email: <span> {singlequote.email} </span>
+                    </div>
+                    {/* <!-- description display --> */}
 
-                  {/* <!-- end of description display --> */}
+                    {/* <!-- end of description display --> */}
+                  </div>
                 </div>
-              </div>
+              )}
+
               <div className="modal-footer"></div>
             </div>
           </div>

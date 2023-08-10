@@ -9,6 +9,9 @@ const Blognav = () => {
   const [togglesearch, setTogglesearch] = useState(false);
   const router = useRouter();
 
+  const [textbig, setTextbig] = useState("");
+  const [textsmall, setTextsmall] = useState("");
+
   const [sethover, setSethover] = useState(false);
 
   const {
@@ -90,8 +93,8 @@ const Blognav = () => {
                   }}
                   className="bloglink__contact--extra"
                 >
-                  <a href="">about_us</a>
-                  <a href="">contact_us</a>
+                  <a href="/aboutblog">about_us</a>
+                  <a href="/contactblog">contact_us</a>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -128,7 +131,7 @@ const Blognav = () => {
           onClick={() => {
             setNavtoggle(!navtoggle);
           }}
-          className="main__nav2--menu border"
+          className="main__nav2--menu "
         >
           <motion.span variants={menuchild}></motion.span>
           <motion.span variants={menuchild}></motion.span>
@@ -173,8 +176,14 @@ const Blognav = () => {
               }}
             >
               <div>
-                <input name="search" type="text" />
-                <button type="submit">
+                <input
+                  onChange={(e) => {
+                    setTextbig(e.target.value);
+                  }}
+                  name="search"
+                  type="text"
+                />
+                <button disabled={textbig ? false : true} type="submit">
                   <i className="fa fa-search"></i>
                 </button>
               </div>
@@ -218,24 +227,41 @@ const Blognav = () => {
             >
               <i className="fas fa-times"></i>
             </span>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const name = e.target.elements.search.value;
+                console.log(name);
 
-            <div className="blogsmall__input">
-              <input type="text" placeholder="Search..." />
-              <button>
-                <i className="fa fa-search"></i>
-              </button>
-            </div>
+                router.push(`/searchpage/1/?searchz=${name}`);
+                setNavtoggle(false);
+              }}
+            >
+              <div className="blogsmall__input">
+                <input
+                  onChange={(e) => {
+                    setTextsmall(e.target.value);
+                  }}
+                  name="search"
+                  type="text"
+                  placeholder="Search..."
+                />
+                <button disabled={textsmall ? false : true} type="submit">
+                  <i className="fa fa-search"></i>
+                </button>
+              </div>
+            </form>
             <div className="blogsmall__link">
-              <a href="">Fire extinguisher</a>
-              <a href="">Safety Helment</a>
-              <a href="">Fire</a>
-              <a href="">News</a>
+              <a href={`/result/1/?cat=fire_extinguisher`}>Fire extinguisher</a>
+              <a href={`/result/1/?cat=safety`}>Safety Helment</a>
+              <a href={`/result/1/?cat=fire`}>Fire</a>
+              <a href={`/aboutblog`}>About_us</a>
+              <a href={`/contactblog`}>Contact</a>
             </div>
             <div className="mt-3 mb-2 blogsmall__contact">
-              <h5 className="">Contact</h5>
+              <h5 className="">Head Office</h5>
               <p className="">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                aperiam?
+                No. 17 Lekki phase 1 off Obekule road, Lagos Nigeria
               </p>
             </div>
 

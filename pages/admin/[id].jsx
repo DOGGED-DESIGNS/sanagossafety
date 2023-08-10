@@ -15,38 +15,59 @@ export const getServerSideProps = withSessionSsr(
     const data = getSessionData(req);
 
     console.log(data);
+    if (data) {
+      if (!data?.status) {
+        return {
+          redirect: {
+            destination: "/login",
+            permanent: false,
+          },
+        };
+      } else {
+        const {
+          category,
+          categorydata,
+          quoteNumview,
+          contactNumview,
+          singlePost,
+        } = Statichook();
+        const { id } = params;
 
-    if (!data?.status) {
+        const data = await category();
+        const quotenumview = await quoteNumview();
+        const contactnumview = await contactNumview();
+        const singledata = await singlePost(id);
+        console.log(singledata);
+
+        if (singledata) {
+          return {
+            props: {
+              categories: data,
+              singledata,
+              contactnumview,
+              quotenumview,
+            },
+          };
+        } else {
+          return {
+            notFound: true,
+          };
+        }
+      }
+    } else {
       return {
         redirect: {
           destination: "/login",
           permanent: false,
         },
       };
-    } else {
-      const { category, categorydata, selectSingle } = Statichook();
-      const { id } = params;
-
-      const data = await category();
-      const singledata = await selectSingle(id);
-      console.log(singledata);
-
-      if (singledata) {
-        return {
-          props: { categories: data, singledata },
-        };
-      } else {
-        return {
-          notFound: true,
-        };
-      }
     }
   }
 );
 
 // end of static props
 
-const Addedit = ({ categories, singledata }) => {
+const Addedit = ({ categories, singledata, contactnumview, quotenumview }) => {
   //handling submit
 
   const {
@@ -156,7 +177,7 @@ const Addedit = ({ categories, singledata }) => {
   return (
     <>
       <main className="admin">
-        <Adminnav />
+        <Adminnav contactnum={contactnumview} quotenum={quotenumview} />
 
         <section className="addpost">
           <AnimatePresence>

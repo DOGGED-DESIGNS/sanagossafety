@@ -69,11 +69,12 @@ const index = ({ data, number, categoryeach }) => {
     let arr = [];
 
     data.map((ta) => {
-      arr = [...ta.tag];
-      // console.log(ta);
+      ta.tag.map((taa) => {
+        arr.push(taa);
+      });
     });
-
-    setTagz(arr);
+    const arrz = [...new Set(arr)];
+    setTagz(arrz);
 
     console.log(parseInt(query.id));
     console.log(query.id);
@@ -132,7 +133,7 @@ const index = ({ data, number, categoryeach }) => {
                     <div>
                       <div className="post__recent--img post__recent--img--modify">
                         <img
-                          src={`https://jeffmatthewpatten.com/api${da.img1}`}
+                          src={`http://localhost/sanagosApi/${da.img1}`}
                           alt=""
                         />
                       </div>
@@ -326,8 +327,8 @@ const index = ({ data, number, categoryeach }) => {
         </section>
 
         {/* <!-- footer --> */}
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

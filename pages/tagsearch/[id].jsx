@@ -9,14 +9,21 @@ import Animatez from "@/Animate";
 import Footer from "../../comps/footer";
 
 export const getServerSideProps = async ({ query, params }) => {
-  const { search, pagenumberSearch, tagSearch, categoryEach, pagenumberTag } =
-    Statichook();
+  const {
+    search,
+    tag,
+    pagenumberSearch,
+    tagSearch,
+    categoryEach,
+    pagenumberTag,
+  } = Statichook();
   const { tagz } = query;
   const { id } = params;
 
   const number = await pagenumberTag(tagz);
   const data = await search(id, tagz);
   const categoryeach = await categoryEach();
+  const tags = await tag();
 
   console.log(data);
 
@@ -33,13 +40,14 @@ export const getServerSideProps = async ({ query, params }) => {
     props: {
       data: data,
       number: number,
+      tags,
       categoryeach: categoryeach,
       fallback: false,
     },
   };
 };
 
-const index = ({ data, number, categoryeach }) => {
+const index = ({ data, tags, number, categoryeach }) => {
   const { genchild, gencont } = Animatez();
 
   // this is the end of the animation section
@@ -61,12 +69,13 @@ const index = ({ data, number, categoryeach }) => {
   useEffect(() => {
     let arr = [];
 
-    data.map((ta) => {
-      arr = [...ta.tag];
-      // console.log(ta);
+    tags.map((ta) => {
+      ta.tag.map((taa) => {
+        arr.push(taa);
+      });
     });
-
-    setTagz(arr);
+    const arrz = [...new Set(arr)];
+    setTagz(arrz);
 
     console.log(parseInt(query.id));
     console.log(query.id);
@@ -120,12 +129,12 @@ const index = ({ data, number, categoryeach }) => {
                 return (
                   <motion.div
                     variants={genchild}
-                    className="post__recent post__recent--modify"
+                    className="post__recent post__recent--modify mb-5"
                   >
                     <div>
                       <div className="post__recent--img post__recent--img--modify">
                         <img
-                          src={`https://jeffmatthewpatten.com/api${da.img1}`}
+                          src={`https://jeffmatthewpatten.com/api2${da.img1}`}
                           alt=""
                         />
                       </div>
@@ -155,7 +164,7 @@ const index = ({ data, number, categoryeach }) => {
                       </span>
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: `${da.des1.substring(0, 300)}`,
+                          __html: `${da.des1.substring(0, 200)}`,
                         }}
                         className="post__post--p"
                       ></div>
@@ -319,8 +328,8 @@ const index = ({ data, number, categoryeach }) => {
         </section>
 
         {/* <!-- footer --> */}
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

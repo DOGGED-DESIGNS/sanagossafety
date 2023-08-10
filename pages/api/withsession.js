@@ -61,6 +61,7 @@ export default withIronSessionApiRoute(handler, {
   cookieOptions: {
     secure: process.env.NODE_ENV === "production",
   },
+  ttl: 86400,
 });
 
 export function withSessionSsr(handler) {
@@ -70,6 +71,7 @@ export function withSessionSsr(handler) {
     cookieOptions: {
       secure: process.env.NODE_ENV === "production",
     },
+    ttl: 86400,
   });
 }
 

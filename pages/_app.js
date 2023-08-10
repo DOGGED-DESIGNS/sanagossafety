@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import "../styles/global.css";
+import General from "@/context/General";
 
 // import { ThemeProvider } from "@mui/material/styles";
 // import CssBaseline from "@mui/material/CssBaseline";
@@ -28,8 +29,13 @@ function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="/swiper/owl.theme.default.css" />
         <link rel="stylesheet" href="/swiper/css/swiper-bundle.min.css" />
         {/* <link rel="stylesheet" href="./final/index.min.css" /> */}
-
-        <link href="/FAVI.svg" rel="icon"></link>
+        {/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> */}
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="16x16"
+        ></link>
         <title>SANAGOS SAFETY</title>
 
         <script src="/jquery.3.4.1.js?cd=123"></script>
@@ -38,7 +44,9 @@ function MyApp({ Component, pageProps }) {
         <script src="/swiper/js/swiper-bundle.min.js"></script>
       </Head>
 
-      <Component {...pageProps} />
+      <General>
+        <Component {...pageProps} />
+      </General>
     </>
   );
 }

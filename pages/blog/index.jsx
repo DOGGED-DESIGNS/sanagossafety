@@ -1,5 +1,5 @@
 import Navbar from "../../comps/Navbar";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 // import htmlReactParser from "react-html-parser";
 // import htmlReactParser from "html-react-parser";
@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Animatez from "@/Animate";
 import Editor from "../../comps/Editor";
 import Blognav from "../../comps/blognav";
+import { Contextprovider } from "@/context/General";
 import Statichook from "@/hooks/statichook";
 import Footer from "../../comps/footer";
 
@@ -55,17 +56,15 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
 
   useEffect(() => {
     // i am setting the tags
-
     let arr = [];
 
     tags.map((ta) => {
-      arr = [...ta.tag];
-      // console.log(ta);
+      ta.tag.map((taa) => {
+        arr.push(taa);
+      });
     });
-
-    setTagz(arr);
-
-    // end of setting the tags
+    const arrz = [...new Set(arr)];
+    setTagz(arrz);
 
     $(document).ready(function () {
       console.log(post[0].color[1]);
@@ -129,7 +128,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                     <motion.div variants={genchild} className="post__post">
                       <div className="post__post--img">
                         <img
-                          src={`https://jeffmatthewpatten.com/api${pa.img1}`}
+                          src={`https://jeffmatthewpatten.com/api2${pa.img1}`}
                           alt=""
                         />
                         <a href={`/result/1?cat=${pa.id}`}> {pa.id} </a>
@@ -141,7 +140,9 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                         {/* By sanagos . <span>12/10/23</span> */}
                       </span>
                       <div
-                        dangerouslySetInnerHTML={{ __html: pa.des1 }}
+                        dangerouslySetInnerHTML={{
+                          __html: `${pa.des1.substring(0, 200)}...`,
+                        }}
                         className="post__post--p"
                       >
                         {/* {pa.des1} */}
@@ -160,9 +161,9 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                 <span>
                   <h5>Recent Post</h5>
                 </span>
-                <span>
+                {/* <span>
                   <a href="#">All Post recent post</a>
-                </span>
+                </span> */}
               </motion.div>
               {recent.length < 1 ? (
                 <h2>NO POST</h2>
@@ -173,7 +174,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       <div>
                         <div className="post__recent--img">
                           <img
-                            src={`https://jeffmatthewpatten.com/api${re.img1}`}
+                            src={`https://jeffmatthewpatten.com/api2${re.img1}`}
                             alt=""
                           />
                         </div>
@@ -191,7 +192,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                           className="post__recent--link"
                           href={`/single/${re.uuid}`}
                         >
-                          {`${re.title.substring(0, 50)}...`}
+                          {`${re.title}`}
                         </a>
                         <br />
                         <span className="post__recent--tagspan">
@@ -215,7 +216,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
               <h5>Top Post</h5>
             </span>
             <span>
-              <a href="#">All Top post</a>
+              <a href="/alltop/1">All Top post</a>
             </span>
           </div>
           <motion.div
@@ -282,7 +283,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       {toppost[1].id}
                     </a>
                     <br />
-                    <a className="post__recent--link top__grid--link2" href="">
+                    <a
+                      className="post__recent--link top__grid--link2"
+                      href={`/single/${toppost[1].uuid}`}
+                    >
                       {toppost[1].title}
                     </a>
                     <span className="post__recent--tagspan">
@@ -306,7 +310,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       {toppost[2].id}
                     </a>
                     <br />
-                    <a className="post__recent--link top__grid--link2" href="">
+                    <a
+                      className="post__recent--link top__grid--link2"
+                      href={`/single/${toppost[2].uuid}`}
+                    >
                       {toppost[2].title}
                     </a>
                     <span className="post__recent--tagspan">
@@ -329,7 +336,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
               <h5>Trending posts</h5>
             </span>
             <span>
-              <a href="#">All Trending post</a>
+              <a href="/alltrend/1">All Trending post</a>
             </span>
           </div>
           <div className="top__grid top__grid--modify">
@@ -346,7 +353,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                     <motion.div variants={genchild} className="post__recent">
                       <div>
                         <div className="post__recent--img">
-                          <img src="./asset/img/presentation-8.png" alt="" />
+                          <img
+                            src={`https://jeffmatthewpatten.com/api2/${trend.img1}`}
+                            alt=""
+                          />
                         </div>
                       </div>
                       <div className="post__recent--tag">
@@ -357,8 +367,11 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                           {trend.id}
                         </a>
                         <br />
-                        <a className="post__recent--link" href="">
-                          {trend.title}
+                        <a
+                          className="post__recent--link"
+                          href={`/single/${trend.uuid}`}
+                        >
+                          {`${trend.title}`}
                         </a>
                         <span className="post__recent--tagspan">
                           {`By ${trend.author} . ${trend.time}`}
@@ -384,20 +397,25 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                     <motion.div variants={genchild} className="post__recent">
                       <div>
                         <div className="post__recent--img">
-                          <img src="./asset/img/presentation-8.png" alt="" />
+                          <img
+                            src={`https://jeffmatthewpatten.com/api2/${trend.img1}`}
+                            alt=""
+                          />
                         </div>
                       </div>
                       <div className="post__recent--tag">
                         <a href="" className="post__recent--cat">
-                          Extinguisher
+                          {trend.id}
                         </a>
                         <br />
-                        <a className="post__recent--link" href="">
-                          How to use fire extinguishers properly to aviod damage
-                          to the cylinder
+                        <a
+                          className="post__recent--link"
+                          href={`/single/${trend.uuid}`}
+                        >
+                          {trend.title}
                         </a>
                         <span className="post__recent--tagspan">
-                          By Sanagos . <span>03/4/23</span>
+                          By {`${trend.author}`} . <span> {trend.time} </span>
                         </span>
                       </div>
                     </motion.div>
@@ -433,7 +451,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                       <div>
                         <div className="post__recent--img post__recent--img--modify">
                           <img
-                            src={`https://jeffmatthewpatten.com/api${ma.img1}`}
+                            src={`https://jeffmatthewpatten.com/api2/${ma.img1}`}
                             alt=""
                           />
                         </div>
@@ -454,7 +472,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                         <br />
                         <a
                           className="post__recent--link post__recent--link--modify"
-                          href=""
+                          href={`/single/${ma.uuid}`}
                         >
                           {ma.title}
                         </a>
@@ -550,8 +568,8 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
         </section>
 
         {/* <!-- footer --> */}
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

@@ -1,31 +1,36 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Statichook from "@/hooks/statichook";
+import Makepost from "@/hooks/makepost";
 
-const Quotebody = () => {
+const Quotebody = ({ id, uuid, name, email, phone }) => {
+  const { deleteQuote } = Statichook();
+  const { singleQuote } = Makepost();
   const [toggleaction, setToggleaction] = useState(false);
+  const router = useRouter();
   return (
     <>
-      <div className="shadow-sm table__body">
+      <div className="shadow-sm table__body mb-5 ">
         <div>
-          <div className="table__body--two table__head--name">
-            <h6>Uzoechi Jeremiah</h6>
-            <p>uzoechjeremiah@gmail.com</p>
+          <div className="table__body--two table__head--phone">
+            <h6> {id} </h6>
           </div>
         </div>
         <div>
           <div className="table__head--phone">
-            <p>09076176485</p>
+            <p> {name} </p>
           </div>
         </div>
         <div>
-          <div className="table__head--des">
-            <p>i need a supply...</p>
+          <div className="table__head--phone">
+            <p> {email} </p>
           </div>
         </div>
         <div>
-          <div className="table__head--indus">
-            <p>food beverages</p>
+          <div className="table__head--phone">
+            <p> {phone} </p>
           </div>
         </div>
         <div className="">
@@ -56,10 +61,23 @@ const Quotebody = () => {
                   }}
                   className="table__perform"
                 >
-                  <a href="">
+                  <a
+                    href=""
+                    onClick={async () => {
+                      await deleteQuote(uuid);
+                      router.reload();
+                    }}
+                  >
                     <img src="/asset/icons/adminicon/waste.svg" alt="" />
                   </a>
-                  <a href="" data-toggle="modal" data-target="#exampleModal">
+                  <a
+                    onClick={async () => {
+                      await singleQuote(uuid);
+                    }}
+                    href=""
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
                     <img src="/asset/icons/adminicon/view.svg" alt="" />
                   </a>
                   <a href="">

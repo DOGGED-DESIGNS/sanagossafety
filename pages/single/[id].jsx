@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import Blognav from "../../comps/blognav";
 import Statichook from "@/hooks/statichook";
+import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../../comps/footer";
+import Eachcomment from "../../comps/Eachcomment/Eachcomment";
+import Makepost from "@/hooks/makepost";
+import { useRouter } from "next/router";
 export const getStaticPaths = async () => {
   const { displayposts, ultdrawpost } = Statichook();
 
@@ -22,31 +26,64 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const { singlePost, categoryEach, nextTwopost, tag } = Statichook();
+  const { singlePost, categoryEach, nextTwopost, tag, getComment } =
+    Statichook();
   const id = context.params.id;
   const single = await singlePost(id);
   const categoryeach = await categoryEach();
+  const getcomment = await getComment(id);
   const tags = await tag();
 
   const nexttwopost = await nextTwopost(id);
 
   return {
-    props: { nexttwopost, single, tags, categoryeach },
+    props: { nexttwopost, single, tags, categoryeach, getcomment },
   };
 };
 
-const index = ({ single, categoryeach, tags, nexttwopost }) => {
+const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
   const [tagz, setTagz] = useState([]);
+
+  const [error, setError] = useState(false);
+
+  const router = useRouter();
+
+  const { addComment } = Makepost();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      e.target.elements.reply.value == "" ||
+      e.target.elements.email.value == "" ||
+      e.target.elements.name.value == ""
+    ) {
+      setError(true);
+    } else {
+      const form = new FormData();
+
+      form.append("message", "addcomment");
+      form.append("id", single.uuid);
+      form.append("reply", e.target.elements.reply.value);
+      form.append("email", e.target.elements.email.value);
+      form.append("name", e.target.elements.name.value);
+      form.append("website", e.target.elements.website.value);
+
+      await addComment(form);
+
+      router.reload();
+    }
+  };
 
   useEffect(() => {
     let arr = [];
 
     tags.map((ta) => {
-      arr = [...ta.tag];
-      // console.log(ta);
+      ta.tag.map((taa) => {
+        arr.push(taa);
+      });
     });
-
-    setTagz(arr);
+    const arrz = [...new Set(arr)];
+    setTagz(arrz);
 
     $(document).ready(function () {
       $(".owl-carousel").owlCarousel({
@@ -109,7 +146,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
             <div>
               <div className="single__img">
                 <img
-                  src={`https://jeffmatthewpatten.com/api/${single.img1}`}
+                  src={`https://jeffmatthewpatten.com/api2/${single.img1}`}
                   alt=""
                 />
               </div>
@@ -159,7 +196,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                 {single.img2 && (
                   <div className="imagepreset  ">
                     <img
-                      src={`https://jeffmatthewpatten.com/api/${single.img2}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img2}`}
                       alt=""
                     />
                   </div>
@@ -177,7 +214,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                   <div className=" imagepreset">
                     <img
                       className=" "
-                      src={`https://jeffmatthewpatten.com/api/${single.img3}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img3}`}
                       alt=""
                     />
                   </div>
@@ -194,7 +231,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                 {single.img4 && (
                   <div className="imagepreset">
                     <img
-                      src={`https://jeffmatthewpatten.com/api/${single.img4}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img4}`}
                       alt=""
                     />
                   </div>
@@ -212,7 +249,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                   <div className="imagepreset">
                     <img
                       className=" mt-5 mb-3"
-                      src={`https://jeffmatthewpatten.com/api/${single.img4}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img5}`}
                       alt=""
                     />
                   </div>
@@ -225,6 +262,17 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                 )}
               </div>
 
+              {/* people who commented */}
+
+              <div className="answer__comment">
+                <h2 className="answer__comment--h2">comments</h2>
+
+                {getcomment.map((com) => {
+                  return <Eachcomment {...com} />;
+                })}
+              </div>
+              {/* end of people who commented */}
+
               {/* <!-- comment section
              --> */}
               <div className="mt-5 single__comment">
@@ -234,28 +282,98 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                   are marked
                   <span className="text-primary specialspan"> *</span>
                 </p>
-                <form action="">
+
+                <AnimatePresence>
+                  {error && (
+                    <motion.div
+                      initial={{
+                        opacity: 0,
+                        y: "-20px",
+                      }}
+                      animate={{
+                        y: 0,
+                        opacity: 1,
+                        transition: {
+                          type: "spring",
+                          stiffness: 500,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: "-30px",
+                        transition: {
+                          type: "spring",
+                          // stiffness: 500,
+                        },
+                      }}
+                      className={`alert show  alert-dismissible alert-danger fade`}
+                    >
+                      <strong> kindly fill the neccessary form fields </strong>
+
+                      <button
+                        onClick={() => {
+                          setError(false);
+                        }}
+                        className="close"
+                      >
+                        {" "}
+                        &times;{" "}
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <form onSubmit={handleSubmit} action="">
                   <textarea
                     placeholder="comment *"
-                    name=""
+                    name="reply"
                     id=""
                     cols="30"
+                    maxLength={200}
                     rows="10"
                   ></textarea>
 
                   <div className="single__comment--flex">
-                    <input placeholder="name *" type="text" />
-                    <input placeholder="email *" type="email" />
-                    <input placeholder="website" type="text" />
+                    <input
+                      placeholder="name *"
+                      maxLength={20}
+                      name="name"
+                      type="text"
+                    />
+                    <input
+                      placeholder="email *"
+                      maxLength={20}
+                      name="email"
+                      type="email"
+                    />
+                    <input
+                      placeholder="website"
+                      maxLength={20}
+                      name="website"
+                      type="text"
+                    />
                   </div>
 
-                  <small className="text-secondary">
+                  {/* <small className="text-secondary">
                     <input className="mr-2" type="checkbox" /> save my name,
                     email and pasword on this browser for the next time i
                     comment
-                  </small>
+                  </small> */}
 
-                  <button className="submit">Post Comments</button>
+                  <motion.button
+                    whileHover={{
+                      origins: 0,
+                      scale: 0.8,
+                      boxShadow: "0px 0px 7px white",
+                    }}
+                    type="submit"
+                    whileTap={{
+                      originx: 0,
+                      scale: 1.1,
+                    }}
+                    className="submit"
+                  >
+                    Post Comments
+                  </motion.button>
                 </form>
               </div>
 
@@ -263,7 +381,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                 <div className="nextz__img1">
                   {}
                   <img
-                    src={`https://jeffmatthewpatten.com/api${nexttwopost[0].img1}`}
+                    src={`https://jeffmatthewpatten.com/api2/${nexttwopost[0].img1}`}
                     alt=""
                   />
                   <div>
@@ -282,7 +400,7 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
                 </div>
                 <div className="nextz__img2">
                   <img
-                    src={`https://jeffmatthewpatten.com/api${nexttwopost[1].img1}`}
+                    src={`https://jeffmatthewpatten.com/api2/${nexttwopost[1].img1}`}
                     alt=""
                   />
                   <div>
@@ -371,8 +489,8 @@ const index = ({ single, categoryeach, tags, nexttwopost }) => {
         </section>
 
         {/* <!-- footer --> */}
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

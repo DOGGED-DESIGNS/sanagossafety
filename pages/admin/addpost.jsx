@@ -12,27 +12,38 @@ export const getServerSideProps = withSessionSsr(async ({ req, res }) => {
   const data = getSessionData(req);
 
   console.log(data);
-
-  if (!data?.status) {
+  if (data) {
+    if (!data?.status) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    } else {
+      const { category, categorydata, quoteNumview, contactNumview } =
+        Statichook();
+      const data = await category();
+      const quotenumview = await quoteNumview();
+      const contactnumview = await contactNumview();
+      console.log(data);
+      return {
+        props: { categories: data, quotenumview, contactnumview },
+      };
+    }
+  } else {
     return {
       redirect: {
         destination: "/login",
         permanent: false,
       },
     };
-  } else {
-    const { category, categorydata } = Statichook();
-    const data = await category();
-    console.log(data);
-    return {
-      props: { categories: data },
-    };
   }
 });
 
 // end of static props
 
-const Addpost = ({ categories }) => {
+const Addpost = ({ categories, contactnumview, quotenumview }) => {
   //handling submit
 
   const { makePost, postmessage, setPostmessage, loading } = Makepost();
@@ -97,7 +108,7 @@ const Addpost = ({ categories }) => {
   return (
     <>
       <main className="admin">
-        <Adminnav />
+        <Adminnav contactnum={contactnumview} quotenum={quotenumview} />
 
         <section className="addpost">
           <AnimatePresence>

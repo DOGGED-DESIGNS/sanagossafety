@@ -1,31 +1,37 @@
 import { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Statichook from "@/hooks/statichook";
+import { useRouter } from "next/router";
+import Makepost from "@/hooks/makepost";
 
-const Contactbody = () => {
+const Contactbody = ({ id, time, email, phone, name }) => {
   const [toggleaction, setToggleaction] = useState(false);
+  const { deleteContact } = Statichook();
+  const { singleContact } = Makepost();
+
+  const router = useRouter();
   return (
     <>
       <div className="shadow-sm table__body">
         <div>
-          <div className="table__body--two table__head--name">
-            <h6>Uzoechi Jeremiah</h6>
-            <p>uzoechjeremiah@gmail.com</p>
+          <div className="table__body--two table__head--phone">
+            <h6> {name} </h6>
           </div>
         </div>
         <div>
           <div className="table__head--phone">
-            <p>09076176485</p>
+            <p> {phone} </p>
           </div>
         </div>
         <div>
-          <div className="table__head--des">
-            <p>i need a supply...</p>
+          <div className="table__head--phone">
+            <p> {email} </p>
           </div>
         </div>
         <div>
-          <div className="table__head--indus">
-            <p>food beverages</p>
+          <div className="table__head--phone">
+            <p> {time} </p>
           </div>
         </div>
         <div className="">
@@ -56,10 +62,23 @@ const Contactbody = () => {
                   }}
                   className="table__perform"
                 >
-                  <a href="">
+                  <a
+                    href=""
+                    onClick={async () => {
+                      await deleteContact(id);
+
+                      router.reload();
+                    }}
+                  >
                     <img src="/asset/icons/adminicon/waste.svg" alt="" />
                   </a>
-                  <a href="" data-toggle="modal" data-target="#exampleModal">
+                  <a
+                    onClick={async () => {
+                      await singleContact(id);
+                    }}
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
                     <img src="/asset/icons/adminicon/view.svg" alt="" />
                   </a>
                 </motion.div>
@@ -68,9 +87,11 @@ const Contactbody = () => {
 
             {/* <!-- end of the thing --> */}
             <a
-              href="#"
               onClick={() => {
                 setToggleaction(!toggleaction);
+              }}
+              style={{
+                cursor: "pointer",
               }}
             >
               <img

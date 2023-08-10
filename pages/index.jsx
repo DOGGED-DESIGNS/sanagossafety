@@ -2,15 +2,60 @@ import Head from "next/head";
 import { useContext, useReducer, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import Statichook from "@/hooks/statichook";
 import Animatez from "@/Animate";
 import Footermain from "../comps/Footermain";
 import Navbar from "../comps/Navbar";
+import { Generalget } from "@/context/General";
+import Serviceblock from "../comps/Serviceblock/Serviceblock";
+import Makepost from "@/hooks/makepost";
 
 // import ReactQuill from "react-quill";
 
-const Home = () => {
+export const getServerSideProps = async () => {
+  const { getIndustry, getService } = Statichook();
+
+  const getindustry = await getIndustry();
+  const getservice = await getService();
+
+  return {
+    props: {
+      getindustry,
+      getservice,
+    },
+  };
+};
+
+const Home = ({ getindustry, getservice }) => {
   const [data, setData] = useState("this is a data from the state");
   const [toggle, setToggle] = useState(false);
+  const [error, setError] = useState(false);
+  const { addQuote, quote, setQuote } = Makepost();
+  const { loading2 } = Generalget();
+  const [hovv, setHovv] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      e.target.elements.email.value == " " ||
+      e.target.elements.phone.value == "" ||
+      e.target.elements.name.value == "" ||
+      e.target.elements.indus.value == "" ||
+      e.target.elements.info.value == ""
+    ) {
+      setError(true);
+    } else {
+      const form = new FormData();
+      form.append("message", "addquote");
+      form.append("email", e.target.elements.email.value);
+      form.append("phone", e.target.elements.phone.value);
+      form.append("name", e.target.elements.name.value);
+      form.append("indus", e.target.elements.indus.value);
+      form.append("info", e.target.elements.info.value);
+
+      await addQuote(form);
+    }
+  };
 
   const {
     supplychild,
@@ -183,10 +228,36 @@ const Home = () => {
               temporibus possimus amet dolore perferendis molestias dignissimos?
             </p>
 
-            <a href="#" className="main__header--button">
-              <img className="mr-2" src="./asset/icons/lightarrow.svg" alt="" />
+            <motion.a
+              onHoverStart={() => {
+                setHovv(true);
+              }}
+              onHoverEnd={() => {
+                setHovv(false);
+              }}
+              href="#services"
+              className="main__header--button"
+            >
+              <motion.img
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                }}
+                animate={
+                  hovv
+                    ? {
+                        x: "3px",
+                      }
+                    : {
+                        x: 0,
+                      }
+                }
+                className="mr-2"
+                src="./asset/icons/lightarrow.svg"
+                alt=""
+              />
               services
-            </a>
+            </motion.a>
           </div>
         </motion.header>
 
@@ -390,10 +461,35 @@ const Home = () => {
                   </div>
                 </div>
 
-                <a href="#" className="meeting__button">
-                  <img src="./asset/icons/lightarrow.svg" alt="" />
+                <motion.a
+                  onHoverStart={() => {
+                    setHovv(true);
+                  }}
+                  onHoverEnd={() => {
+                    setHovv(false);
+                  }}
+                  href="/contact"
+                  className="meeting__button"
+                >
+                  <motion.img
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                    }}
+                    animate={
+                      hovv
+                        ? {
+                            x: "3px",
+                          }
+                        : {
+                            x: 0,
+                          }
+                    }
+                    src="./asset/icons/lightarrow.svg"
+                    alt=""
+                  />
                   schedule an Appointment
-                </a>
+                </motion.a>
 
                 {/* <!-- video play --> */}
                 <div className="meeting__play">
@@ -428,7 +524,7 @@ const Home = () => {
         </section>
 
         {/* <!-- servicing --> */}
-        <section className="container-fluid service">
+        <section className="container-fluid service" id="services">
           <div className="service__grid">
             <div>
               <h6 className="service__h6">we work with Global Industries</h6>
@@ -450,112 +546,13 @@ const Home = () => {
 
           <div className="swiper swiperService">
             <div className="swiper-wrapper">
-              <div className="swiper-slide">
-                <div className="service__img">
-                  <img src="./asset/img/aboutimg2-8.png" alt="" />
-                  <div className="service__accent">
-                    <h5>Gas stations</h5>
-                    <h6>
-                      supply of fire extinguishers and other safety equipment
-                    </h6>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Voluptatibus optio incidunt cum! Error maxime pariatur
-                      eos, delectus voluptate magnam debitis.
-                    </p>
-
-                    <a href="#" className="service__button">
-                      Explore More
-                      <img src="./asset/icons/arrowredright2.svg" alt="" />
-                    </a>
+              {getservice.map((ser) => {
+                return (
+                  <div className="swiper-slide">
+                    <Serviceblock {...ser} />
                   </div>
-                </div>
-              </div>
-
-              <div className="swiper-slide">
-                <div className="service__img">
-                  <img src="./asset/img/aboutimg1-8.png" alt="" />
-                  <div className="service__accent">
-                    <h5>Gas stations</h5>
-                    <h6>
-                      supply of fire extinguishers and other safety equipment
-                    </h6>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Voluptatibus optio incidunt cum! Error maxime pariatur
-                      eos, delectus voluptate magnam debitis.
-                    </p>
-
-                    <a href="#" className="service__button">
-                      Explore More
-                      <img src="./asset/icons/arrowredright2.svg" alt="" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="service__img">
-                  <img src="./asset/img/aboutimg1-8.png" alt="" />
-                  <div className="service__accent">
-                    <h5>Gas stations</h5>
-                    <h6>
-                      supply of fire extinguishers and other safety equipment
-                    </h6>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Voluptatibus optio incidunt cum! Error maxime pariatur
-                      eos, delectus voluptate magnam debitis.
-                    </p>
-
-                    <a href="#" className="service__button">
-                      Explore More
-                      <img src="./asset/icons/arrowredright2.svg" alt="" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="service__img">
-                  <img src="./asset/img/aboutimg1-8.png" alt="" />
-                  <div className="service__accent">
-                    <h5>Gas stations</h5>
-                    <h6>
-                      supply of fire extinguishers and other safety equipment
-                    </h6>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Voluptatibus optio incidunt cum! Error maxime pariatur
-                      eos, delectus voluptate magnam debitis.
-                    </p>
-
-                    <a href="#" className="service__button">
-                      Explore More
-                      <img src="./asset/icons/arrowredright2.svg" alt="" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="swiper-slide">
-                <div className="service__img">
-                  <img src="./asset/img/aboutimg1-8.png" alt="" />
-                  <div className="service__accent">
-                    <h5>Gas stations</h5>
-                    <h6>
-                      supply of fire extinguishers and other safety equipment
-                    </h6>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Voluptatibus optio incidunt cum! Error maxime pariatur
-                      eos, delectus voluptate magnam debitis.
-                    </p>
-
-                    <a href="#" className="service__button">
-                      Explore More
-                      <img src="./asset/icons/arrowredright2.svg" alt="" />
-                    </a>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
 
             <div className="swiper-button-next nnx1">
@@ -646,21 +643,103 @@ const Home = () => {
                 Our complete control over product allows us to ensure our
                 customer recieves the best quality price and service
               </p>
+              <AnimatePresence>
+                {error && (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: "-20px",
+                    }}
+                    animate={{
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 500,
+                      },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: "-30px",
+                      transition: {
+                        type: "spring",
+                        // stiffness: 500,
+                      },
+                    }}
+                    className={`alert show  alert-dismissible alert-danger fade`}
+                  >
+                    <strong> kindly fill all form fields </strong>
 
-              <form>
+                    <button
+                      onClick={() => {
+                        setError(false);
+                      }}
+                      className="close"
+                    >
+                      {" "}
+                      &times;{" "}
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <AnimatePresence>
+                {quote?.message && (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: "-20px",
+                    }}
+                    animate={{
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 500,
+                      },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: "-30px",
+                      transition: {
+                        type: "spring",
+                        // stiffness: 500,
+                      },
+                    }}
+                    className={`alert show  alert-dismissible alert-${quote.type} fade`}
+                  >
+                    <strong> {quote?.message} </strong>
+
+                    <button
+                      onClick={() => {
+                        setQuote({});
+                      }}
+                      className="close"
+                    >
+                      {" "}
+                      &times;{" "}
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <form onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-sm-12 col-md-6 col-lg-6">
                     <input
                       className="request__name"
                       type="text"
                       placeholder="name"
+                      maxLength={20}
+                      name="name"
                     />
+                    {/* <span className=" text-danger">this is for a test</span> */}
                   </div>
                   <div className="col-sm-12 col-md-6 col-lg-6">
                     <input
-                      className="request__email"
+                      className="   request__email"
                       type="email"
                       placeholder="email"
+                      maxLength={30}
+                      name="email"
                     />
                   </div>
                 </div>
@@ -672,15 +751,22 @@ const Home = () => {
                       className="request__name"
                       type="number"
                       placeholder="phone"
+                      maxLength={15}
+                      name="phone"
                     />
                   </div>
                   <div className="col-sm-12 col-md-6 col-lg-6">
-                    <select className="request__select" name="" id="">
-                      <option value="unkonw">select industies</option>
-                      <option selected value="unkonw">
-                        test
-                      </option>
-                      <option value="unkonw">test</option>
+                    <select className="request__select" name="indus" id="">
+                      {getindustry.map((indus) => {
+                        return (
+                          <option
+                            selected={indus.id == "oil and gas" && true}
+                            value={indus.id}
+                          >
+                            {indus.id}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
@@ -688,10 +774,11 @@ const Home = () => {
                 <textarea
                   className="request__textarea"
                   placeholder="Aditional information"
-                  name=""
+                  name="info"
                   id=""
                   cols="30"
                   rows="10"
+                  maxLength={200}
                 ></textarea>
 
                 <motion.button
@@ -699,10 +786,32 @@ const Home = () => {
                   variants={tapanimate}
                   whileTap="animate"
                   href=""
+                  onHoverStart={() => {
+                    setHovv(true);
+                  }}
+                  onHoverEnd={() => {
+                    setHovv(false);
+                  }}
                   className="request__button"
                 >
-                  <img src="./asset/icons/lightarrow.svg" alt="" />
-                  submit request
+                  <motion.img
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                    }}
+                    animate={
+                      hovv
+                        ? {
+                            x: "3px",
+                          }
+                        : {
+                            x: 0,
+                          }
+                    }
+                    src="./asset/icons/lightarrow.svg"
+                    alt=""
+                  />
+                  {loading2 ? "please waite" : "submit request"}
                 </motion.button>
               </form>
             </motion.div>
@@ -813,7 +922,7 @@ const Home = () => {
           </div>
         </div>
       </motion.section>
-      <Footermain />
+      <Footermain getindustry={getindustry} />
     </>
   );
 };
