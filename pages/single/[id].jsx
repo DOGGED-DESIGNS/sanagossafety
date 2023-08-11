@@ -6,26 +6,8 @@ import Footer from "../../comps/footer";
 import Eachcomment from "../../comps/Eachcomment/Eachcomment";
 import Makepost from "@/hooks/makepost";
 import { useRouter } from "next/router";
-export const getStaticPaths = async () => {
-  const { displayposts, ultdrawpost } = Statichook();
 
-  const data = await ultdrawpost();
-
-  console.log(data);
-
-  const paths = data.map((da) => {
-    return {
-      params: { id: da.uuid.toString() },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const { singlePost, categoryEach, nextTwopost, tag, getComment } =
     Statichook();
   const id = context.params.id;
@@ -36,10 +18,21 @@ export const getStaticProps = async (context) => {
 
   const nexttwopost = await nextTwopost(id);
 
-  return {
-    props: { nexttwopost, single, tags, categoryeach, getcomment },
-    revalidate: 10,
-  };
+  if (single) {
+    return {
+      props: {
+        nexttwopost,
+        single,
+        tags,
+        categoryeach,
+        getcomment: getcomment,
+      },
+    };
+  } else {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
