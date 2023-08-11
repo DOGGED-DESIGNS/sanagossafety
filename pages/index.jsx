@@ -45,6 +45,7 @@ const Home = ({ getindustry, getservice }) => {
     ) {
       setError(true);
     } else {
+      setError(false);
       const form = new FormData();
       form.append("message", "addquote");
       form.append("email", e.target.elements.email.value);

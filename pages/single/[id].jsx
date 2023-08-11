@@ -75,6 +75,8 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
   };
 
   useEffect(() => {
+    console.log(getcomment);
+
     let arr = [];
 
     tags.map((ta) => {

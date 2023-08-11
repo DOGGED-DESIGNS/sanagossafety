@@ -54,7 +54,7 @@ const Blognav = () => {
             {" "}
             fire_extinguisher{" "}
           </motion.a>
-          <motion.a href={`/result/1/?cat=safety_boots`} variants={genchild}>
+          <motion.a href={`/result/1/?cat=safety`} variants={genchild}>
             {" "}
             safety{" "}
           </motion.a>
