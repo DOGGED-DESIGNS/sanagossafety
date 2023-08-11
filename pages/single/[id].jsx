@@ -267,9 +267,9 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
               <div className="answer__comment">
                 <h2 className="answer__comment--h2">comments</h2>
 
-                {/* {getcomment.map((com) => {
+                {getcomment.map((com) => {
                   return <Eachcomment {...com} />;
-                })} */}
+                })}
               </div>
               {/* end of people who commented */}
 
