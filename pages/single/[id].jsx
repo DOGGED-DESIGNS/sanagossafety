@@ -38,7 +38,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { nexttwopost, single, tags, categoryeach, getcomment },
-    revalidate: 20,
+    revalidate: 10,
   };
 };
 
