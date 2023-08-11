@@ -716,7 +716,7 @@ const Statichook = () => {
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
             "Content-Type": "multipart/form-data",
           },
         }
