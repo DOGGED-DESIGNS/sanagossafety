@@ -12,7 +12,7 @@ import { Contextprovider } from "@/context/General";
 import Statichook from "@/hooks/statichook";
 import Footer from "../../comps/footer";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { displayposts, displayrecent, categoryEach, trending, tag, top } =
     Statichook();
 
