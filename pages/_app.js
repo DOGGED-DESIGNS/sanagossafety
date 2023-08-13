@@ -43,7 +43,6 @@ function MyApp({ Component, pageProps }) {
         <script src="/final/all.js"></script>
         <script src="/swiper/js/swiper-bundle.min.js"></script>
       </Head>
-
       <General>
         <Component {...pageProps} />
       </General>

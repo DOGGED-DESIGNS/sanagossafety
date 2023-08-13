@@ -38,9 +38,9 @@ const Footermain = ({ getindustry }) => {
               if you have any problem or need feel free to contact our team
             </p>
             <motion.div variants={supplychild}>
-              <a class="main__nav--call smallnav__call" href="#">
+              <a class="main__nav--call smallnav__call" href="tel:23476176485">
                 <img class="ml-1" src="/asset/icons/redphone.svg" alt="" />
-                +234 761 764 85
+                (+234) 907-6176-485
               </a>
               <p class="footer__p mt-3">
                 visit no 17 lekki face two off ijoke road

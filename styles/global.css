@@ -10320,7 +10320,7 @@ html {
 }
 .smallnav {
   height: auto;
-  position: absolute;
+  position: fixed;
   top: 68px;
   right: 10px;
   z-index: 20;
@@ -11084,7 +11084,7 @@ html {
   width: 370px;
   margin-top: 80px;
   margin: auto;
-  margin-bottom: 250px;
+  margin-bottom: 230px;
   height: 412px;
 }
 .service__img > img {
@@ -13929,6 +13929,19 @@ html {
   outline: none;
   border-bottom: 1px solid #5e5f5f;
   padding-right: 30px;
+}
+.contact__form {
+  width: 700px;
+}
+@media (max-width: 780px) {
+  .contact__form {
+    width: 500px;
+  }
+}
+@media (max-width: 500px) {
+  .contact__form {
+    width: 350px;
+  }
 }
 .contact__h2 {
   margin-top: 30px;

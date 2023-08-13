@@ -181,6 +181,38 @@ const Home = ({ getindustry, getservice }) => {
 
   return (
     <>
+      <Head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Sanagos Safety is a leading safety supplier company dedicated to providing comprehensive safety solutions for businesses and industries nationwide. With over a decade of experience, we have established ourselves as a trusted partner, delivering high-quality safety products as well as safety training to ensure the well-being of both employees and customers."
+        />
+
+        <meta
+          name="keywords"
+          content=" Sanagos Safety, Sanagos, fire extinguisher,nigeria, safety boot, safety helment, fire safety, fire"
+        />
+        <link rel="stylesheet" href="/final/fontawesome.min.css" />
+        <link rel="stylesheet" href="/swiper/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/swiper/owl.theme.default.css" />
+        <link rel="stylesheet" href="/swiper/css/swiper-bundle.min.css" />
+        {/* <link rel="stylesheet" href="./final/index.min.css" /> */}
+        {/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> */}
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="16x16"
+        ></link>
+        <title>SANAGOS SAFETY</title>
+
+        <script src="/jquery.3.4.1.js?cd=123"></script>
+        <script src="/swiper/owl.carousel.min.js"></script>
+        <script src="/final/all.js"></script>
+        <script src="/swiper/js/swiper-bundle.min.js"></script>
+      </Head>
       {/* <!-- div nav --> */}
 
       {/* <!-- this is the navigation bar --> */}
@@ -207,8 +239,20 @@ const Home = ({ getindustry, getservice }) => {
               </div>
 
               <div className="main__header--img swiper-slide">
-                <img className="" src="./asset/img/tab1-8.png" alt="" />
+                <img
+                  className=""
+                  src="./asset/img/istockphoto-144877527-612x612.jpg"
+                  alt=""
+                />
               </div>
+              <div className="main__header--img swiper-slide">
+                <img
+                  className=""
+                  src="./asset/img/istockphoto-1466908062-612x612.jpg"
+                  alt=""
+                />
+              </div>
+
               {/* <!-- <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div> --> */}
               <div className="swiper-pagination"></div>
@@ -216,17 +260,17 @@ const Home = ({ getindustry, getservice }) => {
           </div>
           <div className="main__header--div">
             <h1>
-              Sanagos. One of the Nataion’s Leading Safety Equipment Supplier
-              and Safety Trainer.
+              Sanagos Safety, is One of the Nataion’s Leading Safety Equipment
+              Supplier and Safety Trainer.
             </h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-              earum accusantium harum, cum voluptas suscipit atque sint dolorem
-              qui enim distinctio officiis incidunt voluptatem molestiae nam,
-              alias nemo eaque repellendus. Tempore modi eligendi quidem
-              mollitia quo veritatis unde, esse consectetur, quasi ipsum nulla
-              temporibus possimus amet dolore perferendis molestias dignissimos?
+              Sanagos Safety is a leading safety supplier company dedicated to
+              providing comprehensive safety solutions for businesses and
+              industries nationwide. With over a decade of experience, we have
+              established ourselves as a trusted partner, delivering
+              high-quality safety products as well as safety training to ensure
+              the well-being of both employees and customers.
             </p>
 
             <motion.a
@@ -294,10 +338,12 @@ const Home = ({ getindustry, getservice }) => {
                 <div>
                   <h6 className="supply__grid2--h6">
                     <i>
-                      "We as a company are transparent and honest in all our
-                      dealings. A good name they say is worth more that Gold;
-                      sanagos growth today is made possible by our practice of
-                      integrity and honesty "
+                      " I am immensely proud of the positive impact we have made
+                      in enhancing safety across various sectors. Our success
+                      lies not just in providing top-quality safety equipment
+                      but also in our commitment to empowering workplaces and
+                      communities with the tools and knowledge to prevent
+                      accidents and save lives "
                     </i>
                   </h6>
                   <img src="./asset/img/sign-8.png" alt="" />
@@ -306,13 +352,15 @@ const Home = ({ getindustry, getservice }) => {
 
                 <div>
                   <p className="supply__grid2--p">
-                    " Safety as defined is what many industries adipisicing
-                    households dont priorityize. These safety negligence has
-                    cost alot of lives and properties.
+                    " Safety is not just a priority; it's a fundamental value
+                    that underpins every aspect of our lives. Whether in the
+                    workplace, at home, or on the road, prioritizing safety is a
+                    collective responsibility that ensures the well-being of
+                    individuals, communities, and society as a whole.""
                     <br />
-                    for that reason sanagos is helping lead the charge in
+                    for that reason sanagos safety is leading the charge in
                     prioritizing safety by supplying our customers with quality
-                    safety materials "
+                    safety equipment and gears "
                   </p>
                 </div>
               </div>
@@ -419,7 +467,7 @@ const Home = ({ getindustry, getservice }) => {
               <div className="meeting__sch">
                 <h2 className="meeting__sch--h2">
                   Sanagos is recognised as one of the leading safety equipment
-                  supplier and trainers.
+                  supplier and trainers nationwide.
                 </h2>
                 <p className="meeting__sch--p">
                   sanagos has been building relationship that last, serving
@@ -518,7 +566,10 @@ const Home = ({ getindustry, getservice }) => {
               }}
             >
               <div className="meeting__img">
-                <img src="./asset/img/aboutimg1-8.png" alt="" />
+                <img
+                  src="./asset/img/istockphoto-1466908062-612x612.jpg"
+                  alt=""
+                />
               </div>
             </motion.div>
           </div>
@@ -535,10 +586,9 @@ const Home = ({ getindustry, getservice }) => {
             </div>
             <div>
               <p className="service__p">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
-                veritatis est quae necessitatibus quas repellat expedita minus
-                numquam at in nostrum! Fugit animi incidunt officia laboriosam
-                eaque velit beatae ullam.
+                We take pride in offering a comprehensive Safety Equipment
+                Supply service to meet the diverse needs of workplaces across
+                various industries.
               </p>
             </div>
           </div>
@@ -562,7 +612,7 @@ const Home = ({ getindustry, getservice }) => {
             <div className="nnx2 swiper-button-prev">
               <img src="./asset/icons/servicearrow1.svg" alt="" />
             </div>
-            <div className="swiper-pagination"></div>
+            <div className="swiper-pagination  "></div>
           </div>
         </section>
 

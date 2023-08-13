@@ -217,7 +217,7 @@ const Blognav = () => {
               x: "100vw",
               opacity: 0,
             }}
-            className="blogsmall"
+            className="blogsmall position-fixed "
           >
             <span
               onClick={() => {

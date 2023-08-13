@@ -11,6 +11,7 @@ import Blognav from "../../comps/blognav";
 import { Contextprovider } from "@/context/General";
 import Statichook from "@/hooks/statichook";
 import Footer from "../../comps/footer";
+import Head from "next/head";
 
 export const getServerSideProps = async () => {
   const { displayposts, displayrecent, categoryEach, trending, tag, top } =
@@ -67,7 +68,6 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
     setTagz(arrz);
 
     $(document).ready(function () {
-      console.log(post[0].color[1]);
       $(".owl-carousel").owlCarousel({
         items: 3,
         loop: true,
@@ -103,6 +103,38 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
 
   return (
     <>
+      <Head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Discover the essential insights and practical tips you need to create a safer house hold and work environment with Sanagos Safety Blog. From understanding industry-specific and household hazards to implementing effective safety protocols, our blog covers a wide range of topics tailored to different workplaces. Stay up-to-date with the latest regulations, best practices, and innovative solutions to protect employees, family members, prevent accidents, and ensure compliance. Whether you're a business owner, housewife, father manager, or employee, our blog empowers you to prioritize safety and well-being in the workplace and household"
+        />
+
+        <meta
+          name="keywords"
+          content=" Sanagos Safety, Sanagos, fire extinguisher,nigeria, safety boot, safety helment, fire safety, fire"
+        />
+        <link rel="stylesheet" href="/final/fontawesome.min.css" />
+        <link rel="stylesheet" href="/swiper/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/swiper/owl.theme.default.css" />
+        <link rel="stylesheet" href="/swiper/css/swiper-bundle.min.css" />
+        {/* <link rel="stylesheet" href="./final/index.min.css" /> */}
+        {/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> */}
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="16x16"
+        ></link>
+        <title>SANAGOS BLOG</title>
+
+        <script src="/jquery.3.4.1.js?cd=123"></script>
+        <script src="/swiper/owl.carousel.min.js"></script>
+        <script src="/final/all.js"></script>
+        <script src="/swiper/js/swiper-bundle.min.js"></script>
+      </Head>
       <main className="admin">
         <Blognav />
 
@@ -110,7 +142,6 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
         <section className="post">
           {/* <Editor
             onChange={(value) => {
-              console.log(value);
             }}
           /> */}
 
@@ -230,7 +261,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
             ) : (
               <motion.div variants={genchild}>
                 <div className="top__grid--img1">
-                  <img src="./asset/img/presentation-8.png" alt="" />
+                  <img
+                    src={`https://jeffmatthewpatten.com/api2/${toppost[0].img1}`}
+                    alt=""
+                  />
                   {/* <!-- grid one absolite --> */}
                   <div className="top__grid--move1">
                     <a
@@ -273,7 +307,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                 <h2>No Post</h2>
               ) : (
                 <motion.div variants={genchild} className="top__grid--img2">
-                  <img src="./asset/img/presentation-8.png" alt="" />
+                  <img
+                    src={`https://jeffmatthewpatten.com/api2/${toppost[1].img1}`}
+                    alt=""
+                  />
                   {/* <!-- grid one absolite --> */}
                   <div className="top__grid--move2">
                     <a
@@ -300,7 +337,10 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                 <h2>No Post</h2>
               ) : (
                 <motion.div variants={genchild} className="top__grid--img2">
-                  <img src="./asset/img/presentation-8.png" alt="" />
+                  <img
+                    src={`https://jeffmatthewpatten.com/api2/${toppost[2].img1}`}
+                    alt=""
+                  />
                   {/* <!-- grid one absolite --> */}
                   <div className="top__grid--move2">
                     <a
@@ -461,7 +501,7 @@ const Blog = ({ post, recent, trendpost, toppost, tags, categoryeach }) => {
                           return (
                             <a
                               href=""
-                              style={{ background: ma.color[index] }}
+                              style={{ background: ma?.color[index] }}
                               className="post__recent--cat"
                             >
                               {ta}

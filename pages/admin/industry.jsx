@@ -92,9 +92,9 @@ const industry = ({ industry, contactnumview, quotenumview }) => {
             >
               {industry.map((indus) => {
                 return (
-                  <motion.div variants={genchild}>
+                  <div>
                     <Industrybody {...indus} variants={genchild} />
-                  </motion.div>
+                  </div>
                 );
               })}
             </motion.div>

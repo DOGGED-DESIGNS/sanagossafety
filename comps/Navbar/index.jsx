@@ -100,13 +100,16 @@ const Navbar = () => {
                 </motion.a>
               </motion.div>
               <motion.div variants={genchild}>
-                <a className="main__nav--call smallnav__call" href="#">
+                <a
+                  className="main__nav--call smallnav__call"
+                  href="tel:23476176485"
+                >
                   <img
                     className="ml-1"
                     src="/asset/icons/redphone.svg"
                     alt=""
                   />
-                  +234 767 6485
+                  (+234) 907-6176-485
                 </a>
               </motion.div>
             </motion.div>
@@ -174,9 +177,9 @@ const Navbar = () => {
             </motion.a>
           </motion.div>
           <motion.div variants={genchild}>
-            <a className="main__nav--call" href="#">
+            <a className="main__nav--call" href="tel:23476176485">
               <img className="ml-1" src="/asset/icons/redphone.svg" alt="" />
-              +234 767 6485
+              (+234) 907-6176-485
             </a>
           </motion.div>
         </motion.div>

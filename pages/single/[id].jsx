@@ -70,6 +70,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
 
   useEffect(() => {
     console.log(getcomment);
+    console.log(nexttwopost);
 
     let arr = [];
 
@@ -142,7 +143,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
             <div>
               <div className="single__img">
                 <img
-                  src={`https://jeffmatthewpatten.com/api2/${single.img1}`}
+                  src={`http://localhost/sanagosApi/${single.img1}`}
                   alt=""
                 />
               </div>
@@ -192,7 +193,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                 {single.img2 && (
                   <div className="imagepreset  ">
                     <img
-                      src={`https://jeffmatthewpatten.com/api2/${single.img2}`}
+                      src={`http://localhost/sanagosApi/${single.img2}`}
                       alt=""
                     />
                   </div>
@@ -210,7 +211,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                   <div className=" imagepreset">
                     <img
                       className=" "
-                      src={`https://jeffmatthewpatten.com/api2/${single.img3}`}
+                      src={`http://localhost/sanagosApi/${single.img3}`}
                       alt=""
                     />
                   </div>
@@ -227,7 +228,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                 {single.img4 && (
                   <div className="imagepreset">
                     <img
-                      src={`https://jeffmatthewpatten.com/api2/${single.img4}`}
+                      src={`http://localhost/sanagosApi/${single.img4}`}
                       alt=""
                     />
                   </div>
@@ -245,7 +246,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                   <div className="imagepreset">
                     <img
                       className=" mt-5 mb-3"
-                      src={`https://jeffmatthewpatten.com/api2/${single.img5}`}
+                      src={`http://localhost/sanagosApi/${single.img5}`}
                       alt=""
                     />
                   </div>
@@ -374,44 +375,48 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
               </div>
 
               <div className="nextz__grid">
-                <div className="nextz__img1">
-                  {}
-                  <img
-                    src={`https://jeffmatthewpatten.com/api2/${nexttwopost[0].img1}`}
-                    alt=""
-                  />
-                  <div>
-                    <p className="p">
-                      <span>
+                {nexttwopost[0] && (
+                  <div className="nextz__img1">
+                    <img
+                      src={`http://localhost/sanagosApi/${nexttwopost[0]?.img1}`}
+                      alt=""
+                    />
+                    <div>
+                      <p className="p">
+                        <span>
+                          {" "}
+                          <i className="fas fa-chevron-left"></i>{" "}
+                        </span>{" "}
+                        Previous Post
+                      </p>
+                      <a href={`/single/${nexttwopost[0].uuid}`}>
                         {" "}
-                        <i className="fas fa-chevron-left"></i>{" "}
-                      </span>{" "}
-                      Previous Post
-                    </p>
-                    <a href={`/single/${nexttwopost[0].uuid}`}>
-                      {" "}
-                      {`${nexttwopost[0].title.substring(0, 50)}...`}
-                    </a>
+                        {`${nexttwopost[0].title.substring(0, 50)}...`}
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div className="nextz__img2">
-                  <img
-                    src={`https://jeffmatthewpatten.com/api2/${nexttwopost[1].img1}`}
-                    alt=""
-                  />
-                  <div>
-                    <p className="p text-right">
-                      Next Post
-                      <span>
-                        <i className="fas fa-chevron-right"></i>
-                      </span>
-                    </p>
+                )}
 
-                    <a href={`/single/${nexttwopost[1].uuid}`}>
-                      {`${nexttwopost[1].title.substring(0, 50)}...`}
-                    </a>
+                {nexttwopost[1] && (
+                  <div className="nextz__img2">
+                    <img
+                      src={`http://localhost/sanagosApi/${nexttwopost[1]?.img1}`}
+                      alt=""
+                    />
+                    <div>
+                      <p className="p text-right">
+                        Next Post
+                        <span>
+                          <i className="fas fa-chevron-right"></i>
+                        </span>
+                      </p>
+
+                      <a href={`/single/${nexttwopost[1].uuid}`}>
+                        {`${nexttwopost[1].title.substring(0, 50)}...`}
+                      </a>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div>

@@ -5,8 +5,12 @@ const Serviceblock = ({ id, title, dessm, indus, img1 }) => {
   const [hovv, setHovv] = useState(false);
   return (
     <>
-      <div className="service__img">
-        <img src={`https://jeffmatthewpatten.com/api2/${img1}`} alt="" />
+      <div className="service__img ">
+        <img
+          src={`https://jeffmatthewpatten.com/api2/${img1}`}
+          className=""
+          alt=""
+        />
         <motion.div
           onHoverStart={() => {
             setHovv(true);
