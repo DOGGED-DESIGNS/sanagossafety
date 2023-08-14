@@ -14,8 +14,15 @@ import Footer from "../../comps/footer";
 import Head from "next/head";
 
 export const getServerSideProps = async () => {
-  const { displayposts, displayrecent, categoryEach, trending, tag, top } =
-    Statichook();
+  const {
+    displayposts,
+    webviewUpdate,
+    displayrecent,
+    categoryEach,
+    trending,
+    tag,
+    top,
+  } = Statichook();
 
   const post = await displayposts(1);
   const recent = await displayrecent();
@@ -23,6 +30,7 @@ export const getServerSideProps = async () => {
   const toppost = await top();
   const tags = await tag();
   const categoryeach = await categoryEach();
+  await webviewUpdate();
 
   console.log(categoryeach);
 

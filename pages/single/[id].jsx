@@ -143,7 +143,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
             <div>
               <div className="single__img">
                 <img
-                  src={`http://localhost/sanagosApi/${single.img1}`}
+                  src={`https://jeffmatthewpatten.com/api2/${single.img1}`}
                   alt=""
                 />
               </div>
@@ -193,7 +193,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                 {single.img2 && (
                   <div className="imagepreset  ">
                     <img
-                      src={`http://localhost/sanagosApi/${single.img2}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img2}`}
                       alt=""
                     />
                   </div>
@@ -211,7 +211,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                   <div className=" imagepreset">
                     <img
                       className=" "
-                      src={`http://localhost/sanagosApi/${single.img3}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img3}`}
                       alt=""
                     />
                   </div>
@@ -228,7 +228,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                 {single.img4 && (
                   <div className="imagepreset">
                     <img
-                      src={`http://localhost/sanagosApi/${single.img4}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img4}`}
                       alt=""
                     />
                   </div>
@@ -246,7 +246,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                   <div className="imagepreset">
                     <img
                       className=" mt-5 mb-3"
-                      src={`http://localhost/sanagosApi/${single.img5}`}
+                      src={`https://jeffmatthewpatten.com/api2/${single.img5}`}
                       alt=""
                     />
                   </div>
@@ -378,7 +378,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                 {nexttwopost[0] && (
                   <div className="nextz__img1">
                     <img
-                      src={`http://localhost/sanagosApi/${nexttwopost[0]?.img1}`}
+                      src={`https://jeffmatthewpatten.com/api2/${nexttwopost[0]?.img1}`}
                       alt=""
                     />
                     <div>
@@ -400,7 +400,7 @@ const index = ({ single, categoryeach, tags, nexttwopost, getcomment }) => {
                 {nexttwopost[1] && (
                   <div className="nextz__img2">
                     <img
-                      src={`http://localhost/sanagosApi/${nexttwopost[1]?.img1}`}
+                      src={`https://jeffmatthewpatten.com/api2/${nexttwopost[1]?.img1}`}
                       alt=""
                     />
                     <div>

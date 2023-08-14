@@ -13,10 +13,11 @@ import Makepost from "@/hooks/makepost";
 // import ReactQuill from "react-quill";
 
 export const getServerSideProps = async () => {
-  const { getIndustry, getService } = Statichook();
+  const { getIndustry, getService, webviewUpdate } = Statichook();
 
   const getindustry = await getIndustry();
   const getservice = await getService();
+  const webview = await webviewUpdate();
 
   return {
     props: {

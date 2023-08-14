@@ -749,6 +749,27 @@ const Statichook = () => {
     }
     //
   };
+  const webviewUpdate = async (uuid) => {
+    try {
+      const data = await axios.post(
+        "https://jeffmatthewpatten.com/api2/php/process.php",
+        {
+          message: "webviewupdate",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return data?.data;
+    } catch (err) {
+      console.log(err?.response?.data);
+      console.log(err);
+    }
+    //
+  };
   const joinComment = async () => {
     try {
       const data = await axios.post(
@@ -1011,6 +1032,7 @@ const Statichook = () => {
     categoryEach,
     trending,
     singleService,
+    webviewUpdate,
     top,
     deleteService,
     tag,

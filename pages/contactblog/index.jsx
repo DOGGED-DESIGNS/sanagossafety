@@ -56,10 +56,10 @@ const index = ({ getindustry }) => {
         <div className="py-4 pl-3 bg-white my-5">
           <h1 className="headtext text-center">Reach out to us</h1>
           <p className="text-center m-auto" style={{ maxWidth: "800px" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consectetur, atque maxime a iusto exercitationem deserunt pariatur
-            rerum ut iste eaque aliquid rem cupiditate amet sequi incidunt
-            nostrum porro impedit
+            We invite you to connect with us today. Whether you have questions,
+            need assistance, or want to explore our services, reaching out to us
+            is the first step towards a tailored and exceptional customer
+            experience
           </p>
         </div>
         {/* <!-- end of blog nav --> */}
