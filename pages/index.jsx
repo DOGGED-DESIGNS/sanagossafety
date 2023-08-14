@@ -17,7 +17,7 @@ export const getServerSideProps = async () => {
 
   const getindustry = await getIndustry();
   const getservice = await getService();
-  const webview = await webviewUpdate();
+  await webviewUpdate();
 
   return {
     props: {
@@ -332,8 +332,9 @@ const Home = ({ getindustry, getservice }) => {
                 small businesses
               </h3>
               <h2>
-                Sanagos is a company supplying various safety epuipments and
-                safety wears for in dustries households and small businesses.
+                Sanagos Sagety, is a company supplying various safety epuipments
+                and safety wears for in dustries households and small
+                businesses.
               </h2>
               <div className="supply__grid2">
                 <div>
@@ -471,8 +472,8 @@ const Home = ({ getindustry, getservice }) => {
                   supplier and trainers nationwide.
                 </h2>
                 <p className="meeting__sch--p">
-                  sanagos has been building relationship that last, serving
-                  impressive list of long-term clients with expertise in
+                  sanagos safety has been building relationship that last,
+                  serving impressive list of long-term clients with expertise in
                   multiple industries recognised as one of the world's leading
                   coperations.
                 </p>
@@ -883,18 +884,15 @@ const Home = ({ getindustry, getservice }) => {
         }}
         className="test"
       >
-        <div className="container-fluid">
+        {/* <div className="container-fluid">
           <h2 className="test__h2">What Our Client Says !</h2>
-          {/* <!-- this is where the fade swiper starts --> */}
 
           <div className="pt-5 swiper testSwiper">
             <div className="swiper-wrapper mb-5">
               <div className="swiper-slide">
                 <div className="test__mover">
                   <p className="test__p">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quam quidem libero provident, iusto dicta laboriosam quaerat
-                    sit quia alias. Perferendis.
+                  Sanagos has been my trusted partner for safety equipment and gears. Their premium quality products and timely deliveries ensure my team's safety without compromise
                   </p>
 
                   <div className="test__people">
@@ -917,10 +915,7 @@ const Home = ({ getindustry, getservice }) => {
               <div className="swiper-slide">
                 <div className="test__mover">
                   <p className="test__p">
-                    aspernatur fugiat voluptatum quisquam enim porro atque
-                    voluptates consectetur. Ab earum est nulla provident! Atque
-                    culpa ab perferendis officiis quo officia magni molestiae
-                    ipsum cumque!
+                  Exceptional service! Sanagos not only offers a wide range of safety gear but also provides expert advice, helping me make informed choices to enhance workplace safety.
                   </p>
 
                   <div className="test__people">
@@ -928,8 +923,8 @@ const Home = ({ getindustry, getservice }) => {
                       <img src="./asset/img/testimg1-8.png" alt="" />
                     </div>
                     <div className="test__name">
-                      <h6>uzoechi Naza</h6>
-                      <p>manager</p>
+                      <h6>Awom Ugumba</h6>
+                      <p>manager at Geotech</p>
                     </div>
                   </div>
 
@@ -943,11 +938,7 @@ const Home = ({ getindustry, getservice }) => {
               <div className="swiper-slide">
                 <div className="test__mover">
                   <p className="test__p">
-                    reiciendis error! Repellat quisquam quis maxime magnam,
-                    doloribus commodi ullam nostrum suscipit inventore animi
-                    dolorum numquam exercitationem modi dolore. Adipisci rem ut
-                    eum? Sapiente, deleniti id. Dolorum distinctio voluptas unde
-                    maxime
+                  Reliability meets innovation with Sanagos. Their cutting-edge safety equipment not only meets industry standards but sets a new benchmark for workplace safety.
                   </p>
 
                   <div className="test__people">
@@ -956,7 +947,7 @@ const Home = ({ getindustry, getservice }) => {
                     </div>
                     <div className="test__name">
                       <h6>uzoechi jeremiah</h6>
-                      <p>manager</p>
+                      <p>Civil Engineeer</p>
                     </div>
                   </div>
 
@@ -968,11 +959,10 @@ const Home = ({ getindustry, getservice }) => {
                 </div>
               </div>
             </div>
-            {/* <!-- <div className="swiper-button-next"></div>
-      <div className="swiper-button-prev"></div> --> */}
+          
             <div className="swiper-pagination"></div>
           </div>
-        </div>
+        </div> */}
       </motion.section>
       <Footermain getindustry={getindustry} />
     </>
