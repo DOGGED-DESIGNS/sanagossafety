@@ -38,7 +38,10 @@ const Footermain = ({ getindustry }) => {
               if you have any problem or need feel free to contact our team
             </p>
             <motion.div variants={supplychild}>
-              <a class="main__nav--call smallnav__call" href="tel:23476176485">
+              <a
+                class="main__nav--call smallnav__call"
+                href="tel:+234 9076 1764 85"
+              >
                 <img class="ml-1" src="/asset/icons/redphone.svg" alt="" />
                 (+234) 907-6176-485
               </a>

@@ -102,7 +102,7 @@ const Navbar = () => {
               <motion.div variants={genchild}>
                 <a
                   className="main__nav--call smallnav__call"
-                  href="tel:23476176485"
+                  href="tel:+234 9076 1764 85"
                 >
                   <img
                     className="ml-1"
@@ -177,7 +177,7 @@ const Navbar = () => {
             </motion.a>
           </motion.div>
           <motion.div variants={genchild}>
-            <a className="main__nav--call" href="tel:23476176485">
+            <a className="main__nav--call" href="tel:+234 9076 1764 85">
               <img className="ml-1" src="/asset/icons/redphone.svg" alt="" />
               (+234) 907-6176-485
             </a>
