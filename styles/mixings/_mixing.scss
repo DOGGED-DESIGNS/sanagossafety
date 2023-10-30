@@ -1,0 +1,179 @@
+$primary-clr: #041c40;
+$accent-clr: #fcf403;
+
+$font-w: 600;
+
+$font-15: 15px;
+$font-12: 12px;
+$font-10: 10px;
+$font-32: 32px;
+$font-40: 40px;
+$font-36: 36px;
+$line-height-30: 30px;
+$line-height-25: 25px;
+$font-25: 25px;
+$font-22: 22px;
+$font-18: 18px;
+$font-500: 500;
+$font-600: 600;
+$font-700: 700;
+$font-800: 800;
+
+@mixin tablet {
+  @media (max-width: 780px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin custom {
+  @media (max-width: 468px) {
+    @content;
+  }
+}
+@mixin custom2 {
+  @media (max-width: 363px) {
+    @content;
+  }
+}
+
+@mixin custom3 {
+  @media (max-width: 771px) {
+    @content;
+  }
+}
+
+.button-sm {
+  @apply bg-doggedsec cursor-pointer
+   hover:bg-stone-700 transition capitalize  text-gray-50 font-popins text-sm   font-bold  rounded-md;
+  text-decoration: none;
+  // display: block;
+  padding: 7px 9px;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@mixin image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.button {
+  @apply bg-doggedsec cursor-pointer hover:bg-stone-700 transition
+   text-gray-50 font-popins text-base capitalize  font-bold  rounded-md;
+  text-decoration: none;
+  // display: block;
+  padding: 12px 15px;
+  @include tablet {
+    @apply text-sm;
+    padding: 9px 12px;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+.button2 {
+  @apply bg-doggedaccent cursor-pointer hover:bg-stone-700 transition
+   text-doggedsec font-popins text-base capitalize  font-bold  rounded-md;
+  text-decoration: none;
+  // display: block;
+  padding: 12px 15px;
+  @include tablet {
+    padding: 9px 12px;
+    @apply text-sm;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.button-lg {
+  @apply bg-doggedsec cursor-pointer hover:bg-stone-700 transition
+   text-gray-50 font-popins   text-lg  capitalize  font-bold  rounded-md;
+  text-decoration: none;
+  // display: block;
+  padding: 15px 18px;
+  @include custom {
+    padding: 10px 13px !important;
+    @apply text-base;
+    // padding:;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@mixin h1 {
+  @apply lg:text-5xl capitalize md:text-4xl my-6 text-4xl text-doggedsec sm:text-2xl  font-bold font-popins;
+}
+
+@mixin h2 {
+  @apply md:text-2xl capitalize  lg:text-3xl my-4  sm:text-xl text-2xl text-doggedsec font-bold font-popins;
+}
+
+@mixin h3 {
+  @apply md:text-lg capitalize lg:text-xl my-3 text-lg text-doggedsec sm:text-base font-bold font-popins;
+}
+
+@mixin h4 {
+  @apply text-base capitalize sm:text-sm  font-popins  font-bold text-doggedsec;
+}
+
+@mixin p {
+  @apply sm:text-sm md:text-base my-2 text-base text-gray-700;
+}
+
+.h1 {
+  @include h1;
+}
+
+.h2 {
+  @include h2;
+}
+.h3 {
+  @include h3;
+}
+.h4 {
+  @include h4;
+}
+
+.p {
+  @include p;
+}
+
+@mixin links {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none !important;
+
+    color: unset !important;
+  }
+}
+
+@mixin genlinkstyle {
+  @apply font-bold text-base capitalize;
+  @include links;
+  position: relative;
+  &:hover::after {
+    position: absolute;
+    content: "";
+    top: 110%;
+    left: 0px;
+    width: 100%;
+
+    @apply transition border-solid border-stone-600 border-b-2 text-doggedsec;
+  }
+}

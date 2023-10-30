@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.38" height="21.996" viewBox="0 0 23.38 21.996">
+  <g id="product" transform="translate(-22.5 -216.494)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(22.5 216.489)">
+      <g id="Layer_1" data-name="Layer 1" transform="translate(0.5 0.511)">
+        <path id="Path_2304" data-name="Path 2304" d="M7.74,1.89a1.15,1.15,0,0,1-.44.91,1.17,1.17,0,0,1-.71.2H6.4a1.16,1.16,0,0,1-1-1.14,1.14,1.14,0,0,1,.66-1h0a1.19,1.19,0,0,1,.46-.1A1.15,1.15,0,0,1,7.74,1.89Z" transform="translate(-0.5 -0.511)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_2305" data-name="Path 2305" d="M12.9,1.65a1.15,1.15,0,0,1-.77,1.09,1,1,0,0,1-.38.07,1.1,1.1,0,0,1-.37-.06,1.15,1.15,0,1,1,1.52-1.1Z" transform="translate(-0.5 -0.511)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_2306" data-name="Path 2306" d="M18,1.89A1.14,1.14,0,0,1,16.85,3h0a1.12,1.12,0,0,1-.63-.2A1.132,1.132,0,1,1,18,1.89Z" transform="translate(-0.5 -0.511)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_209" data-name="Line 209" y1="0.59" x2="1.85" transform="translate(19.39 2.839)" fill="none" stroke="#091d3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_210" data-name="Line 210" x2="1.94" transform="translate(20.44 5.039)" fill="none" stroke="#091d3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_211" data-name="Line 211" x2="1.94" y2="0.74" transform="translate(19.3 6.639)" fill="none" stroke="#091d3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_212" data-name="Line 212" x1="1.9" y1="0.7" transform="translate(1.17 2.689)" fill="none" stroke="#091d3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_213" data-name="Line 213" x1="2" transform="translate(0 5.039)" fill="none" stroke="#091d3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_214" data-name="Line 214" x1="1.9" y2="0.58" transform="translate(1.17 6.759)" fill="none" stroke="#091d3f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="Rectangle_1603" data-name="Rectangle 1603" width="10.53" height="1.57" rx="0.46" transform="translate(5.97 7.009)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_2307" data-name="Path 2307" d="M6.13.83h0" transform="translate(-0.5 -0.511)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_2308" data-name="Path 2308" d="M16.82,3l-.63,4.41H7L6.4,3h.19a1.17,1.17,0,0,0,.71-.2,2.56,2.56,0,0,0,3.3.64,2.73,2.73,0,0,0,.78-.69,1.1,1.1,0,0,0,.37.06,1,1,0,0,0,.38-.07,2.52,2.52,0,0,0,1.1.85,2.56,2.56,0,0,0,3-.75A1.12,1.12,0,0,0,16.82,3Z" transform="translate(-0.5 -0.511)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="Rectangle_1604" data-name="Rectangle 1604" width="17.02" height="2.67" transform="translate(2.65 10.71)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="Rectangle_1605" data-name="Rectangle 1605" width="15.36" height="7.61" transform="translate(3.56 13.38)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+        <rect id="Rectangle_1606" data-name="Rectangle 1606" width="4.86" height="2.33" transform="translate(8.79 13.38)" fill="none" stroke="#091d3f" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

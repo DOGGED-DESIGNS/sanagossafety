@@ -1,0 +1,17 @@
+@import "./mixings/mixing";
+$color-primary: orange;
+
+$cozz: #041c40;
+
+.title {
+  color: $color-primary;
+  @include table;
+}
+
+.primaryz {
+  background: orangered;
+}
+
+.secondaryz {
+  background: whitesmoke;
+}

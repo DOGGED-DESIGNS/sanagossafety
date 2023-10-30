@@ -1,0 +1,28 @@
+.recent {
+  @apply mt-20 bg-doggedsec;
+  padding-top: 106px;
+  padding-bottom: 40px;
+  &__grid {
+    &--card {
+      & > p {
+        max-width: 300px;
+        @apply text-gray-300;
+      }
+    }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+    grid-gap: 70px;
+    &--img {
+      max-width: 360px;
+      height: 208px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      & > img {
+        @include image;
+      }
+    }
+  }
+}

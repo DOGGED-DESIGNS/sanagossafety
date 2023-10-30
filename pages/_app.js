@@ -1,7 +1,7 @@
 // pages/_app.js
 
 import Head from "next/head";
-import "../styles/global.css";
+import "../styles/global.scss";
 import General from "@/context/General";
 
 // import { ThemeProvider } from "@mui/material/styles";
@@ -17,14 +17,16 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Sanagos Safety is a leading safety supplier company dedicated to providing comprehensive safety solutions for businesses and industries nationwide. With over a decade of experience, we have established ourselves as a trusted partner, delivering high-quality safety products as well as safety training to ensure the well-being of both employees and customers."
+          content=" Ikoyi Drug Store @ 2b rumens road off kingsway road
+          "
         />
 
         <meta
           name="keywords"
-          content=" Sanagos Safety, Sanagos, fire extinguisher,nigeria, safety boot, safety helment, fire safety, fire"
+          content=" drug store, pharmacy, ikoyi, delivery, sickness, Rumens road"
         />
         <link rel="stylesheet" href="/final/fontawesome.min.css" />
+        <link rel="stylesheet" href="/final/index.min.css" />
         <link rel="stylesheet" href="/swiper/owl.carousel.min.css" />
         <link rel="stylesheet" href="/swiper/owl.theme.default.css" />
         <link rel="stylesheet" href="/swiper/css/swiper-bundle.min.css" />
@@ -36,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           type="image/x-icon"
           sizes="16x16"
         ></link>
-        <title>SANAGOS SAFETY</title>
+        <title>The Drug Store Ikoyi, Lagos</title>
 
         <script src="/jquery.3.4.1.js?cd=123"></script>
         <script src="/swiper/owl.carousel.min.js"></script>

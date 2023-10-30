@@ -1,0 +1,54 @@
+.foot {
+  &__mover {
+    display: grid;
+    place-items: center;
+    height: 65px;
+    width: 65px;
+    position: absolute;
+    @apply hover:border border-solid border-amber-500 rounded-md;
+
+    top: -50px;
+    right: -10px;
+  }
+  &__grid {
+    &--a {
+      max-width: 300px;
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      & > a {
+        @include genlinkstyle;
+        @include h4;
+      }
+    }
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @apply border-solid  border-b border-doggedsec;
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  &__location {
+    display: grid;
+    grid-gap: 50px;
+    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+    @include tablet {
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+
+    max-width: 672px;
+    @apply rounded-3xl bg-doggedsec m-auto p-5;
+    margin-top: -100px;
+  }
+  @extend .main-big;
+  margin-top: 170px !important;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  @apply bg-doggedaccent;
+}

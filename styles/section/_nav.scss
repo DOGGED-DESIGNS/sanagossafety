@@ -1,0 +1,114 @@
+.nav {
+  @include tablet {
+    display: none;
+  }
+
+  &__link {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    & > a {
+      @apply font-bold text-base capitalize;
+      @include links;
+      position: relative;
+      &:hover::after {
+        position: absolute;
+        content: "";
+        top: 110%;
+        left: 0px;
+        width: 100%;
+
+        @apply transition border-solid border-stone-600 border-b-2 text-doggedsec;
+      }
+    }
+  }
+  @apply py-4;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navsmall {
+  @apply bg-stone-200 py-1;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  &__img {
+    transition: all 0.3s ease-in-out;
+    @apply hover:border p-1 cursor-pointer  border-stone-900  border-solid;
+  }
+  &__menu {
+    display: grid;
+    place-items: center;
+  }
+  display: none;
+  align-items: center;
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  @include tablet {
+    display: block;
+  }
+}
+
+.navtrans {
+  @include custom {
+    width: 250px;
+  }
+  &__close {
+    @apply p-3 cursor-pointer;
+
+    &:hover {
+      @apply bg-doggedaccent rounded-lg;
+    }
+  }
+  width: 400px;
+  height: 100vh;
+  position: fixed;
+  z-index: 20;
+  @apply bg-slate-100 p-3 pt-6;
+  &__link {
+    // @include links;
+
+    & > a {
+      @extend .button;
+      @include h4;
+      & > img {
+        // height: 27px;
+        // width: 27px;
+        margin-right: 19px;
+      }
+      display: flex;
+      transition: all 0.3 ease-in-out;
+      align-items: center;
+      &:hover {
+        @apply text-doggedsec bg-doggedaccent;
+      }
+      @apply text-doggedsec  bg-slate-50 mb-3  rounded-lg;
+    }
+  }
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @apply mb-10;
+  }
+}
+
+.toggle {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  &::after {
+    content: "";
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    @apply bg-doggedsec opacity-50;
+  }
+}
