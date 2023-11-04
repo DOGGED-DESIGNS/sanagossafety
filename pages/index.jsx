@@ -1,74 +1,121 @@
 import React from "react";
 
 import { useState } from "react";
+import Makepost from "@/hooks/makepost";
+// import { motion, AnimatePresence } from "framer-motion";
 
 import { easeInOut, motion, AnimatePresence, delay } from "framer-motion";
 
 const index = () => {
   const [toggle, setToggle] = useState(false);
 
+  const [error, setError] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  const { postmessage, makePost, setPostmessage } = Makepost();
+
+  const handleSubmitz = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    if (
+      e.target.elements.email.value == " " ||
+      e.target.elements.phone.value == "" ||
+      e.target.elements.mess.value == "" ||
+      e.target.elements.name.value == "" ||
+      e.target.elements.budget.value == ""
+    ) {
+      setError(true);
+      setLoading(false);
+    } else {
+      setError(false);
+
+      e.target.elements.email.value == " " ||
+        e.target.elements.phone.value == "" ||
+        e.target.elements.mess.value == "" ||
+        e.target.elements.name.value == "" ||
+        e.target.elements.budget.value == "";
+
+      const form = new FormData();
+
+      console.log(e.target.elements.email.value);
+
+      form.append("message", "addcontact");
+      form.append("name", e.target.elements.name.value);
+      form.append("mess", e.target.elements.mess.value);
+      form.append("email", e.target.elements.email.value);
+      form.append("phone", e.target.elements.phone.value);
+      form.append("budget", e.target.elements.budget.value);
+
+      await makePost(form);
+
+      setLoading(false);
+    }
+  };
+
   return (
     <>
-      <AnimatePresence>
-        {toggle && (
-          <motion.nav
-            initial={{
-              x: "-100%",
-            }}
-            animate={{
-              x: 0,
-            }}
-            transition={{
-              type: "spring",
-              // stiffness: 200,
-              // delay: 0.3,
-            }}
-            exit={{
-              x: "-100%",
-            }}
-            className=" navtrans"
-          >
-            <div className="navtrans__flex">
-              <div className="navtrans__logo">
-                <h4>logo</h4>
-              </div>
-              <div className="">
-                {" "}
-                <div
-                  className="navtrans__close"
-                  onClick={() => {
-                    setToggle(false);
-                  }}
-                >
-                  <img src="/asset/close.svg" alt="" />{" "}
-                </div>
-              </div>
-            </div>
-            <div className="navtrans__link">
-              <a href="" className="   ">
-                {" "}
-                <img src="/asset/home.svg" className=" " alt="" /> home
-              </a>
-              <a href="" className=" ">
-                {" "}
-                <img src="/asset/aboutus.svg" className=" " alt="" /> about us
-              </a>
-              <a href="" className=" h4">
-                {" "}
-                <img src="/asset/product.svg" className=" " alt="" /> Products
-              </a>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
       <main
-        className={toggle && " test toggle"}
+        className={toggle && " togglez"}
         onClick={() => {
           if (toggle) {
             setToggle(false);
           }
         }}
       >
+        <AnimatePresence>
+          {toggle && (
+            <motion.nav
+              initial={{
+                x: "-100%",
+              }}
+              animate={{
+                x: 0,
+              }}
+              transition={{
+                type: "spring",
+                // stiffness: 200,
+                // delay: 0.3,
+              }}
+              exit={{
+                x: "-100%",
+              }}
+              className=" navtrans"
+            >
+              <div className="navtrans__flex">
+                <div className="navtrans__logo">
+                  <h4>logo</h4>
+                </div>
+                <div className="">
+                  {" "}
+                  <div
+                    className="navtrans__close"
+                    onClick={() => {
+                      setToggle(false);
+                    }}
+                  >
+                    <img src="/asset/close.svg" alt="" />{" "}
+                  </div>
+                </div>
+              </div>
+              <div className="navtrans__link">
+                <a href="" className="   ">
+                  {" "}
+                  <img src="/asset/home.svg" className=" " alt="" /> home
+                </a>
+                <a href="" className=" ">
+                  {" "}
+                  <img src="/asset/aboutus.svg" className=" " alt="" /> about us
+                </a>
+                <a href="" className=" h4">
+                  {" "}
+                  <img src="/asset/product.svg" className=" " alt="" /> Products
+                </a>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
         <nav className=" main-big   ">
           <div className="nav  main ">
             <div className=" logo"> this is the log </div>
@@ -420,34 +467,142 @@ const index = () => {
               </div>
             </div>
             <div>
-              <div className=" reach__grid--form">
+              {/* feedback message */}
+
+              <AnimatePresence>
+                {error && (
+                  <motion.div
+                    initial={{
+                      x: "-100%",
+                      opacity: 0,
+                    }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                    }}
+                    transition={{
+                      type: "spring",
+
+                      // stiffness: 200,
+                      // delay: 0.3,
+                    }}
+                    exit={{
+                      x: "-100%",
+                      opacity: 0,
+                    }}
+                    className="mess error"
+                  >
+                    <div className="">
+                      <img className="error" src="/asset/error.svg" alt="" />
+                      <img
+                        className="success"
+                        src="/asset/success.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="mess__message">
+                      {" "}
+                      kindly fill all form fields{" "}
+                    </div>
+                    <div>
+                      <div
+                        onClick={() => {
+                          setError(false);
+                        }}
+                        className="mess__close"
+                      >
+                        <img src="/asset/closegray.svg" alt="" />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <AnimatePresence>
+                {postmessage?.message && (
+                  <motion.div
+                    initial={{
+                      x: "-100%",
+                      opacity: 0,
+                    }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                    }}
+                    transition={{
+                      type: "spring",
+
+                      // stiffness: 200,
+                      // delay: 0.3,
+                    }}
+                    exit={{
+                      x: "-100%",
+                      opacity: 0,
+                    }}
+                    className={`mess ${postmessage.type}`}
+                  >
+                    <div className="">
+                      <img className="error" src="/asset/error.svg" alt="" />
+                      <img
+                        className="success"
+                        src="/asset/success.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="mess__message">{postmessage.message}</div>
+                    <div>
+                      <div
+                        onClick={() => {
+                          setPostmessage({});
+                        }}
+                        className="mess__close"
+                      >
+                        <img src="/asset/closegray.svg" alt="" />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* end of feedback message */}
+              <form onSubmit={handleSubmitz} className=" reach__grid--form">
                 <label htmlFor="" className="   h4">
                   {" "}
                   name{" "}
                 </label>
-                <input type="text" />
+                <input type="text" name="name" />
                 <label htmlFor="" className=" h4  ">
                   {" "}
                   email{" "}
                 </label>
-                <input type="text" max={5} />
+                <input name="email" type="email" />
                 <label htmlFor="" className=" h4">
                   {" "}
                   phone number{" "}
                 </label>
-                <input type="number" />
+                <input type="number" name="phone" />
                 <label htmlFor="" className=" h4">
                   {" "}
                   budget{" "}
                 </label>
-                <input type="number" maxLength={20} />
+                <input type="number" name="budget" maxLength={20} />
                 <label htmlFor="" className=" h4">
                   {" "}
                   How can we help you?{" "}
                 </label>
-                <textarea name="" id="" cols="30" rows="5"></textarea>
-                <button className="button2">submit</button>
-              </div>
+                <textarea
+                  name="mess"
+                  id=""
+                  maxLength={200}
+                  cols="30"
+                  rows="5"
+                ></textarea>
+                <button type="submit" className="button2">
+                  {loading ? "please wait ..." : "submit"}
+                </button>
+              </form>
+
+              {/* end of the form */}
             </div>
           </div>
         </section>

@@ -1,0 +1,11 @@
+.about {
+  &__grid {
+    display: grid;
+    @apply mt-20 border;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+}

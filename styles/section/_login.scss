@@ -1,0 +1,22 @@
+.login {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  @apply bg-adminpry;
+  &__form {
+    max-width: 398px;
+    @apply bg-adminsec p-10 rounded-lg;
+    & > input {
+      @extend .input;
+    }
+  }
+
+  &__nav {
+    @apply bg-adminsec p-3 rounded-xl;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+  }
+}

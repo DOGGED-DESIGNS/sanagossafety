@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
 
         <meta
           name="keywords"
-          content=" drug store, pharmacy, ikoyi, delivery, sickness, Rumens road"
+          content=" building construction, design, flooring, 3d design, bencodelight, ben co delight "
         />
         <link rel="stylesheet" href="/final/fontawesome.min.css" />
         <link rel="stylesheet" href="/final/index.min.css" />
@@ -32,13 +32,13 @@ function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="/swiper/css/swiper-bundle.min.css" />
         {/* <link rel="stylesheet" href="./final/index.min.css" /> */}
         {/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> */}
-        <link
+        {/* <link
           rel="icon"
           href="/favicon.ico"
           type="image/x-icon"
           sizes="16x16"
-        ></link>
-        <title>The Drug Store Ikoyi, Lagos</title>
+        ></link> */}
+        <title>Benco De Light Limited</title>
 
         <script src="/jquery.3.4.1.js?cd=123"></script>
         <script src="/swiper/owl.carousel.min.js"></script>

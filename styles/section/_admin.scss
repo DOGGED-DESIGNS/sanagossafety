@@ -1,11 +1,113 @@
 .admin {
+  &__tablecon {
+    @apply mt-8 pb-7;
+    overflow: hidden;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      // height: 1px !important;
+      width: 0px;
+      height: 0px;
+      @apply bg-doggedsec rounded-xl;
+    }
+    &::-webkit-scrollbar-track {
+      @apply bg-slate-400;
+      width: 50px !important;
+    }
+    &::-webkit-scrollbar-button {
+      height: 0px;
+    }
+  }
+  &__table {
+    &--head {
+      display: grid;
+      width: 1000px;
+      gap: 10px;
+      @apply my-4 m-auto p-4;
+      grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr;
+    }
+    &--body {
+      &--time {
+        display: flex;
+        align-items: center;
+        @include p;
+        & > img {
+          height: 14px;
+          @apply mr-2;
+        }
+      }
+      display: grid;
+      @apply my-2;
+      gap: 20px;
+      width: 1000px;
+      margin: auto;
+      grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr;
+      @apply rounded-2xl bg-adminsec p-4;
+    }
+  }
   @apply bg-adminpry;
   display: flex;
   min-height: 100vh;
   &__main {
+    &--nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @apply cursor-pointer;
+      &--menu {
+        & > img {
+          height: 18px;
+        }
+        &:hover {
+          @apply bg-adminpry;
+        }
+      }
+    }
+    &--cardinfo {
+      & > h2 {
+        @apply text-white;
+      }
+      & > p {
+        @apply capitalize text-stone-50;
+      }
+    }
+    &--info {
+      display: grid;
+      grid-gap: 20px;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include custom {
+        grid-template-columns: 1fr;
+      }
+    }
+    &--card {
+      @apply rounded-3xl;
+      padding: 20px 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      &--img {
+        height: 70px;
+        width: 70px;
+        @apply rounded-full;
+        background: rgba(255, 255, 255, 0.429);
+        display: grid;
+        place-items: center;
+        & > img {
+          height: 35px;
+          // width: 35px;
+        }
+      }
+    }
     height: 100vh;
     width: 100%;
-    @apply border;
     overflow: auto;
     @apply p-4;
     &--nav {
@@ -15,9 +117,19 @@
   }
 }
 
+// side nav
+
 .sidenav {
   &__extra {
-    @apply mt-auto;
+    @apply mt-auto border-t pt-6 pb-7;
+    &--a {
+      @include h4;
+      display: flex;
+      align-items: center;
+      & > img {
+        @apply mr-2;
+      }
+    }
   }
   @apply bg-adminsec p-3 pt-4;
   display: flex;
@@ -25,6 +137,14 @@
   height: 100vh;
   width: 300px;
   overflow: scroll;
+  @include tablet {
+    position: fixed;
+    width: 200px;
+  }
+  // scroll settings
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
   &__logo {
     @apply mb-10 border;
   }

@@ -177,3 +177,14 @@ $font-800: 800;
     @apply transition border-solid border-stone-600 border-b-2 text-doggedsec;
   }
 }
+
+.input {
+  width: 100%;
+  padding: 10px 16px;
+
+  @apply border-solid border-2 font-popins text-base text-stone-600 border-stone-400 rounded-lg  mb-4;
+
+  &:focus {
+    @apply border-solid border-2 border-stone-800;
+  }
+}

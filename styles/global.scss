@@ -31,6 +31,9 @@ a {
 @import "./section/footer";
 @import "./section/admin";
 
+@import "./section/login";
+@import "./section/about";
+
 @layer base {
   h1 {
     @include h1;
