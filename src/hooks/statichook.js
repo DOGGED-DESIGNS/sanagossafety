@@ -12,7 +12,7 @@ import { Generalget } from "@/context/General";
 const Statichook = () => {
   const displayrecent = async () => {
     const data = await axios.post(
-      "http://localhost/martinsApi/process.php",
+      "https://jeffmatthewpatten.com/ben/process.php",
       {
         message: "getcontact",
       },
@@ -29,7 +29,7 @@ const Statichook = () => {
   // this is count contact
   const countContact = async () => {
     const data = await axios.post(
-      "http://localhost/martinsApi/process.php",
+      "https://jeffmatthewpatten.com/ben/process.php",
       {
         message: "count",
       },
