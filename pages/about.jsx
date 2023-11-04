@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useState } from "react";
+import Footer from "../comps/Footer";
 
 import { easeInOut, motion, AnimatePresence, delay } from "framer-motion";
 
@@ -52,17 +53,17 @@ const index = () => {
                 </div>
               </div>
               <div className="navtrans__link">
-                <a href="" className="   ">
+                <a href="/" className="   ">
                   {" "}
                   <img src="/asset/home.svg" className=" " alt="" /> home
                 </a>
-                <a href="" className=" ">
+                <a href="/about" className=" ">
                   {" "}
                   <img src="/asset/aboutus.svg" className=" " alt="" /> about us
                 </a>
-                <a href="" className=" h4">
+                <a href="/designs" className=" h4">
                   {" "}
-                  <img src="/asset/product.svg" className=" " alt="" /> Products
+                  <img src="/asset/product.svg" className=" " alt="" /> Designs
                 </a>
               </div>
             </motion.nav>
@@ -72,9 +73,9 @@ const index = () => {
           <div className="nav  main ">
             <div className=" logo"> this is the log </div>
             <div className=" nav__link">
-              <a href=""> Home </a>
-              <a href=""> about </a>
-              <a href=""> products </a>
+              <a href="/"> Home </a>
+              <a href="/about"> about </a>
+              <a href="/designs"> designs </a>
             </div>
             <div className=" ">
               <a className=" button-sm"> contact </a>
@@ -137,6 +138,7 @@ const index = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

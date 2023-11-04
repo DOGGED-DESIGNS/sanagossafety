@@ -2,6 +2,7 @@ import React from "react";
 
 import { useState } from "react";
 import Makepost from "@/hooks/makepost";
+import Footer from "../comps/Footer";
 // import { motion, AnimatePresence } from "framer-motion";
 
 import { easeInOut, motion, AnimatePresence, delay } from "framer-motion";
@@ -100,17 +101,17 @@ const index = () => {
                 </div>
               </div>
               <div className="navtrans__link">
-                <a href="" className="   ">
+                <a href="/" className="   ">
                   {" "}
                   <img src="/asset/home.svg" className=" " alt="" /> home
                 </a>
-                <a href="" className=" ">
+                <a href="/about" className=" ">
                   {" "}
                   <img src="/asset/aboutus.svg" className=" " alt="" /> about us
                 </a>
-                <a href="" className=" h4">
+                <a href="/designs" className=" h4">
                   {" "}
-                  <img src="/asset/product.svg" className=" " alt="" /> Products
+                  <img src="/asset/product.svg" className=" " alt="" /> Designs
                 </a>
               </div>
             </motion.nav>
@@ -120,9 +121,9 @@ const index = () => {
           <div className="nav  main ">
             <div className=" logo"> this is the log </div>
             <div className=" nav__link">
-              <a href=""> Home </a>
-              <a href=""> about </a>
-              <a href=""> products </a>
+              <a href="/"> Home </a>
+              <a href="/about"> about </a>
+              <a href="/designs"> designs </a>
             </div>
             <div className=" ">
               <a className=" button-sm"> contact </a>
@@ -609,75 +610,7 @@ const index = () => {
 
         {/* footer */}
 
-        <footer className=" foot  ">
-          <div className=" main">
-            <div className="  foot__location">
-              <motion.a
-                initial={{
-                  y: 10,
-                }}
-                animate={{
-                  y: -15,
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 0.3,
-                  type: "spring",
-                  stiffness: 500,
-                }}
-                className="foot__mover"
-                href="tel: +2349076176483"
-              >
-                <img src="/asset/watsapp.svg" alt="" />
-              </motion.a>
-              <div>
-                <div className="foot__location--contact">
-                  <h3 className=" text-slate-200">location</h3>
-                  <p className="  text-slate-500">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quos
-                  </p>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <h3 className=" text-slate-200">contact</h3>
-                  <p className="  text-slate-500">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quos
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* footer grid */}
-
-          <div className="foot__grid main ">
-            <div>
-              <div className="foot__grid--logo">this is te logo</div>
-            </div>
-            <div>
-              <div className=" foot__grid--a">
-                <a href="#">home</a>
-                <a href="#">about</a>
-                <a href="#">products</a>
-              </div>
-            </div>
-            <div>
-              <div className=" sm:mt-7 md:mt-0 foot__grid--button">
-                <button className="button"> free consultation </button>
-              </div>
-            </div>
-          </div>
-
-          <div className=" main ">
-            <h4 className=" text-center pt-7">
-              {" "}
-              all right reserved &copy; 2023
-            </h4>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );

@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
 
         <meta
           name="keywords"
-          content=" building construction, design, flooring, 3d design, bencodelight, ben co delight "
+          content=" building construction, design, flooring, 3d design, bencodelight, ben co de light limited "
         />
         <link rel="stylesheet" href="/final/fontawesome.min.css" />
         <link rel="stylesheet" href="/final/index.min.css" />

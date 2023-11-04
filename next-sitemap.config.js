@@ -1,10 +1,10 @@
-const siteUrl = "https://www.sanagossafety.com/";
+const siteUrl = "www.bencodelightlimited.com";
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
-      { userAgent: "*", disallow: "/admin/" },
+      { userAgent: "*", disallow: "/home" },
       { userAgent: "*", disallow: "/login" },
       { userAgent: "*", allow: "/" },
     ],
