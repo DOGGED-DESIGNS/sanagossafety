@@ -36,8 +36,8 @@ const index = () => {
               className=" navtrans"
             >
               <div className="navtrans__flex">
-                <div className="navtrans__logo">
-                  <h4>logo</h4>
+                <div className="navtrans__logo ">
+                  <img src="/asset/bensmallestlogo.svg" alt="" />
                 </div>
                 <div className="">
                   {" "}
@@ -62,7 +62,37 @@ const index = () => {
                 </a>
                 <a href="/designs" className=" h4">
                   {" "}
-                  <img src="/asset/product.svg" className=" " alt="" /> designs
+                  <img src="/asset/product.svg" className=" " alt="" /> Designs
+                </a>
+              </div>
+              <div className=" flex gap-7 mb-4 mt-5 pt-3 border-t-2 foot__grid--link">
+                <a
+                  href=""
+                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+                >
+                  {" "}
+                  <img src="/asset/facebook.svg" alt="" />{" "}
+                </a>
+                <a
+                  href=""
+                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+                >
+                  {" "}
+                  <img src="/asset/instagram.svg" alt="" />{" "}
+                </a>
+                <a
+                  href=""
+                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+                >
+                  {" "}
+                  <img src="/asset/twitter.svg" alt="" />{" "}
+                </a>
+                <a
+                  href=""
+                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+                >
+                  {" "}
+                  <img src="/asset/email.svg" alt="" />{" "}
                 </a>
               </div>
             </motion.nav>
@@ -70,11 +100,37 @@ const index = () => {
         </AnimatePresence>
         <nav className=" main-big   ">
           <div className="nav  main ">
-            <div className=" logo"> this is the log </div>
+            <div className=" logo">
+              {" "}
+              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+            </div>
             <div className=" nav__link">
               <a href="/"> Home </a>
               <a href="/about"> about </a>
               <a href="/designs"> designs </a>
+            </div>
+            <div className=" flex gap-7  foot__grid--link">
+              <a
+                href=""
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                {" "}
+                <img src="/asset/facebook.svg" alt="" />{" "}
+              </a>
+              <a
+                href=""
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                {" "}
+                <img src="/asset/instagram.svg" alt="" />{" "}
+              </a>
+              <a
+                href=""
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                {" "}
+                <img src="/asset/twitter.svg" alt="" />{" "}
+              </a>
             </div>
             <div className=" ">
               <a className=" button-sm"> contact </a>
@@ -84,10 +140,10 @@ const index = () => {
 
         {/* nav 2 */}
 
-        <nav className="navsmall  main-big">
+        <nav className="navsmall main-big">
           <div className=" main navsmall__flex">
             <div>
-              <h3>logo</h3>
+              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
             </div>
             <div
               className=" navsmall__menu"

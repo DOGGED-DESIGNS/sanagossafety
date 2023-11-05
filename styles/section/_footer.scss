@@ -11,6 +11,8 @@
     right: -10px;
   }
   &__grid {
+    & > div {
+    }
     &--logo {
       height: 50px;
     }

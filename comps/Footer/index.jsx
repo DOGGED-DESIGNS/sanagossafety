@@ -51,6 +51,48 @@ const index = () => {
             <div className="foot__grid--logo ">
               <img src="/asset/benmediumlogo.svg" alt="" />{" "}
             </div>
+            <div className=" flex gap-7 mb-4 mt-5 foot__grid--link">
+              <a
+                href=""
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                {" "}
+                <img src="/asset/facebook.svg" alt="" />{" "}
+              </a>
+              <a
+                href=""
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                {" "}
+                <img src="/asset/instagram.svg" alt="" />{" "}
+              </a>
+              <a
+                href=""
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                {" "}
+                <img src="/asset/twitter.svg" alt="" />{" "}
+              </a>
+            </div>
+
+            <div
+              className="  flex gap-2 flex-wrap "
+              style={{
+                alignItems: "center",
+              }}
+            >
+              <a
+                href=""
+                style={{
+                  width: "30px",
+                  height: "30px",
+                }}
+                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
+              >
+                <img src="/asset/email.svg" alt="" />
+              </a>
+              <h4>bencodelightlimited @ gmail.com</h4>
+            </div>
           </div>
           <div>
             <div className=" foot__grid--a">

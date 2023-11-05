@@ -1,7 +1,7 @@
 .about {
   &__grid {
     display: grid;
-    @apply mt-20 border;
+    @apply mt-20;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
     @include tablet {
