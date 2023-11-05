@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content=" Ikoyi Drug Store @ 2b rumens road off kingsway road
+          content=" Benco de light limited is a Construction Company, we providing you with a dynamic and innovative design and construction of residential properties. We take pride in our ability to create exceptional homes tailored to our clients' dreams and needs.
           "
         />
 
@@ -37,7 +37,8 @@ function MyApp({ Component, pageProps }) {
           href="/favicon.ico"
           type="image/x-icon"
           sizes="16x16"
-        ></link> */}
+        /> */}
+        <link rel="icon" href="/ben.ico" type="image/x-icon" sizes="32x32" />
         <title>Benco De Light Limited</title>
 
         <script src="/jquery.3.4.1.js?cd=123"></script>

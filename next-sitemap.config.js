@@ -1,4 +1,4 @@
-const siteUrl = "www.bencodelightlimited.com";
+const siteUrl = "https://www.bencodelightlimited.com.ng/";
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
