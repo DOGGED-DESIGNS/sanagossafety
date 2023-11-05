@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Makepost from "@/hooks/makepost";
 import Footer from "../comps/Footer";
 // import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,141 @@ import Footer from "../comps/Footer";
 import { easeInOut, motion, AnimatePresence, delay } from "framer-motion";
 
 const index = () => {
+  useEffect(() => {
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      effect: "fade",
+      autoplay: {
+        delay: 5000, // Set the delay between lside transitions (in milliseconds)
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+    });
+
+    // this is the second fade
+
+    // second script swiper for scroll
+
+    var swiperz = new Swiper(".iconSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        520: {
+          slidesPerView: 3,
+        },
+        950: {
+          slidesPerView: 4,
+        },
+      },
+      autoplay: {
+        delay: 2000, // Set the delay between lside transitions (in milliseconds)
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+    // third swiper for scroll
+    var swiperz = new Swiper(".swiperService", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        520: {
+          slidesPerView: 2,
+        },
+        950: {
+          slidesPerView: 2,
+        },
+      },
+      autoplay: {
+        delay: 2000, // Set the delay between lside transitions (in milliseconds)
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+    var swipertest = new Swiper(".testSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        520: {
+          slidesPerView: 1,
+        },
+        950: {
+          slidesPerView: 1,
+        },
+      },
+      autoplay: {
+        delay: 2000, // Set the delay between lside transitions (in milliseconds)
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+    $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+        items: 3,
+        loop: true,
+        margin: 10,
+        dots: false,
+        nav: false, // Disable default navigation
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items: 1,
+          },
+        },
+      });
+
+      // Custom Navigation
+      $(".custom-next").click(function () {
+        $(".owl-carousel").trigger("next.owl.carousel");
+      });
+
+      $(".custom-prev").click(function () {
+        $(".owl-carousel").trigger("prev.owl.carousel");
+      });
+    });
+  }, []);
+
   const [toggle, setToggle] = useState(false);
 
   const [error, setError] = useState(false);
@@ -85,8 +220,8 @@ const index = () => {
               className=" navtrans"
             >
               <div className="navtrans__flex">
-                <div className="navtrans__logo">
-                  <h4>logo</h4>
+                <div className="navtrans__logo ">
+                  <img src="/asset/bensmallestlogo.svg" alt="" />
                 </div>
                 <div className="">
                   {" "}
@@ -119,7 +254,10 @@ const index = () => {
         </AnimatePresence>
         <nav className=" main-big   ">
           <div className="nav  main ">
-            <div className=" logo"> this is the log </div>
+            <div className=" logo">
+              {" "}
+              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+            </div>
             <div className=" nav__link">
               <a href="/"> Home </a>
               <a href="/about"> about </a>
@@ -136,7 +274,7 @@ const index = () => {
         <nav className="navsmall main-big">
           <div className=" main navsmall__flex">
             <div>
-              <h3>logo</h3>
+              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
             </div>
             <div
               className=" navsmall__menu"
@@ -153,9 +291,46 @@ const index = () => {
           <div></div>
         </nav>
         {/* second nav */}
+        {/* <div className="swiper mySwiper">
+            <div className="swiper-wrapper">
+              <div className="main__header--img swiper-slide">
+                <img className="" src="./asset/img/desk1-8.png" alt="" />
+              </div>
 
-        <header className=" main-big header">
-          <img src="/asset/gen.jpg" />
+              <div className="main__header--img swiper-slide">
+                <img
+                  className=""
+                  src="./asset/img/istockphoto-144877527-612x612.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="main__header--img swiper-slide">
+                <img
+                  className=""
+                  src="./asset/img/istockphoto-1466908062-612x612.jpg"
+                  alt=""
+                />
+              </div>
+
+               <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev"></div> 
+              <div className="swiper-pagination"></div>
+            </div>
+          </div> */}
+
+        <header className=" main-big header swiper mySwiper ">
+          <div className="swiper-wrapper">
+            <div className=" swiper-slide ">
+              <img className="header__img" src="/asset/img/banner5.png" />
+            </div>
+            <div className="swiper-slide">
+              <img className="header__img" src="/asset/img/banner4.png" />
+            </div>
+            <div className="swiper-slide">
+              <img className="header__img" src="/asset/img/banner3.png" />
+            </div>
+          </div>
+
           <div className="  construct ">
             <div className=" construct__div1">
               <h1 className=" leading-normal  capitalize text-white ">
@@ -209,7 +384,7 @@ const index = () => {
           <div className=" main  service__grid">
             <div>
               <div className=" service__grid--img">
-                <img src="/asset/gen.jpg" />
+                <img src="/asset/img/banner3.png" />
               </div>
             </div>
             <div>
@@ -226,43 +401,43 @@ const index = () => {
               <div className=" smallcard">
                 <div>
                   <div className="smallcard__card">
-                    <img src="/asset/gen.jpg" alt="" />
+                    <img src="/asset/img/imagebig1.png" alt="" />
                     <div className=" smallcard__card--move">
                       <img src="/asset/01.svg" alt="" />
                       <p className=" text-stone-50 font-bold capitalize ">
                         {" "}
-                        flooring{" "}
+                        general_construction
                       </p>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="smallcard__card">
-                    <img src="/asset/gen.jpg" alt="" />
+                    <img src="/asset/img/interiorserviceimg1.png" alt="" />
                     <div className="smallcard__card--move">
                       <img src="/asset/02.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        flooring{" "}
+                        3D modelling
                       </p>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="smallcard__card">
-                    <img src="/asset/gen.jpg" alt="" />
+                    <img src="/asset/img/interiorserviceimg2.png" alt="" />
                     <div className="smallcard__card--move">
                       <img src="/asset/03.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        flooring{" "}
+                        interior decoration
                       </p>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="smallcard__card">
-                    <img src="/asset/gen.jpg" alt="" />
+                    <img src="/asset/img/interiorserviceimg3.png" alt="" />
                     <div className="smallcard__card--move">
                       <img src="/asset/04.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
@@ -274,24 +449,24 @@ const index = () => {
                 </div>
                 <div>
                   <div className="smallcard__card">
-                    <img src="/asset/gen.jpg" alt="" />
+                    <img src="/asset/img/serviceimg5.png" alt="" />
                     <div className="smallcard__card--move">
                       <img src="/asset/05.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        flooring{" "}
+                        structural designs
                       </p>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="smallcard__card">
-                    <img src="/asset/gen.jpg" alt="" />
+                    <img src="/asset/img/serviceimg6.png" alt="" />
                     <div className="smallcard__card--move">
                       <img src="/asset/06.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        flooring{" "}
+                        achitectural services
                       </p>
                     </div>
                   </div>
@@ -311,7 +486,7 @@ const index = () => {
             <div>
               <div className=" recent__grid--card">
                 <div className=" recent__grid--img">
-                  <img src="/asset/gen.jpg" alt="" />
+                  <img src="/asset/img/imagebig3.png" alt="" />
                 </div>
                 <h3 className="  mb-3 text-white font-bold  ">Project# 1</h3>
                 <p className=" mb-12 ">
@@ -320,7 +495,7 @@ const index = () => {
                   voluptas dolorem dolorum obcaecati excepturi temporibus velit.
                   Dolore ducimus necessitatibus sunt id?
                 </p>
-                <a href="#" className="  button2">
+                <a href="/designs" className="  button2">
                   see details
                 </a>
               </div>
@@ -328,16 +503,16 @@ const index = () => {
             <div>
               <div className=" recent__grid--card">
                 <div className=" recent__grid--img">
-                  <img src="/asset/gen.jpg" alt="" />
+                  <img src="/asset/img/imagebig2.png" alt="" />
                 </div>
-                <h3 className="  mb-3 text-white font-bold  ">Project# 1</h3>
+                <h3 className="  mb-3 text-white font-bold  ">Project# 2</h3>
                 <p className=" mb-12 ">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Dignissimos, modi! Fugit ea veniam magni porro unde, rem eos
                   voluptas dolorem dolorum obcaecati excepturi temporibus velit.
                   Dolore ducimus necessitatibus sunt id?
                 </p>
-                <a href="#" className="  button2">
+                <a href="/designs" className="  button2">
                   see details
                 </a>
               </div>
@@ -345,16 +520,16 @@ const index = () => {
             <div>
               <div className=" recent__grid--card">
                 <div className=" recent__grid--img">
-                  <img src="/asset/gen.jpg" alt="" />
+                  <img src="/asset/img/imagebig1.png" alt="" />
                 </div>
-                <h3 className="  mb-3 text-white font-bold  ">Project# 1</h3>
+                <h3 className="  mb-3 text-white font-bold  ">Project# 3</h3>
                 <p className=" mb-12">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Dignissimos, modi! Fugit ea veniam magni porro unde, rem eos
                   voluptas dolorem dolorum obcaecati excepturi temporibus velit.
                   Dolore ducimus necessitatibus sunt id?
                 </p>
-                <a href="#" className="  button2">
+                <a href="/designs" className="  button2">
                   see details
                 </a>
               </div>
@@ -370,26 +545,48 @@ const index = () => {
           </div>
           <div className="  opinion__grid">
             <div className="opinion__grid--img1">
-              <img src="/asset/gen.jpg" alt="" />
+              <img src="/asset/img/imagebig3.png" alt="" />
             </div>
             <div className=" opinion__grid--img2">
-              <img src="/asset/gen.jpg" alt="" />
-              <div className=" opinion__mover">
-                <p className=" font-bold text-white">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est,
-                  id.
-                </p>
-                <h3>Manager</h3>
+              <img src="/asset/img/imagebig2.png" alt="" />
+              <div className=" owl-carousel owl-theme opinion__mover">
+                <div className="item  ">
+                  <p className=" font-semibold  ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequunt
+                  </p>
+                  <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
+                    Manager
+                  </h4>
+                </div>
+                <div className="item  ">
+                  <p className=" font-semibold  ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequunt
+                  </p>
+                  <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
+                    Manager
+                  </h4>
+                </div>
+                <div className="item  ">
+                  <p className=" font-semibold  ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequunt
+                  </p>
+                  <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
+                    Manager
+                  </h4>
+                </div>
               </div>
-              <button className="roundbutton roundbutton__left ">
+              <button className=" custom-next roundbutton roundbutton__left ">
                 <img src="/asset/left.svg" />{" "}
               </button>
-              <button className="roundbutton roundbutton__right">
+              <button className=" custom-prev roundbutton roundbutton__right">
                 <img src="/asset/right.svg" />
               </button>
             </div>
             <div className="opinion__grid--img1">
-              <img src="/asset/gen.jpg" alt="" />
+              <img src="/asset/img/imagebig1.png" alt="" />
             </div>
           </div>
         </section>
@@ -464,7 +661,7 @@ const index = () => {
           <div className=" main reach__grid">
             <div>
               <div className="reach__grid--img">
-                <img src="/asset/gen.jpg" alt="" />
+                <img src="/asset/img/banner4.png" alt="" />
               </div>
             </div>
             <div>

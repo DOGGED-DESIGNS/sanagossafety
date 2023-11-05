@@ -4,12 +4,16 @@
   padding-bottom: 40px;
   &__mover {
     position: absolute;
-    bottom: 15px;
+    & > div {
+      width: 100%;
+    }
+    // bottom: 15px;
     left: 10px;
     top: 200px;
+    max-width: 96%;
     right: 10px;
-    @apply p-7 rounded-xl;
-    background: hsla(58, 98%, 50%, 0.594);
+    @apply p-4 rounded-xl;
+    background: hsla(58, 98%, 50%, 0.71);
   }
   &__grid {
     display: grid;

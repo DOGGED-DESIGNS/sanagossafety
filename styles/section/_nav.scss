@@ -55,6 +55,13 @@
 }
 
 .navtrans {
+  &__logo {
+    height: 45px;
+    // width: 45px;
+    & > img {
+      @include image;
+    }
+  }
   @include custom {
     width: 250px;
   }

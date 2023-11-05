@@ -38,7 +38,7 @@ const index = () => {
             >
               <div className="navtrans__flex">
                 <div className="navtrans__logo">
-                  <h4>logo</h4>
+                  <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
                 </div>
                 <div className="">
                   {" "}
@@ -71,7 +71,10 @@ const index = () => {
         </AnimatePresence>
         <nav className=" main-big   ">
           <div className="nav  main ">
-            <div className=" logo"> this is the log </div>
+            <div className=" logo">
+              {" "}
+              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+            </div>
             <div className=" nav__link">
               <a href="/"> Home </a>
               <a href="/about"> about </a>
@@ -88,7 +91,7 @@ const index = () => {
         <nav className="navsmall  main-big">
           <div className=" main navsmall__flex">
             <div>
-              <h3>logo</h3>
+              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
             </div>
             <div
               className=" navsmall__menu"
@@ -117,7 +120,7 @@ const index = () => {
         <div className="  about__grid">
           <div>
             <div className=" about__grid--img">
-              <h4>logo or image goes here</h4>
+              <img src="/asset/benbiggestlogo.svg" alt="" />{" "}
             </div>
           </div>
 

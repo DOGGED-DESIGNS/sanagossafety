@@ -48,7 +48,9 @@ const index = () => {
 
         <div className="foot__grid main ">
           <div>
-            <div className="foot__grid--logo">this is te logo</div>
+            <div className="foot__grid--logo ">
+              <img src="/asset/benmediumlogo.svg" alt="" />{" "}
+            </div>
           </div>
           <div>
             <div className=" foot__grid--a">

@@ -11,6 +11,9 @@
     right: -10px;
   }
   &__grid {
+    &--logo {
+      height: 50px;
+    }
     &--a {
       max-width: 300px;
       display: flex;

@@ -27,7 +27,7 @@
 .smallcard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 50px;
+  grid-gap: 20px;
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -61,7 +61,7 @@
     overflow: hidden;
     height: 102px;
     @apply rounded-lg border cursor-pointer;
-    max-width: 178px;
+    max-width: 300px;
     @include custom {
       margin: auto;
     }
