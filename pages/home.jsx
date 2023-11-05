@@ -57,7 +57,7 @@ const index = ({ count, data }) => {
             >
               <div className=" ">
                 <div className="sidenav__logo">
-                  <h4>logo</h4>
+                  <img src="/asset/bensmallestlogo.svg" alt="" />
                 </div>
               </div>
 
@@ -108,7 +108,9 @@ const index = ({ count, data }) => {
         <main className="admin__main">
           <nav className="admin__main--nav">
             <div>
-              <h4>nav</h4>
+              <a href="/home">
+                <img src="/asset/bensmallestlogo.svg" alt="" />
+              </a>
             </div>
 
             <div>
