@@ -84,7 +84,7 @@ const index = ({ data }) => {
     <>
       <nav className=" main-big">
         <div className="login__nav">
-          <h3>logo</h3>
+          <img src="/asset/smallestnav.png" alt="" />
         </div>
       </nav>
       <div className="login">

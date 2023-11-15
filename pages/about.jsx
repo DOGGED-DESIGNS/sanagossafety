@@ -38,7 +38,7 @@ const index = () => {
             >
               <div className="navtrans__flex">
                 <div className="navtrans__logo ">
-                  <img src="/asset/bensmallestlogo.svg" alt="" />
+                  <img src="/asset/smallestnav.png" alt="" />
                 </div>
                 <div className="">
                   {" "}
@@ -68,32 +68,18 @@ const index = () => {
               </div>
               <div className=" flex gap-7 mb-4 mt-5 pt-3 border-t-2 foot__grid--link">
                 <a
-                  href=""
+                  href="https://www.facebook.com/profile.php?id=100094464217223"
                   className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
                 >
                   {" "}
                   <img src="/asset/facebook.svg" alt="" />{" "}
                 </a>
                 <a
-                  href=""
+                  href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                   className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
                 >
                   {" "}
                   <img src="/asset/instagram.svg" alt="" />{" "}
-                </a>
-                <a
-                  href=""
-                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-                >
-                  {" "}
-                  <img src="/asset/twitter.svg" alt="" />{" "}
-                </a>
-                <a
-                  href=""
-                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-                >
-                  {" "}
-                  <img src="/asset/email.svg" alt="" />{" "}
                 </a>
               </div>
             </motion.nav>
@@ -103,7 +89,7 @@ const index = () => {
           <div className="nav  main ">
             <div className=" logo">
               {" "}
-              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+              <img src="/asset/smallestnav.png" alt="" />{" "}
             </div>
             <div className=" nav__link">
               <a href="/"> Home </a>
@@ -112,25 +98,18 @@ const index = () => {
             </div>
             <div className=" flex gap-7  foot__grid--link">
               <a
-                href=""
+                href="https://www.facebook.com/profile.php?id=100094464217223"
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/facebook.svg" alt="" />{" "}
               </a>
               <a
-                href=""
+                href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/instagram.svg" alt="" />{" "}
-              </a>
-              <a
-                href=""
-                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-              >
-                {" "}
-                <img src="/asset/twitter.svg" alt="" />{" "}
               </a>
             </div>
             <div className=" ">
@@ -144,7 +123,7 @@ const index = () => {
         <nav className="navsmall main-big">
           <div className=" main navsmall__flex">
             <div>
-              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+              <img src="/asset/smallestnav.png" alt="" />{" "}
             </div>
             <div
               className=" navsmall__menu"
@@ -165,29 +144,47 @@ const index = () => {
         <h2 className=" text-center">About us</h2>
 
         <p className="text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia illum
-          distinctio atque, consectetur laboriosam inventore nemo natus quos
-          doloremque harum quis pariatur odio, quaerat magnam eum sequi? Omnis,
-          suscipit facilis.
+          Bencodelight Construction Limited is a dynamic construction company
+          known for its commitment to quality and innovation. With a focus on
+          modern design and construction practices, Bencodelight brings
+          creativity and functionality to every project.
         </p>
         <div className="  about__grid">
           <div>
             <div className=" about__grid--img">
-              <img src="/asset/benbiggestlogo.svg" alt="" />{" "}
+              <img src="/asset/biggestnav.png" alt="" />{" "}
             </div>
           </div>
 
           <div className=" ">
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi
-              vitae ut quisquam accusamus mollitia quas officiis voluptas odit
-              reiciendis, blanditiis excepturi dicta natus magni odio saepe illo
-              quia corporis id. Sint fugit debitis consequatur aliquid,
-              dignissimos consequuntur nisi sed necessitatibus quas, ipsum qui
-              incidunt, deserunt magnam voluptates saepe eveniet voluptas.
+              Benco De Light Limited have the recommendation of State Government
+              projects, Federal government projects, world bank assisted
+              projects, uropan union assisted projects, Catholic Cathedrals
+              Abakaliki,Emmaculate Hearth parish, Okpuitumo, St. Joseph parish
+              odageri Idda, St. Pual parish Amaudo izza, St Benedict parish
+              Effiom, Lumen Christi College. And many others individual work Hrh
+              eze Stephen Ukpa, of Okpuitumo athonomus Community, chief Stephen
+              Where Nwogba Executive chairman Abakaliki Local Government area,
+              chief Mathew Nwobasi hon. Commissioner for lands and survey Ebonyi
+              State. Hon Joseph Ununu member Ebonyi house of assembly and many
+              others. <br />.
+              <span className=" pr-1 font-bold text-doggedsec font-popins ">
+                {" "}
+                BENCO DE LIGHT LIMITED
+              </span>
+              provides you with Building designs both architectural drawings
+              structure drawings mechanical and Electrical, building
+              constructions, Land Survey, Estate management, Bornhole drilling
+              and installations Road constructions building materials sales,
+              Restaurants, piggery farm, fish farm, bird firms, and general
+              machandas.
             </p>
             <div className="  mt-12">
-              <a href="tel:+2349076176485" className="  button">
+              <a
+                href=" https://wa.me/message/YLEYZ357B4JJG1"
+                className="  button"
+              >
                 get in touch
               </a>
             </div>

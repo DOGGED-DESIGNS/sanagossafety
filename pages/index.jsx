@@ -221,7 +221,7 @@ const index = () => {
             >
               <div className="navtrans__flex">
                 <div className="navtrans__logo ">
-                  <img src="/asset/bensmallestlogo.svg" alt="" />
+                  <img src="/asset/smallestnav.png" alt="" />
                 </div>
                 <div className="">
                   {" "}
@@ -251,32 +251,18 @@ const index = () => {
               </div>
               <div className=" flex gap-7 mb-4 mt-5 pt-3 border-t-2 foot__grid--link">
                 <a
-                  href=""
+                  href="https://www.facebook.com/profile.php?id=100094464217223"
                   className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
                 >
                   {" "}
                   <img src="/asset/facebook.svg" alt="" />{" "}
                 </a>
                 <a
-                  href=""
+                  href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                   className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
                 >
                   {" "}
                   <img src="/asset/instagram.svg" alt="" />{" "}
-                </a>
-                <a
-                  href=""
-                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-                >
-                  {" "}
-                  <img src="/asset/twitter.svg" alt="" />{" "}
-                </a>
-                <a
-                  href=""
-                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-                >
-                  {" "}
-                  <img src="/asset/email.svg" alt="" />{" "}
                 </a>
               </div>
             </motion.nav>
@@ -286,7 +272,7 @@ const index = () => {
           <div className="nav  main ">
             <div className=" logo">
               {" "}
-              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+              <img src="/asset/smallestnav.png" alt="" />{" "}
             </div>
             <div className=" nav__link">
               <a href="/"> Home </a>
@@ -295,25 +281,18 @@ const index = () => {
             </div>
             <div className=" flex gap-7  foot__grid--link">
               <a
-                href=""
+                href="https://www.facebook.com/profile.php?id=100094464217223"
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/facebook.svg" alt="" />{" "}
               </a>
               <a
-                href=""
+                href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/instagram.svg" alt="" />{" "}
-              </a>
-              <a
-                href=""
-                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-              >
-                {" "}
-                <img src="/asset/twitter.svg" alt="" />{" "}
               </a>
             </div>
             <div className=" ">
@@ -327,7 +306,7 @@ const index = () => {
         <nav className="navsmall main-big">
           <div className=" main navsmall__flex">
             <div>
-              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+              <img src="/asset/smallestnav.png" alt="" />{" "}
             </div>
             <div
               className=" navsmall__menu"
@@ -394,22 +373,26 @@ const index = () => {
 
               <p className=" leading-normal text-slate-200  my-16  max-w-2xl ">
                 {" "}
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore
-                nostrum alias assumenda repudiandae provident minus dolorum aut
-                dolores aperiam. Vel, facere reiciendis. Tenetur, corrupti harum
-                distinctio veritatis dolorum iste id sit aut sapiente similique
-                expedita soluta corporis vitae dicta sed! Corrupti veritatis
-                dolorem tempora magnam repellendus, est temporibus inventore
-                maxime!
+                Fot that reason, "Benco de light limited" a Construction
+                Company, is here to provide you with a dynamic and innovative
+                design and construction of residential properties. We take pride
+                in our ability to create exceptional homes tailored to our
+                clients' dreams and needs
               </p>
 
               <div className="">
-                <a className=" hover:text-white button"> free consultation </a>
+                <a
+                  href="https://wa.me/message/YLEYZ357B4JJG1"
+                  className=" hover:text-white button"
+                >
+                  {" "}
+                  free consultation{" "}
+                </a>
               </div>
             </div>
             <div className=" construct__div2 ">
               <a
-                href=""
+                href="#service"
                 className=" italic font-popins text-white align-middle flex h4"
               >
                 Our services{" "}
@@ -433,7 +416,7 @@ const index = () => {
             </div>
           </div>
         </header>
-        <section className=" service ">
+        <section id="service" className=" service ">
           <div className=" main  service__grid">
             <div>
               <div className=" service__grid--img">
@@ -443,14 +426,19 @@ const index = () => {
             <div>
               <h2>Our Expertise</h2>
               <p className=" my-10 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit sed dolore hic numquam aut quidem modi voluptatibus at
-                dolor, natus praesentium nostrum optio facere, repellendus
-                pariatur nesciunt beatae accusamus animi voluptatem aspernatur?
-                Excepturi libero culpa tempore eum aut ipsa voluptatibus dicta
-                earum atque, delectus, aspernatur quasi. Neque accusantium
-                repellat ratione.
+                Benco De Light construction company boasts a profound expertise
+                in delivering comprehensive solutions across the spectrum of the
+                construction industry. From meticulous project planning to
+                flawless execution, our team of seasoned professionals brings a
+                wealth of experience to every endeavor. Specializing in a
+                diverse range of construction projects, our expertise
+                encompasses residential, commercial, and industrial
+                developments. With a commitment to excellence and a focus on
+                innovation, we consistently exceed client expectations, making
+                us a trusted partner in the realization of robust and visionary
+                construction projects.
               </p>
+
               <div className=" smallcard">
                 <div>
                   <div className="smallcard__card">
@@ -459,7 +447,7 @@ const index = () => {
                       <img src="/asset/01.svg" alt="" />
                       <p className=" text-stone-50 font-bold capitalize ">
                         {" "}
-                        general_construction
+                        building_construction
                       </p>
                     </div>
                   </div>
@@ -471,7 +459,7 @@ const index = () => {
                       <img src="/asset/02.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        3D modelling
+                        Land_Survey
                       </p>
                     </div>
                   </div>
@@ -483,7 +471,7 @@ const index = () => {
                       <img src="/asset/03.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        interior decoration
+                        Bornhole_drilling
                       </p>
                     </div>
                   </div>
@@ -495,7 +483,7 @@ const index = () => {
                       <img src="/asset/04.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        flooring{" "}
+                        building_materials
                       </p>
                     </div>
                   </div>
@@ -507,7 +495,7 @@ const index = () => {
                       <img src="/asset/05.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        structural designs
+                        architectural_drawings
                       </p>
                     </div>
                   </div>
@@ -519,7 +507,7 @@ const index = () => {
                       <img src="/asset/06.svg" alt="" />
                       <p className=" mt-2  text-stone-50 font-bold capitalize ">
                         {" "}
-                        achitectural services
+                        structure_drawings
                       </p>
                     </div>
                   </div>
@@ -533,7 +521,7 @@ const index = () => {
 
         <section className="main-big recent">
           <div className="main">
-            <h1 className=" text-white mb-20 mt-0 ">Recent Project</h1>
+            <h2 className=" text-white mb-20 mt-0 ">Recent Project</h2>
           </div>
           <div className=" main recent__grid">
             <div>
@@ -541,12 +529,17 @@ const index = () => {
                 <div className=" recent__grid--img">
                   <img src="/asset/img/imagebig3.png" alt="" />
                 </div>
-                <h3 className="  mb-3 text-white font-bold  ">Project# 1</h3>
+                <h3 className="  mb-3 text-white font-bold  ">
+                  family-friendly townhouse flats
+                </h3>
                 <p className=" mb-12 ">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dignissimos, modi! Fugit ea veniam magni porro unde, rem eos
-                  voluptas dolorem dolorum obcaecati excepturi temporibus velit.
-                  Dolore ducimus necessitatibus sunt id?
+                  Bencodelight Construction takes pride in completing a project
+                  that introduces a set of family-friendly townhouse flats.
+                  These small yet spacious residences feature a functional
+                  layout, catering to the needs of growing families. With
+                  communal green spaces, play areas, and contemporary interiors,
+                  these flats provide an inviting and comfortable living
+                  environment for families.
                 </p>
                 <a href="/designs" className="  button2">
                   see details
@@ -558,12 +551,17 @@ const index = () => {
                 <div className=" recent__grid--img">
                   <img src="/asset/img/imagebig2.png" alt="" />
                 </div>
-                <h3 className="  mb-3 text-white font-bold  ">Project# 2</h3>
+                <h3 className="  mb-3 text-white font-bold  ">
+                  loft-style apartments
+                </h3>
                 <p className=" mb-12 ">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dignissimos, modi! Fugit ea veniam magni porro unde, rem eos
-                  voluptas dolorem dolorum obcaecati excepturi temporibus velit.
-                  Dolore ducimus necessitatibus sunt id?
+                  Bencodelight Construction recently completed a project
+                  featuring a set of small residential loft-style apartments in
+                  a bustling urban setting. These efficiently designed flats
+                  showcase modern open layouts, maximizing space and natural
+                  light. With sleek finishes and smart storage solutions, these
+                  apartments offer a contemporary urban living experience
+                  tailored for those seeking a stylish and compact home.
                 </p>
                 <a href="/designs" className="  button2">
                   see details
@@ -575,12 +573,19 @@ const index = () => {
                 <div className=" recent__grid--img">
                   <img src="/asset/img/imagebig1.png" alt="" />
                 </div>
-                <h3 className="  mb-3 text-white font-bold  ">Project# 3</h3>
+                <h3 className="  mb-3 text-white font-bold  ">
+                  {" "}
+                  Retreat Flats
+                </h3>
                 <p className=" mb-12">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dignissimos, modi! Fugit ea veniam magni porro unde, rem eos
-                  voluptas dolorem dolorum obcaecati excepturi temporibus velit.
-                  Dolore ducimus necessitatibus sunt id?
+                  Our team recently finished the construction of a series of
+                  small residential flats along a picturesque riverside. These
+                  cozy apartments blend seamlessly with the natural
+                  surroundings, offering residents tranquil views and a serene
+                  living environment. Thoughtful landscaping and
+                  energy-efficient design make these flats an ideal retreat for
+                  those looking for a peaceful yet accessible residential
+                  experience.
                 </p>
                 <a href="/designs" className="  button2">
                   see details
@@ -603,32 +608,43 @@ const index = () => {
             <div className=" opinion__grid--img2">
               <img src="/asset/img/imagebig2.png" alt="" />
               <div className=" owl-carousel owl-theme opinion__mover">
-                <div className="item  ">
-                  <p className=" font-semibold  ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequunt
-                  </p>
-                  <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
-                    Manager
-                  </h4>
+                <div>
+                  <div className="item  ">
+                    <p className=" font-semibold  ">
+                      Bencodelight Construction exceeded our expectations with
+                      their attention to detail and commitment to quality.
+                    </p>
+                    <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
+                      Head of Real Estate Development
+                    </h4>
+                  </div>
                 </div>
-                <div className="item  ">
-                  <p className=" font-semibold  ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequunt
-                  </p>
-                  <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
-                    Manager
-                  </h4>
+                <div>
+                  <div className="item  ">
+                    <p className=" font-semibold  ">
+                      Working with Bencodelight Construction was a pleasure from
+                      start to finish. Their team's communication and project
+                      management skills were exceptional. Our office space was
+                      transformed into a modern and functional environment, and
+                      their dedication to meeting deadlines made the entire
+                      process seamless. We look forward to partnering with them
+                      on future projects
+                    </p>
+                    <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
+                      Facilities Manager
+                    </h4>
+                  </div>
                 </div>
-                <div className="item  ">
-                  <p className=" font-semibold  ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequunt
-                  </p>
-                  <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
-                    Manager
-                  </h4>
+                <div>
+                  <div className="item  ">
+                    <p className=" font-semibold  ">
+                      Bencodelight Construction delivered a set of urban
+                      townhouses that perfectly balance style and practicality
+                    </p>
+                    <h4 className=" p-1 rounded-md inline-block  bg-slate-100">
+                      Community Services Director
+                    </h4>
+                  </div>
                 </div>
               </div>
               <button className=" custom-next roundbutton roundbutton__left ">
@@ -660,10 +676,11 @@ const index = () => {
                 <img src="./asset/analyze.svg" alt="" />
                 <h3>analyze</h3>
                 <p className="    ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia nesciunt numquam magnam rem accusantium et hic
-                  perferendis beatae molestias excepturi optio itaque, eos
-                  consectetur odit, temporibus placeat nostrum soluta fuga?
+                  Analyzing a building before construction is a crucial step in
+                  ensuring the success, safety, and efficiency of the project.
+                  This pre-construction analysis involves a comprehensive
+                  examination of various factors to inform the design and
+                  construction processes.
                 </p>
               </div>
             </div>
@@ -672,10 +689,10 @@ const index = () => {
                 <img src="./asset/design.svg" alt="" />
                 <h3>Design</h3>
                 <p className="    ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia nesciunt numquam magnam rem accusantium et hic
-                  perferendis beatae molestias excepturi optio itaque, eos
-                  consectetur odit, temporibus placeat nostrum soluta fuga?
+                  Our building design is a mix of modern style and practicality.
+                  We aim for a sleek look that also considers how people will
+                  use the space. We use new materials and smart layouts to make
+                  it visually appealing and functional.
                 </p>
               </div>
             </div>
@@ -684,10 +701,12 @@ const index = () => {
                 <img src="./asset/develop.svg" alt="" />
                 <h3>Develop</h3>
                 <p className="    ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia nesciunt numquam magnam rem accusantium et hic
-                  perferendis beatae molestias excepturi optio itaque, eos
-                  consectetur odit, temporibus placeat nostrum soluta fuga?
+                  During the construction of our buildings. We ensure to put
+                  together all the parts to make it a strong and functional
+                  space. Our Workers are using the right materials and
+                  techniques to build it safely. It's a step-by-step process,
+                  making sure everything fits together well. We're excited to
+                  see it all come together as a useful place for people.
                 </p>
               </div>
             </div>
@@ -696,10 +715,13 @@ const index = () => {
                 <img src="./asset/finishing.svg" alt="" />
                 <h3>Finishing</h3>
                 <p className="    ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Mollitia nesciunt numquam magnam rem accusantium et hic
-                  perferendis beatae molestias excepturi optio itaque, eos
-                  consectetur odit, temporibus placeat nostrum soluta fuga?
+                  The finishing touches are being added to our building to make
+                  it complete. Our Workers are adding paint, flooring, and
+                  fixtures to give it a polished look. It's the phase where
+                  everything comes together, and the details make a big
+                  difference. We're making sure that each part is done carefully
+                  to create a welcoming and well-put-together space for everyone
+                  to enjoy.
                 </p>
               </div>
             </div>

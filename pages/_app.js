@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           type="image/x-icon"
           sizes="16x16"
         /> */}
-        <link rel="icon" href="/ben.ico" type="image/x-icon" sizes="32x32" />
+        <link rel="icon" href="/favicon.png" type="png" sizes="32x32" />
         <title>Benco De Light Limited</title>
 
         <script src="/jquery.3.4.1.js?cd=123"></script>

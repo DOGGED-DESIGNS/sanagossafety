@@ -30,6 +30,12 @@ export const getServerSideProps = withSessionrap(async ({ req, res }) => {
         },
       };
     }
+  }else{
+    return{
+      redirect:{
+        destination:'/login'
+      }
+    }
   }
 });
 
@@ -57,7 +63,7 @@ const index = ({ count, data }) => {
             >
               <div className=" ">
                 <div className="sidenav__logo">
-                  <img src="/asset/bensmallestlogo.svg" alt="" />
+                  <img src="/asset/smallestnav.png" alt="" />
                 </div>
               </div>
 
@@ -109,7 +115,7 @@ const index = ({ count, data }) => {
           <nav className="admin__main--nav">
             <div>
               <a href="/home">
-                <img src="/asset/bensmallestlogo.svg" alt="" />
+                <img src="/asset/smallestnav.png" alt="" />
               </a>
             </div>
 

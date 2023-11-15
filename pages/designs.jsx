@@ -37,7 +37,7 @@ const index = () => {
             >
               <div className="navtrans__flex">
                 <div className="navtrans__logo ">
-                  <img src="/asset/bensmallestlogo.svg" alt="" />
+                  <img src="/asset/smallestnav.png" alt="" />
                 </div>
                 <div className="">
                   {" "}
@@ -67,32 +67,18 @@ const index = () => {
               </div>
               <div className=" flex gap-7 mb-4 mt-5 pt-3 border-t-2 foot__grid--link">
                 <a
-                  href=""
+                  href="https://www.facebook.com/profile.php?id=100094464217223"
                   className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
                 >
                   {" "}
                   <img src="/asset/facebook.svg" alt="" />{" "}
                 </a>
                 <a
-                  href=""
+                  href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                   className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
                 >
                   {" "}
                   <img src="/asset/instagram.svg" alt="" />{" "}
-                </a>
-                <a
-                  href=""
-                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-                >
-                  {" "}
-                  <img src="/asset/twitter.svg" alt="" />{" "}
-                </a>
-                <a
-                  href=""
-                  className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-                >
-                  {" "}
-                  <img src="/asset/email.svg" alt="" />{" "}
                 </a>
               </div>
             </motion.nav>
@@ -102,7 +88,7 @@ const index = () => {
           <div className="nav  main ">
             <div className=" logo">
               {" "}
-              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+              <img src="/asset/smallestnav.png" alt="" />{" "}
             </div>
             <div className=" nav__link">
               <a href="/"> Home </a>
@@ -111,25 +97,18 @@ const index = () => {
             </div>
             <div className=" flex gap-7  foot__grid--link">
               <a
-                href=""
+                href="https://www.facebook.com/profile.php?id=100094464217223"
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/facebook.svg" alt="" />{" "}
               </a>
               <a
-                href=""
+                href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/instagram.svg" alt="" />{" "}
-              </a>
-              <a
-                href=""
-                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-              >
-                {" "}
-                <img src="/asset/twitter.svg" alt="" />{" "}
               </a>
             </div>
             <div className=" ">
@@ -143,7 +122,7 @@ const index = () => {
         <nav className="navsmall main-big">
           <div className=" main navsmall__flex">
             <div>
-              <img src="/asset/bensmallestlogo.svg" alt="" />{" "}
+              <img src="/asset/smallestnav.png" alt="" />{" "}
             </div>
             <div
               className=" navsmall__menu"
@@ -162,13 +141,15 @@ const index = () => {
         {/* first section */}
 
         <section className=" main    pt-20">
-          <h2 className="  text-center">Design</h2>
+          <h2 className="  text-center">Designs</h2>
 
           <p className=" mt-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
-            exercitationem fugit mollitia, accusamus placeat quo optio eveniet
-            error veniam! Minus voluptatibus ullam culpa labore sit temporibus
-            corrupti. Inventore, magnam facere.
+            Bencodelight is an architectural firm renowned for its breathtaking
+            and innovative designs that seamlessly blend functionality with
+            aesthetic appeal. With a commitment to innovative designs and
+            pushing the boundaries of traditional architecture, Bencodelight
+            consistently delivers projects that captivate the imagination and
+            redefine the built environment
           </p>
 
           <div className="  mt-20  grid place-items-center">

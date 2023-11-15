@@ -21,7 +21,7 @@ const index = () => {
                 stiffness: 500,
               }}
               className="foot__mover"
-              href="tel: +2349076176483"
+              href="https://wa.me/message/YLEYZ357B4JJG1"
             >
               <img src="/asset/watsapp.svg" alt="" />
             </motion.a>
@@ -29,16 +29,15 @@ const index = () => {
               <div className="foot__location--contact">
                 <h3 className=" text-slate-200">location</h3>
                 <p className="  text-slate-500">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
+                  N01 Edward Nkwegu close, near all saints cathedrals, Ogoja
+                  Road Abakaliki Ebonyi State Nigeria
                 </p>
               </div>
             </div>
             <div>
               <div>
                 <h3 className=" text-slate-200">contact</h3>
-                <p className="  text-slate-500">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
-                </p>
+                <p className="  text-slate-500">09036670283, 08088587000</p>
               </div>
             </div>
           </div>
@@ -49,29 +48,22 @@ const index = () => {
         <div className="foot__grid main ">
           <div>
             <div className="foot__grid--logo ">
-              <img src="/asset/benmediumlogo.svg" alt="" />{" "}
+              <img src="/asset/mediumnav.png" alt="" />{" "}
             </div>
             <div className=" flex gap-7 mb-4 mt-5 foot__grid--link">
               <a
-                href=""
+                href="https://www.facebook.com/profile.php?id=100094464217223"
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/facebook.svg" alt="" />{" "}
               </a>
               <a
-                href=""
+                href="https://instagram.com/bencodelight?igshid=MmVlMjlkMTBhMg=="
                 className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
               >
                 {" "}
                 <img src="/asset/instagram.svg" alt="" />{" "}
-              </a>
-              <a
-                href=""
-                className=" p-1  transition-all ease-in-out hover:bg-slate-200 rounded-md "
-              >
-                {" "}
-                <img src="/asset/twitter.svg" alt="" />{" "}
               </a>
             </div>
 
@@ -103,7 +95,10 @@ const index = () => {
           </div>
           <div>
             <div className=" sm:mt-7 md:mt-0 foot__grid--button">
-              <button className="button"> free consultation </button>
+              <a href="https://wa.me/message/YLEYZ357B4JJG1" className="button">
+                {" "}
+                free consultation{" "}
+              </a>
             </div>
           </div>
         </div>
