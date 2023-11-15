@@ -30,12 +30,12 @@ export const getServerSideProps = withSessionrap(async ({ req, res }) => {
         },
       };
     }
-  }else{
-    return{
-      redirect:{
-        destination:'/login'
-      }
-    }
+  } else {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
   }
 });
 
@@ -151,6 +151,7 @@ const index = ({ count, data }) => {
 
           <div className="admin__tablecon">
             <div className="admin__table">
+              <h3 className=" mt-3 ">Potential Clients</h3>
               <div className="admin__table--head">
                 <div>
                   <h4># time</h4>
@@ -173,9 +174,16 @@ const index = ({ count, data }) => {
                 </div>
               </div>
 
-              {data.map((ma) => {
-                return <Budget {...ma} />;
-              })}
+              {data.length < 1 ? (
+                <h2 className=" text-center">
+                  {" "}
+                  No Potential Clients Available{" "}
+                </h2>
+              ) : (
+                data.map((ma) => {
+                  return <Budget {...ma} />;
+                })
+              )}
 
               {/* <div className="admin__table--body">
                 <div className="">
