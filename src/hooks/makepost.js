@@ -36,7 +36,7 @@ const Makepost = () => {
 
     try {
       const data = await axios.post(
-        "https://jeffmatthewpatten.com/ben/process.php",
+        "http://localhost/martinsApi/process.php",
         form,
         {
           headers: {
@@ -64,7 +64,7 @@ const Makepost = () => {
 
     try {
       const data = await axios.post(
-        "https://jeffmatthewpatten.com/ben/process.php",
+        "http://localhost/martinsApi/process.php",
         form,
         {
           headers: {
@@ -96,3 +96,6 @@ const Makepost = () => {
 };
 
 export default Makepost;
+
+
+// http://localhost/martinsApi/process.php

@@ -17,14 +17,14 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content=" Benco de light limited is a Construction Company, we providing you with a dynamic and innovative design and construction of residential properties. We take pride in our ability to create exceptional homes tailored to our clients' dreams and needs.
-          "
+          content="Sanagos Safety is a leading safety supplier company dedicated to providing comprehensive safety solutions for businesses and industries nationwide. With over a decade of experience, we have established ourselves as a trusted partner, delivering high-quality safety products as well as safety training to ensure the well-being of both employees and customers."
         />
 
         <meta
           name="keywords"
-          content=" building construction, design, flooring, 3d design, bencodelight, ben co de light limited "
+          content=" Sanagos Safety, Sanagos, fire extinguisher,nigeria, safety boot, safety helment, fire safety, fire"
         />
+
         <link rel="stylesheet" href="/final/fontawesome.min.css" />
         <link rel="stylesheet" href="/final/index.min.css" />
         <link rel="stylesheet" href="/swiper/owl.carousel.min.css" />
@@ -38,8 +38,13 @@ function MyApp({ Component, pageProps }) {
           type="image/x-icon"
           sizes="16x16"
         /> */}
-        <link rel="icon" href="/favicon.png" type="png" sizes="32x32" />
-        <title>Benco De Light Limited</title>
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="16x16"
+        ></link>
+        <title>SANAGOS SAFETY</title>
 
         <script src="/jquery.3.4.1.js?cd=123"></script>
         <script src="/swiper/owl.carousel.min.js"></script>

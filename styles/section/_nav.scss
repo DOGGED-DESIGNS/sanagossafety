@@ -9,6 +9,7 @@
     justify-content: space-between;
     & > a {
       @apply font-bold text-base capitalize;
+      // @include links;
       @include links;
       position: relative;
       &:hover::after {
@@ -30,12 +31,14 @@
 }
 
 .navsmall {
-  @apply bg-stone-200 py-1;
+  @apply bg-sanpry py-1;
   position: fixed;
   width: 100%;
   z-index: 10;
   &__img {
     transition: all 0.3s ease-in-out;
+    width: 30px;
+    height: 30px;
     @apply hover:border p-1 cursor-pointer  border-stone-900  border-solid;
   }
   &__menu {
@@ -58,6 +61,7 @@
   &__logo {
     height: 45px;
     // width: 45px;
+
     & > img {
       @include image;
     }
@@ -66,17 +70,18 @@
     width: 250px;
   }
   &__close {
-    @apply p-3 cursor-pointer;
-
-    &:hover {
-      @apply bg-doggedaccent rounded-lg;
+    @apply p-2 transition-all cursor-pointer rounded-lg hover:bg-sanwhite;
+    & > img {
+      width: 18px;
+      height: 18px;
+      @apply border;
     }
   }
   width: 400px;
   height: 100vh;
   position: fixed;
   z-index: 20;
-  @apply bg-slate-100 p-3 pt-6;
+  @apply bg-sanpry p-3 pt-6;
   &__link {
     // @include links;
 
@@ -87,14 +92,14 @@
         // height: 27px;
         // width: 27px;
         margin-right: 19px;
+        filter: brightness(100);
       }
       display: flex;
       transition: all 0.3 ease-in-out;
       align-items: center;
       &:hover {
-        @apply text-doggedsec bg-doggedaccent;
       }
-      @apply text-doggedsec  bg-slate-50 mb-3  rounded-lg;
+      @apply text-sanwhite  mb-3  rounded-lg;
     }
   }
   &__flex {
@@ -118,4 +123,61 @@
     width: 100%;
     @apply bg-doggedsec opacity-50;
   }
+}
+
+.testz {
+  @extend .gradebg;
+}
+
+.navsan {
+  @include tablet {
+    display: none;
+  }
+  &__phone {
+    display: flex;
+    gap: 10px;
+    @include p;
+    @apply pr-4 text-sanwhite;
+    @include links;
+    &:hover {
+      @apply text-sanwhite;
+      align-items: center;
+    }
+  }
+  &__btn {
+    @include p;
+    @apply py-1 px-2 text-sanwhite rounded-r-full rounded-l-full border-solid border-sanaccent border;
+    display: flex;
+    align-items: center;
+    @include links;
+    &:hover {
+      @apply text-sanwhite;
+    }
+    gap: 7px;
+  }
+  &__a {
+    @include genlinkstyle;
+    @include h4;
+    text-transform: capitalize;
+    @apply text-sanwhite;
+    &:hover {
+      @apply text-sanwhite;
+    }
+
+    &:hover::after {
+      @apply border-solid border border-sanwhite  text-sanwhite;
+    }
+  }
+  &__links {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    @apply bg-sanpry pl-2 py-1  pr-5 rounded-r-full;
+  }
+  @apply bg-sansec pr-2;
+  display: flex;
+  justify-content: space-between;
 }

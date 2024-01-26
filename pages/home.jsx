@@ -21,12 +21,12 @@ export const getServerSideProps = withSessionrap(async ({ req, res }) => {
     } else {
       const { displayrecent, countContact } = Statichook();
 
-      const contact = await displayrecent();
-      const count = await countContact();
+      // const contact = await displayrecent();
+      // const count = await countContact();
       return {
         props: {
-          data: contact,
-          count: count,
+          data: "",
+          count: "",
         },
       };
     }
@@ -63,7 +63,7 @@ const index = ({ count, data }) => {
             >
               <div className=" ">
                 <div className="sidenav__logo">
-                  <img src="/asset/smallestnav.png" alt="" />
+                  <img src="/asset/san/sanlogo.svg" alt="" />
                 </div>
               </div>
 
@@ -115,7 +115,7 @@ const index = ({ count, data }) => {
           <nav className="admin__main--nav">
             <div>
               <a href="/home">
-                <img src="/asset/smallestnav.png" alt="" />
+                <img src="/asset/san/sanlogo.svg" alt="" />
               </a>
             </div>
 
@@ -137,7 +137,7 @@ const index = ({ count, data }) => {
               </div>
 
               <div className="  admin__main--cardinfo">
-                <h2> {count} </h2>
+                <h2> 3 </h2>
 
                 <p>potential customer</p>
               </div>
@@ -154,19 +154,19 @@ const index = ({ count, data }) => {
               <h3 className=" mt-3 ">Potential Clients</h3>
               <div className="admin__table--head">
                 <div>
-                  <h4># time</h4>
+                  <h4># Name</h4>
                 </div>
                 <div>
-                  <h4># phone no</h4>
+                  <h4># Contact</h4>
                 </div>
                 <div>
-                  <h4># email</h4>
+                  <h4># PPE</h4>
                 </div>
                 <div>
-                  <h4># budget</h4>
+                  <h4># Fire Safety</h4>
                 </div>
                 <div>
-                  <h4># message</h4>
+                  <h4># Tell us your safety needs </h4>
                 </div>
 
                 <div>
@@ -174,16 +174,10 @@ const index = ({ count, data }) => {
                 </div>
               </div>
 
-              {data.length < 1 ? (
-                <h2 className=" text-center">
-                  {" "}
-                  No Potential Clients Available{" "}
-                </h2>
-              ) : (
-                data.map((ma) => {
-                  return <Budget {...ma} />;
-                })
-              )}
+              {/* <h2 className=" text-center"> No Potential Clients Available </h2> */}
+              <Budget />
+              <Budget />
+              <Budget />
 
               {/* <div className="admin__table--body">
                 <div className="">

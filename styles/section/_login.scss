@@ -3,17 +3,17 @@
   width: 100vw;
   display: grid;
   place-items: center;
-  @apply bg-adminpry;
+  @apply bg-sanpry;
   &__form {
     max-width: 398px;
-    @apply bg-adminsec p-10 rounded-lg;
+    @apply bg-sanwhite p-10 rounded-lg;
     & > input {
       @extend .input;
     }
   }
 
   &__nav {
-    @apply bg-adminsec p-3 rounded-xl;
+    @apply bg-sanwhite p-3 rounded-xl;
     display: flex;
     justify-content: space-between;
     position: fixed;

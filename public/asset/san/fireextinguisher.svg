@@ -1,0 +1,29 @@
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="12.34" height="20" viewBox="0 0 12.34 20">
+  <g id="admin">
+    <path id="Path_195" data-name="Path 195" d="M2.9,5.39l-.39-.08A4,4,0,0,1,5.7,2.21H7v.4H5.73A3.48,3.48,0,0,0,2.9,5.39Z" fill="#cbbfb9"/>
+    <g id="Group_10" data-name="Group 10" opacity="0.22">
+      <path id="Path_196" data-name="Path 196" d="M7,2.47v.15H5.73A3.45,3.45,0,0,0,2.9,5.39l-.26-.06A3.89,3.89,0,0,1,5.75,2.47Z"/>
+    </g>
+    <path id="Path_197" data-name="Path 197" d="M11.22,6.37V19a1,1,0,0,1-1,1h-4a1,1,0,0,1-1-1V6.37a1,1,0,0,1,1-1h0A1.08,1.08,0,0,0,7.38,4.32V2.8H9V4.17a1.25,1.25,0,0,0,1.25,1.24h0a1,1,0,0,1,.97.96Z" fill="#d02031"/>
+    <path id="Path_198" data-name="Path 198" d="M11.22,6.37V19a1,1,0,0,1-1,1h-4a.94.94,0,0,1-.73-.34H9.48a1,1,0,0,0,1-1V6a1,1,0,0,0-.23-.63h0a1,1,0,0,1,.97,1Z" opacity="0.22"/>
+    <path id="Path_199" data-name="Path 199" d="M11.22,6.37V19a1,1,0,0,1-1,1H9.84a1,1,0,0,0,1-1V6.37a1,1,0,0,0-.5-.85l-.09-.12h0a1,1,0,0,1,.97.97Z" opacity="0.22"/>
+    <rect id="Rectangle_50" data-name="Rectangle 50" width="1.33" height="0.83" transform="translate(7.53 1.96)" fill="#d2c9cd"/>
+    <rect id="Rectangle_51" data-name="Rectangle 51" width="0.27" height="0.84" transform="translate(8.6 1.96)" opacity="0.22"/>
+    <path id="Path_200" data-name="Path 200" d="M7.53,2V1.3A12.648,12.648,0,0,1,11,0h1.34V.28H11l-2.23.87V2" fill="#c02d27"/>
+    <path id="Path_201" data-name="Path 201" d="M12,3.27S9.89,1.85,8.83,1.85h0V1.44h0c1.18,0,3.3,1.43,3.39,1.49Z" fill="#923a1f"/>
+    <rect id="Rectangle_52" data-name="Rectangle 52" width="0.4" height="0.65" transform="translate(8.32 1.21)" fill="#020202"/>
+    <rect id="Rectangle_53" data-name="Rectangle 53" width="0.01" height="0.02" transform="translate(8.53 1.21)" fill="#050606"/>
+    <rect id="Rectangle_54" data-name="Rectangle 54" width="0.51" height="1.11" transform="translate(7.02 1.86)" fill="#e4af3f"/>
+    <rect id="Rectangle_55" data-name="Rectangle 55" width="0.14" height="1.1" transform="translate(7.39 1.86)" opacity="0.15"/>
+    <path id="Path_202" data-name="Path 202" d="M2.76,12.46,0,11.61l2.34-6.4.69.22Z" fill="#2a2925"/>
+    <path id="Path_203" data-name="Path 203" d="M2.47,5.25.78,11.84.03,11.6,2.36,5.21Z" fill="#fff" opacity="0.1"/>
+    <path id="Path_204" data-name="Path 204" d="M3.03,5.43l-.27,7.03L1.9,12.2l.95-6.82Z" opacity="0.22"/>
+    <rect id="Rectangle_56" data-name="Rectangle 56" width="2.69" height="3.65" transform="translate(6.93 10.77)" fill="#f8d906"/>
+    <line id="Line_19" data-name="Line 19" x1="0.8" transform="translate(8.2 3.63)" opacity="0.29"/>
+    <g id="Group_11" data-name="Group 11" opacity="0.1">
+      <rect id="Rectangle_57" data-name="Rectangle 57" width="0.73" height="6.9" rx="0.36" transform="translate(5.91 8.68)" fill="#fff"/>
+    </g>
+    <rect id="Rectangle_58" data-name="Rectangle 58" width="6.97" height="0.41" rx="0.205" transform="translate(4.84 18.07)" fill="#d22031"/>
+    <path id="Path_205" data-name="Path 205" d="M11.81,18.27a.22.22,0,0,1-.21.21H5a.21.21,0,0,1-.2-.21h0a.22.22,0,0,0,.17.09h6.56a.2.2,0,0,0,.2-.17A.21.21,0,0,1,11.81,18.27Z" opacity="0.22"/>
+  </g>
+</svg>

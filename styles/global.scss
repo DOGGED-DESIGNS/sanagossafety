@@ -21,18 +21,14 @@ a {
 @tailwind utilities;
 
 @import "./mixings/mixing";
-@import "./section/header";
 @import "./section/nav";
-@import "./section/service";
-@import "./section/recent";
-@import "./section/opinion";
-@import "./section/steps";
-@import "./section/reach";
-@import "./section/footer";
+
 @import "./section/admin";
+@import "./section/sanhero";
+@import "./section/sanform";
 
 @import "./section/login";
-@import "./section/about";
+@import "./section/footer";
 
 @layer base {
   h1 {
@@ -61,7 +57,7 @@ html {
 }
 .main {
   max-width: 1200px;
-
+  overflow: hidden;
   margin: auto;
   // border: 1px solid orange;
 }

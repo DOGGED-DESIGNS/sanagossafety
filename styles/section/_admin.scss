@@ -26,7 +26,7 @@
       width: 1000px;
       gap: 10px;
       @apply my-4 m-auto p-4;
-      grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr;
+      grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr;
     }
     &--body {
       &--time {
@@ -43,11 +43,11 @@
       gap: 20px;
       width: 1000px;
       margin: auto;
-      grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr;
-      @apply rounded-2xl bg-adminsec p-4;
+      grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr;
+      @apply rounded-2xl bg-sanwhite p-4;
     }
   }
-  @apply bg-adminpry;
+  @apply bg-sanpry;
   display: flex;
   min-height: 100vh;
   &__main {
@@ -126,12 +126,13 @@
       @include h4;
       display: flex;
       align-items: center;
+      @apply p-2 transition-all hover:bg-sanwhite;
       & > img {
         @apply mr-2;
       }
     }
   }
-  @apply bg-adminsec p-3 pt-4;
+  @apply bg-sanpry p-3 pt-4;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -146,7 +147,7 @@
     width: 0px;
   }
   &__logo {
-    @apply mb-10 border;
+    @apply mb-10;
   }
   &__link {
     & > a {
