@@ -8,12 +8,8 @@ import { easeInOut, motion, AnimatePresence, delay } from "framer-motion";
 
 export const getServerSideProps = withSessionrap(async ({ req, res }) => {
   const session = sessionGet(req);
-  console.log(session);
-  console.log("testing");
 
   if (session) {
-    console.log(session);
-
     if (session?.status == true && session?.error == false) {
       return {
         redirect: {
@@ -21,8 +17,6 @@ export const getServerSideProps = withSessionrap(async ({ req, res }) => {
         },
       };
     } else {
-      console.log(session);
-      console.log("this is not working");
       return {
         props: {
           data: session,
@@ -45,7 +39,6 @@ export const getServerSideProps = withSessionrap(async ({ req, res }) => {
 const index = ({ data }) => {
   const [error, setError] = useState(false);
   const route = useRouter();
-  // console.log(data);
   // handlsubmit
 
   useEffect(() => {
@@ -75,9 +68,7 @@ const index = ({ data }) => {
       );
 
       route.reload();
-    } catch (err) {
-      console.log(err.response);
-    }
+    } catch (err) {}
   };
 
   return (

@@ -9,6 +9,7 @@ module.exports = {
       fontFamily: {
         opensan: ["Open Sans", "sans-serif"],
         popins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
       colors: {
         sanpry: "#F4F4D2",

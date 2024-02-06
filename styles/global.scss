@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  // @apply font-roboto;
 }
 
 a {
@@ -28,6 +29,7 @@ a {
 @import "./section/sanform";
 
 @import "./section/login";
+@import "./section/reach";
 @import "./section/footer";
 
 @layer base {

@@ -6,54 +6,166 @@ import Footer from "../comps/Footer";
 // import { motion, AnimatePresence } from "framer-motion";
 
 import { easeInOut, motion, AnimatePresence, delay } from "framer-motion";
+import Statichook from "@/hooks/statichook";
+import { cookies } from "next/dist/client/components/headers";
+
+// export const getServerSideProps = async () => {
+//   const { getWholeclient } = Statichook();
+
+//   const data = await getWholeclient();
+
+//   return {
+//     props: {
+//       data: data,
+//     },
+//   };
+// };
 
 const index = () => {
-  useEffect(() => {}, []);
+  // useEffect(() => {
+  // }, []);
 
   const [toggle, setToggle] = useState(false);
-
-  const [error, setError] = useState(false);
-
+  const [info, setInfo] = useState("");
+  const [error, setError] = useState({});
+  const [boot, setBoot] = useState(false);
+  const [reflective, setReflective] = useState(false);
+  const [goggles, setGoggles] = useState(false);
+  const [helment, setHelment] = useState(false);
+  const [bucket, setBucket] = useState(false);
+  const [extinguisher, setExtinguisher] = useState(false);
+  const [smokealarm, setSmokealarm] = useState(false);
+  const [firealarm, setFirealarm] = useState(false);
+  const [install, setInstall] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
+  const [needs, setNeeds] = useState("");
 
-  const { postmessage, makePost, setPostmessage } = Makepost();
+  const { sendClient, sendPpe, sendSafety, getWholeclient } = Makepost();
 
-  const handleSubmitz = async (e) => {
-    setLoading(true);
-    e.preventDefault();
+  // check if client want installation
 
-    if (
-      e.target.elements.email.value == " " ||
-      e.target.elements.phone.value == "" ||
-      e.target.elements.mess.value == "" ||
-      e.target.elements.name.value == "" ||
-      e.target.elements.budget.value == ""
-    ) {
-      setError(true);
-      setLoading(false);
+  const installation = () => {
+    if (install) {
+      return "yes";
     } else {
-      setError(false);
+      return "no";
+    }
+  };
 
-      e.target.elements.email.value == " " ||
-        e.target.elements.phone.value == "" ||
-        e.target.elements.mess.value == "" ||
-        e.target.elements.name.value == "" ||
-        e.target.elements.budget.value == "";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-      const form = new FormData();
+    try {
+      if (
+        name != "" &&
+        email != "" &&
+        location != "" &&
+        phone != "" &&
+        needs != ""
+      ) {
+        setError({});
 
-      console.log(e.target.elements.email.value);
+        await sendClient(name, email, phone, location, needs);
 
-      form.append("message", "addcontact");
-      form.append("name", e.target.elements.name.value);
-      form.append("mess", e.target.elements.mess.value);
-      form.append("email", e.target.elements.email.value);
-      form.append("phone", e.target.elements.phone.value);
-      form.append("budget", e.target.elements.budget.value);
+        // this is to insert ppe
+        if (boot) {
+          await sendPpe(
+            e.target.elements.ppeboot.value,
+            e.target.elements.ppebootqunt.value,
+            e.target.elements.ppeboottype.value
+          );
+        }
 
-      await makePost(form);
+        // reflective
+        if (reflective) {
+          await sendPpe(
+            e.target.elements.ppereflective.value,
+            e.target.elements.ppereflectivequnt.value,
+            e.target.elements.ppereflectivetype.value
+          );
+        }
 
-      setLoading(false);
+        // goggles
+        if (goggles) {
+          await sendPpe(
+            e.target.elements.ppegoggles.value,
+            e.target.elements.ppegogglesqunt.value,
+            e.target.elements.ppegogglestype.value
+          );
+        }
+
+        // helment
+        if (helment) {
+          await sendPpe(
+            e.target.elements.ppehelment.value,
+            e.target.elements.ppehelmentqunt.value,
+            e.target.elements.ppehelmenttype.value
+          );
+        }
+
+        // this is to insert safety equipment
+        if (bucket) {
+          await sendSafety(
+            e.target.elements.safetybucket.value,
+            e.target.elements.safetybucketqunt.value,
+            installation(),
+            e.target.elements.safetybuckettype.value
+          );
+        }
+
+        if (extinguisher) {
+          await sendSafety(
+            e.target.elements.safetyextinguisher.value,
+            e.target.elements.safetyextinguisherqunt.value,
+            installation(),
+            e.target.elements.safetyextinguishertype.value
+          );
+        }
+        if (smokealarm) {
+          await sendSafety(
+            e.target.elements.safetysmokealarm.value,
+            e.target.elements.safetysmokealarmqunt.value,
+            installation(),
+            e.target.elements.safetysmokealarmtype.value
+          );
+        }
+
+        if (firealarm) {
+          await sendSafety(
+            e.target.elements.safetyfirealarm.value,
+            e.target.elements.safetyfirealarmqunt.value,
+            installation(),
+            e.target.elements.safetyfirealarmtype.value
+          );
+        }
+
+        setError({
+          status: true,
+          type: "success",
+          message:
+            " Thank you for reaching out to us, the quotation your just requested will be sent to any of your contact information provided ",
+        });
+
+        setLoading(false);
+      } else {
+        setError({
+          status: true,
+          type: "error",
+          message: "please fill all neccessary fields",
+        });
+        setLoading(false);
+      }
+    } catch (err) {
+      setError({
+        status: true,
+        type: "error",
+        message: err.message,
+      });
     }
   };
 
@@ -229,7 +341,52 @@ const index = () => {
             <div className="sanform__gif">
               <img src="/asset/san/tss.gif" alt="" />
             </div>
-            <form action="">
+            <AnimatePresence>
+              {error?.message && (
+                <motion.div
+                  initial={{
+                    x: "-100%",
+                    opacity: 0,
+                  }}
+                  animate={{
+                    x: 0,
+                    opacity: 1,
+                  }}
+                  transition={{
+                    type: "spring",
+
+                    // stiffness: 200,
+                    // delay: 0.3,
+                  }}
+                  exit={{
+                    x: "-100%",
+                    opacity: 0,
+                  }}
+                  className={`mess ${error.type}`}
+                >
+                  <div className="">
+                    <div className="error">
+                      <img className="" src="/asset/error.svg" alt="" />
+                    </div>
+                    <div className="success">
+                      <img className="" src="/asset/success.svg" alt="" />
+                    </div>
+                  </div>
+                  <div className="mess__message"> {error.message}</div>
+                  <div>
+                    <div
+                      onClick={() => {
+                        setError({});
+                      }}
+                      className="mess__close"
+                    >
+                      <img src="/asset/closegray.svg" alt="" />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <form onSubmit={handleSubmit} action="">
               <div className="sanform__form">
                 {/* form grid */}
                 <div className="sanform__form--div1">
@@ -242,6 +399,11 @@ const index = () => {
                         Name
                       </label>
                       <input
+                        autoComplete="true"
+                        onChange={(e) => {
+                          setName(e.target.value);
+                        }}
+                        maxLength={18}
                         className="sanform__form--div1--input"
                         type="text"
                       />
@@ -254,8 +416,12 @@ const index = () => {
                         Email
                       </label>
                       <input
+                        autoComplete={true}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
                         className="sanform__form--div1--input"
-                        type="text"
+                        type="email"
                       />
                     </div>
                   </div>{" "}
@@ -268,8 +434,13 @@ const index = () => {
                         Phone
                       </label>
                       <input
+                        autoComplete={true}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                        }}
+                        maxLength={14}
                         className="sanform__form--div1--input"
-                        type="text"
+                        type="number"
                       />
                     </div>
                     <div>
@@ -280,6 +451,11 @@ const index = () => {
                         Location
                       </label>
                       <input
+                        autoComplete={true}
+                        onChange={(e) => {
+                          setLocation(e.target.value);
+                        }}
+                        maxLength={100}
                         className="sanform__form--div1--input"
                         type="text"
                       />
@@ -290,7 +466,16 @@ const index = () => {
                       {" "}
                       tell us your safety needs{" "}
                     </label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <textarea
+                      onChange={(e) => {
+                        setNeeds(e.target.value);
+                      }}
+                      maxLength={200}
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="10"
+                    ></textarea>
                   </div>
                 </div>
 
@@ -305,6 +490,10 @@ const index = () => {
                       <div>
                         <div className="sanform__radioflex">
                           <input
+                            onChange={() => {
+                              setBoot(!boot);
+                            }}
+                            name="ppeboot"
                             value="boot"
                             id="r1"
                             className="sanform__radio"
@@ -320,27 +509,62 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           safety boot
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+
+                        <AnimatePresence>
+                          {boot && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  name="ppebootqunt"
+                                  type="number"
+                                  max={10}
+                                  min={1}
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="ppeboottype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                       {/* this is the second */}
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setReflective(!reflective);
+                            }}
+                            value="reflective"
+                            name="ppereflective"
                             id="r2"
                             className="sanform__radio"
                             type="checkbox"
@@ -355,27 +579,61 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           reflective jacket
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+                        <AnimatePresence>
+                          {reflective && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  max={10}
+                                  min={1}
+                                  type="number"
+                                  name="ppereflectivequnt"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="ppereflectivetype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                       {/* this is the second */}
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setGoggles(!goggles);
+                            }}
+                            value="goggles"
+                            name="ppegoggles"
                             id="r4"
                             className="sanform__radio"
                             type="checkbox"
@@ -390,27 +648,62 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           safety googles
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+
+                        <AnimatePresence>
+                          {goggles && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  max={10}
+                                  min={1}
+                                  name="ppegogglesqunt"
+                                  type="number"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="ppegogglestype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                       {/* this is the second */}
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setHelment(!helment);
+                            }}
+                            value="helment"
+                            name="ppehelment"
                             id="r5"
                             className="sanform__radio"
                             type="checkbox"
@@ -425,21 +718,52 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           safety helment
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+
+                        <AnimatePresence>
+                          {helment && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  max={10}
+                                  min={1}
+                                  name="ppehelmentqunt"
+                                  type="number"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="ppehelmenttype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </div>
                   </div>
@@ -455,7 +779,11 @@ const index = () => {
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setBucket(!bucket);
+                            }}
+                            value="bucket"
+                            name="safetybucket"
                             id="r11"
                             className="sanform__radio"
                             type="checkbox"
@@ -470,27 +798,65 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           fire bucket
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+
+                        <AnimatePresence>
+                          {bucket && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  onChange={(e) => {
+                                    console.log(e.target.value);
+                                  }}
+                                  max={10}
+                                  min={1}
+                                  name="safetybucketqunt"
+                                  type="number"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="safetybuckettype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                       {/* this is the second */}
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setExtinguisher(!extinguisher);
+                            }}
+                            value="extinguisher"
+                            name="safetyextinguisher"
                             id="r22"
                             className="sanform__radio"
                             type="checkbox"
@@ -505,27 +871,62 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           fire extinguisher
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+                        <AnimatePresence>
+                          {extinguisher && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  max={10}
+                                  min={1}
+                                  name="safetyextinguisherqunt"
+                                  type="number"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="safetyextinguishertype" id="">
+                                  <option value="9kg dcp">9kg dcp</option>
+                                  <option value="50kg dcp"> 50kg dcp </option>
+                                  <option value="5kg co2"> 5kg CO2 </option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                       {/* this is the second */}
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setSmokealarm(!smokealarm);
+                            }}
+                            value="smokealarm"
+                            name="safetysmokealarm"
                             id="r44"
                             className="sanform__radio"
                             type="checkbox"
@@ -540,27 +941,62 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           smoke alarm
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+
+                        <AnimatePresence>
+                          {smokealarm && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  max={10}
+                                  min={1}
+                                  name="safetysmokealarmqunt"
+                                  type="number"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="safetysmokealarmtype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                       {/* this is the second */}
                       <div>
                         <div className="sanform__radioflex">
                           <input
-                            value="boot"
+                            onChange={() => {
+                              setFirealarm(!firealarm);
+                            }}
+                            value="firealarm"
+                            name="safetyfirealarm"
                             id="r55"
                             className="sanform__radio"
                             type="checkbox"
@@ -575,27 +1011,63 @@ const index = () => {
                         <h4 className=" font-medium text-center   text-sanaccent mb-2">
                           fire <br /> alarm
                         </h4>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            qunty
-                          </label>
-                          <input type="number" />
-                        </div>
-                        <div className="sanform__smallinput">
-                          <label className="h4" htmlFor="">
-                            type
-                          </label>
-                          <select name="" id="">
-                            <option value="">standard</option>
-                            <option value="">high</option>
-                          </select>
-                        </div>
+
+                        <AnimatePresence>
+                          {firealarm && (
+                            <motion.div
+                              initial={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                              }}
+                              transition={{
+                                type: "spring",
+                                // stiffness: 200,
+                                // duration: 0.3,
+                                // delay: 0.3,
+                              }}
+                              exit={{
+                                y: "-30%",
+                                opacity: 0,
+                              }}
+                            >
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  qunty
+                                </label>
+                                <input
+                                  max={10}
+                                  min={1}
+                                  name="safetyfirealarmqunt"
+                                  type="number"
+                                />
+                              </div>
+                              <div className="sanform__smallinput">
+                                <label className="h4" htmlFor="">
+                                  type
+                                </label>
+                                <select name="safetyfirealarmtype" id="">
+                                  <option value="stand">standard</option>
+                                  <option value="high">high</option>
+                                </select>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </div>
                     {/* installation and maintenance */}
                     <div className=" mt-4 sanform__radioflex">
                       <input
+                        onChange={() => {
+                          setInstall(!install);
+                        }}
                         id="r66"
+                        name="install"
+                        value={"yes"}
                         className="sanform__radio"
                         type="checkbox"
                       />
@@ -608,7 +1080,7 @@ const index = () => {
                 </div>
               </div>
               <button type="submit" className="button sanform__button">
-                send quote
+                send request
               </button>
             </form>
           </div>

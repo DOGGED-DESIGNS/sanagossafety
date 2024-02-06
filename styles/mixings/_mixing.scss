@@ -150,10 +150,10 @@ $grad2: #2f4858;
 }
 
 @mixin p {
-  @apply sm:text-sm md:text-base my-2 text-base text-gray-700;
+  @apply sm:text-sm md:text-base font-roboto my-2 text-base text-gray-700;
 }
 @mixin p2 {
-  @apply sm:text-sm font-semibold md:text-base my-2 text-base text-gray-700;
+  @apply sm:text-sm font-semibold font-roboto md:text-base my-2 text-base text-gray-700;
 }
 
 .h1 {

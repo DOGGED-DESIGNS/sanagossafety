@@ -10,6 +10,19 @@ import { Generalget } from "@/context/General";
 // <p><span style="background-color: rgb(247, 247, 248); color: rgb(55, 65, 81);">A fire is a devastating event that can occur unexpectedly, posing a significant threat to life, property, and peace of mind. While we hope never to experience a house fire, it is essential to be prepared for such emergencies. One crucial safety measure every household should implement is the presence of a fire extinguisher. In this blog post, we will explore the reasons why having a fire extinguisher at home is of utmost i</span>mportance.</p>
 
 const Statichook = () => {
+  const getWholeclient = async () => {
+    try {
+      const data = await axios.get("http://localhost:7000/api/getwholeclient", {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      return data.data.message;
+    } catch (err) {}
+  };
+
   const displayrecent = async () => {
     const data = await axios.post(
       "http://localhost/martinsApi/process.php",
@@ -85,11 +98,41 @@ const Statichook = () => {
   //   }
   //   //
   // };
+  const getRelatedppe = async (id) => {
+    const data = await axios.get(
+      `http://localhost:7000/api/getrelatedppe/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
 
+    return data.data.message;
+  };
+
+  // get related safety
+  const getRelatedsafety = async (id) => {
+    const data = await axios.get(
+      `http://localhost:7000/api/getrelatedsafety/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+
+    return data.data.message;
+  };
   return {
     displayrecent,
     deleteContact,
     countContact,
+    getWholeclient,
+    getRelatedppe,
+    getRelatedsafety,
   };
 };
 

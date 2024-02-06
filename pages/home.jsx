@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import moment from "moment";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { sessionGet, withSessionrap } from "./api/withsession";
 import { useRouter } from "next/router";
 import Statichook from "@/hooks/statichook";
 import Budget from "../comps/Budget";
+import { compileString } from "sass";
 
 export const getServerSideProps = withSessionrap(async ({ req, res }) => {
   const session = sessionGet(req);
-
-  console.log(session);
 
   if (session) {
     if (session?.status == false) {
@@ -19,13 +19,15 @@ export const getServerSideProps = withSessionrap(async ({ req, res }) => {
         },
       };
     } else {
-      const { displayrecent, countContact } = Statichook();
+      const { getWholeclient } = Statichook();
+
+      const allclient = await getWholeclient();
 
       // const contact = await displayrecent();
       // const count = await countContact();
       return {
         props: {
-          data: "",
+          data: allclient,
           count: "",
         },
       };
@@ -96,9 +98,7 @@ const index = ({ count, data }) => {
                       );
 
                       route.reload();
-                    } catch (err) {
-                      console.log(err);
-                    }
+                    } catch (err) {}
                   }}
                 >
                   <button className="sidenav__extra--a" href="" type="submit">
@@ -175,9 +175,9 @@ const index = ({ count, data }) => {
               </div>
 
               {/* <h2 className=" text-center"> No Potential Clients Available </h2> */}
-              <Budget />
-              <Budget />
-              <Budget />
+              {data?.map((da) => {
+                return <Budget {...da} key={da.id} />;
+              })}
 
               {/* <div className="admin__table--body">
                 <div className="">
