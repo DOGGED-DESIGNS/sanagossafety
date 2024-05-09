@@ -12,12 +12,15 @@ import { Generalget } from "@/context/General";
 const Statichook = () => {
   const getWholeclient = async () => {
     try {
-      const data = await axios.get("http://localhost:7000/api/getwholeclient", {
-        headers: {
-          "Content-Type": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const data = await axios.get(
+        "https://firstpostgres.onrender.com/api/getwholeclient",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
 
       return data.data.message;
     } catch (err) {}
@@ -100,7 +103,7 @@ const Statichook = () => {
   // };
   const getRelatedppe = async (id) => {
     const data = await axios.get(
-      `http://localhost:7000/api/getrelatedppe/${id}`,
+      `https://firstpostgres.onrender.com/api/getrelatedppe/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +118,7 @@ const Statichook = () => {
   // get related safety
   const getRelatedsafety = async (id) => {
     const data = await axios.get(
-      `http://localhost:7000/api/getrelatedsafety/${id}`,
+      `https://firstpostgres.onrender.com/api/getrelatedsafety/${id}`,
       {
         headers: {
           "Content-Type": "application/json",

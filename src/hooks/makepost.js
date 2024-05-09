@@ -8,82 +8,95 @@ const Makepost = () => {
 
   // send client
   const sendClient = async (id, email, phone, location, tell) => {
-    const data = await axios.post(
-      "http://localhost:7000/api/insertclient",
-      {
-        id,
-        email,
-        phone,
-        location,
-        tell,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
+    try {
+      const data = await axios.post(
+        "https://firstpostgres.onrender.com/api/insertclient",
+        {
+          id,
+          email,
+          phone,
+          location,
+          tell,
         },
-      }
-    );
-
-    setError(data.data.error);
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+    } catch (error) {
+      throw Error("something went wrong please try again");
+    }
   };
 
   // send ppe
   const sendPpe = async (item, qunt, type) => {
-    const data = await axios.post(
-      "http://localhost:7000/api/insertppe",
-      {
-        item,
-        qunt,
-        type,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
+    try {
+      const data = await axios.post(
+        "https://firstpostgres.onrender.com/api/insertppe",
+        {
+          item,
+          qunt,
+          type,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
 
-    if (data.data.error) {
-      throw new Error("qunty field should not be empty");
+      if (data.data.error) {
+        throw new Error("qunty field should not be empty");
+      }
+    } catch (error) {
+      throw Error("something went wrong please try again");
     }
   };
 
   // send safety
 
   const sendSafety = async (item, qunt, install, type) => {
-    const data = await axios.post(
-      "http://localhost:7000/api/insertsafety",
-      {
-        item,
-        qunt,
-        install,
-        type,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
+    try {
+      const data = await axios.post(
+        "https://firstpostgres.onrender.com/api/insertsafety",
+        {
+          item,
+          qunt,
+          install,
+          type,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
 
-    console.log(data.data);
-    if (data.data.error) {
-      throw new Error("qunty field cannot be empty");
+      console.log(data.data);
+      if (data.data.error) {
+        throw new Error("qunty field cannot be empty");
+      }
+    } catch (error) {
+      throw Error("something went wrong please try again");
     }
   };
 
   // get whole client
   const getWholeclient = async () => {
     try {
-      const data = await axios.get("http://localhost:7000/api/getwholeclient", {
-        headers: {
-          "Content-Type": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const data = await axios.get(
+        "https://firstpostgres.onrender.com/api/getwholeclient",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
 
       return data.data.message;
     } catch (err) {
@@ -95,7 +108,7 @@ const Makepost = () => {
 
   const deleteClient = async (id) => {
     const data = await axios.delete(
-      `http://localhost:7000/api/deleteclient/${id}`,
+      `https://firstpostgres.onrender.com/api/deleteclient/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +124,7 @@ const Makepost = () => {
 
   const getRelatedppe = async (id) => {
     const data = await axios.get(
-      `http://localhost:7000/api/getrelatedppe/${id}`,
+      `https://firstpostgres.onrender.com/api/getrelatedppe/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +139,7 @@ const Makepost = () => {
   // get related safety
   const getRelatedsafety = async (id) => {
     const data = await axios.get(
-      `http://localhost:7000/api/getrelatedsafety/${id}`,
+      `https://firstpostgres.onrender.com/api/getrelatedsafety/${id}`,
       {
         headers: {
           "Content-Type": "application/json",
